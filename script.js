@@ -43,8 +43,8 @@ const translations = {
   ru: {
     "nav.projects": "Проекты",
     "nav.about": "Обо мне",
-    "nav.contact": "Контакты",
-    "nav.cv": "CV",
+    "nav.contact": "Связаться",
+    "nav.cv": "Смотреть CV",
     "hero.role": "Senior дизайнер",
     "hero.name": "ПОЛИНА<br />ФЕДОСОВА",
     "hero.cta": "Написать",
