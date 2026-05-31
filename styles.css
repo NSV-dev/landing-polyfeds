@@ -228,19 +228,66 @@ img {
 }
 
 .ticker {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(96px, 1fr));
-  gap: 14px;
-  width: min(1120px, calc(100% - 24px));
+  --ticker-distance: 851px;
+  width: min(1120px, calc(100% - 40px));
+  height: 235px;
   margin: 0 auto 110px;
   overflow: hidden;
 }
 
-.ticker img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+.ticker-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: max-content;
+  animation: ticker-scroll 28s linear infinite;
+}
+
+.ticker-track img {
+  flex: 0 0 auto;
+  width: auto;
+  height: 97px;
   border-radius: var(--radius);
+}
+
+.ticker-track img:nth-child(7n + 1) {
+  margin-top: 31px;
+  height: 128px;
+}
+
+.ticker-track img:nth-child(7n + 2) {
+  margin-top: 52px;
+}
+
+.ticker-track img:nth-child(7n + 3) {
+  margin-top: 50px;
+}
+
+.ticker-track img:nth-child(7n + 4) {
+  margin-top: 69px;
+}
+
+.ticker-track img:nth-child(7n + 5) {
+  margin-top: 52px;
+}
+
+.ticker-track img:nth-child(7n + 6) {
+  margin-top: 70px;
+}
+
+.ticker-track img:nth-child(7n) {
+  margin-top: 24px;
+  height: 128px;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(calc(-1 * var(--ticker-distance)));
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .projects h2,
@@ -549,19 +596,48 @@ img {
   }
 
   .ticker {
-    grid-auto-flow: column;
-    grid-auto-columns: 78px;
-    grid-template-columns: none;
-    gap: 8px;
-    width: 100%;
+    --ticker-distance: 667px;
+    height: 132px;
     margin-bottom: 48px;
-    padding-left: 12px;
-    overflow-x: auto;
-    scrollbar-width: none;
   }
 
-  .ticker img {
-    height: 78px;
+  .ticker-track {
+    gap: 8px;
+    animation-duration: 20s;
+  }
+
+  .ticker-track img {
+    height: 76px;
+  }
+
+  .ticker-track img:nth-child(7n + 1),
+  .ticker-track img:nth-child(7n) {
+    height: 100px;
+  }
+
+  .ticker-track img:nth-child(7n + 1) {
+    margin-top: 16px;
+  }
+
+  .ticker-track img:nth-child(7n + 2),
+  .ticker-track img:nth-child(7n + 5) {
+    margin-top: 28px;
+  }
+
+  .ticker-track img:nth-child(7n + 3) {
+    margin-top: 27px;
+  }
+
+  .ticker-track img:nth-child(7n + 4) {
+    margin-top: 39px;
+  }
+
+  .ticker-track img:nth-child(7n + 6) {
+    margin-top: 40px;
+  }
+
+  .ticker-track img:nth-child(7n) {
+    margin-top: 13px;
   }
 
   .projects h2,
