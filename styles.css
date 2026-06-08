@@ -1,5 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap");
 
+@font-face {
+  font-family: "Miedinger*";
+  src: url("./assets/fonts/Miedinger_-Book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Miedinger*";
+  src: url("./assets/fonts/Miedinger_-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #f6f8f0;
   --ink: #050505;
@@ -130,31 +146,31 @@ html[lang="en"] .nav {
 }
 
 .section {
-  width: min(1200px, calc(100% - 40px));
+  width: min(1200px, 100%);
   margin: 0 auto;
+  padding-inline: 80px;
 }
 
 .hero {
   position: relative;
-  width: min(1200px, 100%);
   height: 626px;
   min-height: 626px;
-  padding: 0;
 }
 
 .hero-title {
   position: absolute;
   top: 28px;
-  left: 0;
+  left: 80px;
   z-index: 4;
 }
 
 .hero-title p,
 .hero-discipline {
   margin: 0;
-  font-family: "Miedinger*", Miedinger, Inter, Arial, Helvetica, sans-serif;
+  font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
   font-size: 50px;
   font-weight: 400;
+  font-style: normal;
   line-height: 1;
   letter-spacing: 0;
 }
@@ -168,9 +184,12 @@ html[lang="en"] .nav {
   margin: 0;
   transform: translateX(-50%);
   color: white;
-  font-size: clamp(76px, 8.8vw, 112px);
-  font-weight: 800;
-  line-height: 0.9;
+  font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+  font-size: 105.61px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 110.01px;
+  letter-spacing: 0;
   text-align: center;
   white-space: nowrap;
   pointer-events: none;
@@ -256,7 +275,7 @@ html[lang="en"] .nav {
 
 .hero-discipline {
   position: absolute;
-  right: 0;
+  right: 80px;
   bottom: 58px;
   z-index: 4;
   text-align: right;
@@ -264,7 +283,7 @@ html[lang="en"] .nav {
 
 .ticker {
   --ticker-distance: 851px;
-  width: min(1200px, calc(100% - 40px));
+  width: min(1200px, 100%);
   height: 235px;
   margin: 0 auto 110px;
   overflow: hidden;
@@ -396,8 +415,8 @@ html[lang="en"] .nav {
 }
 
 .hello-strip {
-  width: 100%;
-  margin: -20px 0 100px;
+  width: min(1200px, 100%);
+  margin: -20px auto 100px;
   overflow: hidden;
   white-space: nowrap;
   font-size: clamp(42px, 7vw, 92px);
@@ -610,59 +629,63 @@ html[lang="en"] .nav {
 
   .section {
     width: 100%;
+    padding-inline: 24px;
   }
 
   .hero {
-    width: calc(100% - 24px);
     height: auto;
-    min-height: 286px;
-    padding-top: 16px;
+    min-height: min(700px, calc(100vw * 0.8));
+    padding-top: 22px;
   }
 
   .hero-title {
-    top: 8px;
-    left: 0;
+    top: 22px;
+    left: 24px;
   }
 
   .hero-title p,
   .hero-discipline {
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 1;
   }
 
   .hero-name {
-    top: 70px;
-    width: 340px;
-    font-size: 42px;
+    top: clamp(88px, 21vw, 184px);
+    width: min(760px, calc(100vw - 48px));
+    font-size: clamp(48px, 12vw, 105.61px);
+    line-height: 1.04;
   }
 
   .hero-mark {
-    top: 20px;
-    width: 245px;
-    margin: -3px 0 0;
+    top: clamp(38px, 8vw, 70px);
+    width: min(520px, 58vw);
+    margin: 0;
   }
 
   .hero .primary-button {
     left: 50%;
-    top: 72%;
+    top: 66%;
     width: auto;
     height: auto;
-    min-height: 32px;
-    padding: 0 13px;
+    min-height: 48px;
+    padding: 0 30px;
     border-width: 2px;
-    font-size: 11px;
+    border-radius: 12px;
+    font-size: 18px;
     transform: translate(-50%, -50%);
     box-shadow: 0 3px 0 white;
   }
 
   .hero-discipline {
-    right: 0;
-    bottom: 10px;
+    right: 24px;
+    bottom: 56px;
     margin-top: 0;
     text-align: right;
   }
 
   .ticker {
     --ticker-distance: 667px;
+    width: 100%;
     height: 132px;
     margin-bottom: 48px;
   }
@@ -751,6 +774,7 @@ html[lang="en"] .nav {
   }
 
   .hello-strip {
+    width: 100%;
     margin: 0 0 52px;
     font-size: 37px;
   }
