@@ -184,8 +184,9 @@ html[lang="en"] .nav {
   z-index: 3;
   display: grid;
   place-items: center;
-  width: calc(526px * 640 / 560);
-  height: 526px;
+  width: 503px;
+  height: auto;
+  aspect-ratio: 503 / 541;
   margin: 0;
   transform: translateX(-50%);
 }
@@ -224,7 +225,7 @@ html[lang="en"] .nav {
   transform: translateY(7px);
 }
 
-.cube-projection {
+.cube-frame {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -233,7 +234,7 @@ html[lang="en"] .nav {
   overflow: visible;
 }
 
-.cube-projection path {
+.cube-frame path {
   fill: var(--ink);
 }
 
