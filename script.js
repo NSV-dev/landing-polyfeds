@@ -127,125 +127,128 @@ nav.addEventListener("click", () => {
   menuButton.setAttribute("aria-expanded", "false");
 });
 
-function createBlobAnimator() {
-  const path = document.querySelector("[data-blob-path]");
-  if (!path) return;
+function createCubeProjectionAnimator() {
+  const shape = document.querySelector("[data-cube-projection]");
+  if (!shape) return;
 
-  const shapes = [
-    [
-      [344, 14],
-      [420, 42],
-      [516, 124],
-      [582, 214],
-      [596, 350],
-      [552, 428],
-      [418, 474],
-      [302, 526],
-      [226, 500],
-      [92, 420],
-      [82, 336],
-      [102, 176],
-      [126, 126],
-      [254, 58]
-    ],
-    [
-      [326, 30],
-      [406, 38],
-      [520, 104],
-      [588, 196],
-      [600, 336],
-      [566, 420],
-      [430, 486],
-      [320, 516],
-      [220, 486],
-      [102, 432],
-      [76, 350],
-      [92, 162],
-      [138, 100],
-      [248, 72]
-    ],
-    [
-      [370, 18],
-      [448, 72],
-      [526, 148],
-      [574, 234],
-      [604, 358],
-      [540, 430],
-      [426, 468],
-      [286, 512],
-      [210, 486],
-      [84, 406],
-      [86, 320],
-      [100, 180],
-      [150, 112],
-      [278, 50]
-    ],
-    [
-      [360, 6],
-      [434, 56],
-      [504, 132],
-      [568, 220],
-      [590, 362],
-      [532, 438],
-      [398, 486],
-      [300, 532],
-      [230, 502],
-      [96, 426],
-      [70, 342],
-      [98, 188],
-      [160, 106],
-      [290, 32]
-    ]
-  ];
+  const vertices = [-1, 1].flatMap((x) => [-1, 1].flatMap((y) => [-1, 1].map((z) => ({ x, y, z }))));
 
-  const lerp = (a, b, t) => a + (b - a) * t;
-  const ease = (t) => 0.5 - Math.cos(t * Math.PI) / 2;
+  function rotate(vertex, angleX, angleY) {
+    const tiltZ = 0.08;
+    const cosY = Math.cos(angleY);
+    const sinY = Math.sin(angleY);
+    const cosX = Math.cos(angleX);
+    const sinX = Math.sin(angleX);
+    const cosZ = Math.cos(tiltZ);
+    const sinZ = Math.sin(tiltZ);
 
-  function pointsToPath(points) {
-    const size = points.length;
-    const smoothing = 0.18;
-    let d = `M ${points[0][0]} ${points[0][1]}`;
+    const yRotated = {
+      x: vertex.x * cosY + vertex.z * sinY,
+      y: vertex.y,
+      z: -vertex.x * sinY + vertex.z * cosY
+    };
+    const xRotated = {
+      x: yRotated.x,
+      y: yRotated.y * cosX - yRotated.z * sinX,
+      z: yRotated.y * sinX + yRotated.z * cosX
+    };
 
-    for (let i = 0; i < size; i += 1) {
-      const current = points[i];
-      const next = points[(i + 1) % size];
-      const previous = points[(i - 1 + size) % size];
-      const afterNext = points[(i + 2) % size];
+    return {
+      x: xRotated.x * cosZ - xRotated.y * sinZ,
+      y: xRotated.x * sinZ + xRotated.y * cosZ,
+      z: xRotated.z
+    };
+  }
 
-      const cp1 = [
-        current[0] + (next[0] - previous[0]) * smoothing,
-        current[1] + (next[1] - previous[1]) * smoothing
-      ];
-      const cp2 = [
-        next[0] - (afterNext[0] - current[0]) * smoothing,
-        next[1] - (afterNext[1] - current[1]) * smoothing
-      ];
+  function project(vertex) {
+    const perspective = 4.6;
+    const scale = 780 / (perspective - vertex.z);
 
-      d += ` C ${cp1[0]} ${cp1[1]}, ${cp2[0]} ${cp2[1]}, ${next[0]} ${next[1]}`;
-    }
+    return {
+      x: 320 + vertex.x * scale,
+      y: 280 + vertex.y * scale * 1.06
+    };
+  }
 
-    return `${d} Z`;
+  function cross(origin, a, b) {
+    return (a.x - origin.x) * (b.y - origin.y) - (a.y - origin.y) * (b.x - origin.x);
+  }
+
+  function convexHull(points) {
+    const sorted = [...points].sort((a, b) => a.x - b.x || a.y - b.y);
+    const lower = [];
+    const upper = [];
+
+    sorted.forEach((point) => {
+      while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], point) <= 0) {
+        lower.pop();
+      }
+      lower.push(point);
+    });
+
+    [...sorted].reverse().forEach((point) => {
+      while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], point) <= 0) {
+        upper.pop();
+      }
+      upper.push(point);
+    });
+
+    upper.pop();
+    lower.pop();
+    return lower.concat(upper);
+  }
+
+  function distance(a, b) {
+    return Math.hypot(b.x - a.x, b.y - a.y);
+  }
+
+  function pointToward(from, to, amount) {
+    const length = distance(from, to);
+    const ratio = length === 0 ? 0 : amount / length;
+
+    return {
+      x: from.x + (to.x - from.x) * ratio,
+      y: from.y + (to.y - from.y) * ratio
+    };
+  }
+
+  function roundedHullPath(points) {
+    const radius = 36;
+    const rounded = points.map((point, index) => {
+      const previous = points[(index - 1 + points.length) % points.length];
+      const next = points[(index + 1) % points.length];
+      const cornerRadius = Math.min(radius, distance(point, previous) * 0.32, distance(point, next) * 0.32);
+
+      return {
+        point,
+        start: pointToward(point, previous, cornerRadius),
+        end: pointToward(point, next, cornerRadius)
+      };
+    });
+
+    const first = rounded[0];
+    let path = `M ${first.start.x.toFixed(1)} ${first.start.y.toFixed(1)}`;
+
+    rounded.forEach((corner, index) => {
+      path += ` Q ${corner.point.x.toFixed(1)} ${corner.point.y.toFixed(1)} ${corner.end.x.toFixed(1)} ${corner.end.y.toFixed(1)}`;
+      const next = rounded[(index + 1) % rounded.length];
+      path += ` L ${next.start.x.toFixed(1)} ${next.start.y.toFixed(1)}`;
+    });
+
+    return `${path} Z`;
   }
 
   function render(time) {
-    const duration = 1900;
-    const progress = (time % duration) / duration;
-    const fromIndex = Math.floor(time / duration) % shapes.length;
-    const toIndex = (fromIndex + 1) % shapes.length;
-    const amount = ease(progress);
+    const angleX = -0.28 + time * 0.00052;
+    const angleY = time * 0.000112;
+    const points = convexHull(vertices.map((vertex) => project(rotate(vertex, angleX, angleY))));
 
-    const points = shapes[fromIndex].map((point, index) => [
-      lerp(point[0], shapes[toIndex][index][0], amount),
-      lerp(point[1], shapes[toIndex][index][1], amount)
-    ]);
-
-    path.setAttribute("d", pointsToPath(points));
+    shape.setAttribute("d", roundedHullPath(points));
     requestAnimationFrame(render);
   }
 
-  path.setAttribute("d", pointsToPath(shapes[0]));
   requestAnimationFrame(render);
 }
 
 applyLanguage(detectInitialLanguage());
-createBlobAnimator();
+createCubeProjectionAnimator();

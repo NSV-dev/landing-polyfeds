@@ -130,7 +130,7 @@ html[lang="en"] .nav {
 }
 
 .section {
-  width: min(1120px, calc(100% - 40px));
+  width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
 }
 
@@ -224,33 +224,17 @@ html[lang="en"] .nav {
   transform: translateY(7px);
 }
 
-.blob-shape {
+.cube-projection {
   position: absolute;
   inset: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
   overflow: visible;
-  animation: blobDrift 7s ease-in-out infinite;
 }
 
-.blob-shape path {
+.cube-projection path {
   fill: var(--ink);
-}
-
-@keyframes blobDrift {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(-2deg);
-  }
-  35% {
-    transform: translate3d(12px, -8px, 0) rotate(2deg);
-  }
-  70% {
-    transform: translate3d(-10px, 10px, 0) rotate(-4deg);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) rotate(-2deg);
-  }
 }
 
 .primary-button,
@@ -279,7 +263,7 @@ html[lang="en"] .nav {
 
 .ticker {
   --ticker-distance: 851px;
-  width: min(1120px, calc(100% - 40px));
+  width: min(1200px, calc(100% - 40px));
   height: 235px;
   margin: 0 auto 110px;
   overflow: hidden;
@@ -624,7 +608,7 @@ html[lang="en"] .nav {
   }
 
   .section {
-    width: calc(100% - 24px);
+    width: 100%;
   }
 
   .hero {
