@@ -88,6 +88,12 @@ const currentLang = document.querySelector("[data-current-lang]");
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
 
+function setMenuOpen(isOpen) {
+  nav.classList.toggle("is-open", isOpen);
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  document.body.classList.toggle("menu-open", isOpen);
+}
+
 function detectInitialLanguage() {
   const saved = localStorage.getItem("language");
   if (saved === "ru" || saved === "en") return saved;
@@ -118,13 +124,11 @@ langToggle.addEventListener("click", () => {
 });
 
 menuButton.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("is-open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
+  setMenuOpen(!nav.classList.contains("is-open"));
 });
 
 nav.addEventListener("click", () => {
-  nav.classList.remove("is-open");
-  menuButton.setAttribute("aria-expanded", "false");
+  setMenuOpen(false);
 });
 
 function createCubeFrameAnimator() {
