@@ -38,7 +38,19 @@ const translations = {
     "experience.item3.body": "Focused on external brand communication across digital platforms and social media.",
     "experience.cta": "View full experience in CV →",
     "contact.title": "Let's work<br />together ;)",
-    "contact.cta": "Contact me"
+    "contact.cta": "Contact me",
+    "footer.projects": "Selected projects",
+    "footer.about": "About",
+    "footer.cv": "CV",
+    "footer.approach": "Approach",
+    "footer.linkedin": "LinkedIn",
+    "footer.expertise": "Expertise",
+    "footer.telegram": "Telegram",
+    "footer.developed": "Developed by Sergey Nazarenko",
+    "footer.developedPrefix": "Developed by",
+    "footer.developerName": "Sergey Nazarenko",
+    "footer.copyright": "©2026 Polina Fedosova",
+    "footer.backToTop": "Back to top"
   },
   ru: {
     "nav.projects": "Проекты",
@@ -79,7 +91,19 @@ const translations = {
     "experience.item3.body": "Фокус на внешней бренд-коммуникации для digital-платформ и социальных сетей.",
     "experience.cta": "Ознакомиться с опытом детальнее в CV →",
     "contact.title": "Давайте работать<br />вместе ;)",
-    "contact.cta": "Связаться"
+    "contact.cta": "Связаться",
+    "footer.projects": "Избранные проекты",
+    "footer.about": "Обо мне",
+    "footer.cv": "CV",
+    "footer.approach": "Подход",
+    "footer.linkedin": "LinkedIn",
+    "footer.expertise": "Экспертиза",
+    "footer.telegram": "Телеграм",
+    "footer.developed": "Developed by Sergey Nazarenko",
+    "footer.developedPrefix": "Developed by",
+    "footer.developerName": "Sergey Nazarenko",
+    "footer.copyright": "©2026 Polina Fedosova",
+    "footer.backToTop": "Вернуться к началу"
   }
 };
 
