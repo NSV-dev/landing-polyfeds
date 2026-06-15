@@ -11,18 +11,18 @@ const translations = {
     "projects.title": "Selected projects",
     "projects.problem": "/Problem",
     "projects.solution": "/Solution",
-    "projects.reg.title": "Reg.ru: new identity —<br />system development",
-    "projects.reg.problem": "Join Reg.ru’s rebrand at an early stage and develop the brand’s visual communication, including the website and other touchpoints",
-    "projects.reg.solution": "I actively refined the brand’s visual system and contributed to the full website rebrand. Together with the team, we defined and strengthened a new visual language across graphics and key communication elements, shaping a cohesive digital brand presence",
-    "projects.day.title": "Entrepreneur's Day:<br />special campaign for Reg.solutions challenge",
-    "projects.day.problem": "The campaign needed to connect with entrepreneurs using a bold, digital-first voice.",
-    "projects.day.solution": "We created a bright campaign system for landing pages, banners, social media and CRM communication.",
+    "projects.reg.title": "Reg.ru: expanding<br />the brand identity",
+    "projects.reg.problem": "Joined Reg.ru’s rebranding process at an early stage to help shape and expand the brand’s visual communication system across the website and other touchpoints",
+    "projects.reg.solution": "Contributed to the development of the brand’s visual system and took part in the full website redesign. Together with the team, we established and strengthened a new visual language across graphics and key communication elements, creating a more cohesive digital brand experience.",
+    "projects.day.title": "Entrepreneur's Day:<br />special campaign for<br />Reg.solutions challenge",
+    "projects.day.problem": "Create a key visual for a campaign supporting Reg.ru’s new positioning and expand the visual system across a large-scale campaign, from digital assets to content and promo materials",
+    "projects.day.solution": "The campaign generated over 1 million brand interactions through promo mechanics, content, and interactive experiences. The flexible KV system helped attract a new audience while maintaining consistency across all communication channels",
     "projects.barcelona.title": "Barcelona<br />Visual Diary",
-    "projects.barcelona.problem": "A personal travel research needed a visual language that could hold observation, printed matter and urban rhythm together.",
-    "projects.barcelona.solution": "I turned city fragments into a layered diary with posters, spreads and image systems.",
-    "projects.fedosov.title": "FEDOSOV:<br />Branding & Visual System",
-    "projects.fedosov.problem": "The brand needed a coherent identity for premium products across different formats and environments.",
-    "projects.fedosov.solution": "I created a tactile visual system with packaging, labels and adaptable brand graphics.",
+    "projects.barcelona.problem": "Reflect on a trip to Spain through scans and visual fragments collected while observing Barcelona and its architectural environment",
+    "projects.barcelona.solution": "I use scans captured during the trip as the foundation for a series of works where architectural elements transform into graphic memory compositions. Layered colors capture emotional impressions and shape a personal visual diary of the experience",
+    "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System",
+    "projects.fedosov.problem": "Create a visual identity for the FEDOSOV personal brand as a cohesive system capable of adapting across different formats and environments",
+    "projects.fedosov.solution": "I developed a typography-driven identity where the surname itself becomes the core visual element. Through a modular structure and flexible typography system, I created a scalable visual language that remains recognizable across different applications while preserving brand consistency",
     "about.title": "Concept-driven clarity",
     "about.body": "I turn complex tasks into strong visual ideas that communicate clearly without unnecessary noise. I always start with meaning first, then build the design around it.",
     "about.hierarchy": "Hierarchy",
@@ -64,18 +64,18 @@ const translations = {
     "projects.title": "Избранные проекты",
     "projects.problem": "/Задача",
     "projects.solution": "/Решение",
-    "projects.reg.title": "Рег.ру: новая<br />айдентика —<br />развитие системы",
-    "projects.reg.problem": "Подключиться к ребрендингу Рег.ру на раннем этапе и развить визуальную коммуникацию бренда, включая сайт и другие носители",
-    "projects.reg.solution": "Активно дорабатывала визуальную систему бренда и участвовала в полном ребрендинге сайта. Мы с командой задали и усилили новый визуальный язык в графике и ключевых коммуникационных элементах, сформировав цельное цифровое присутствие бренда",
-    "projects.day.title": "День предпринимателя:<br />спецпроект для Reg.solutions",
-    "projects.day.problem": "Кампании нужно было говорить с предпринимателями ярко, понятно и в digital-среде.",
-    "projects.day.solution": "Мы сделали визуальную систему для лендинга, баннеров, соцсетей и CRM-коммуникаций.",
+    "projects.reg.title": "Рег.ру: новая айдентика —<br />развитие системы",
+    "projects.reg.problem": "Подключиться к ребрендингу Рег.ру на раннем этапе и помочь сформировать и расширить визуальную коммуникационную систему бренда на сайте и других точках контакта",
+    "projects.reg.solution": "Внесла вклад в развитие визуальной системы бренда и участвовала в полном редизайне сайта. Вместе с командой мы задали и усилили новый визуальный язык в графике и ключевых коммуникационных элементах, сформировав более цельный цифровой бренд-опыт.",
+    "projects.day.title": "День предпринимателя:<br />спецпроект для Reg.решений",
+    "projects.day.problem": "Разработать KV для проекта в поддержку нового позиционирования Рег.ру и масштабировать визуальную систему на большую коммуникационную кампанию — от digital-носителей до контентных и промо-форматов",
+    "projects.day.solution": "Кампания собрала более 1 млн контактов с брендом благодаря промо, контенту и интерактивным механикам. KV с гибкой архитектурой позволил привлечь новую аудиторию и сохранить консистентность бренда",
     "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
-    "projects.barcelona.problem": "Личному исследованию города нужен был язык, объединяющий наблюдения, печатную графику и ритм улиц.",
-    "projects.barcelona.solution": "Я превратила городские фрагменты в многослойный дневник с постерами, разворотами и визуальными системами.",
-    "projects.fedosov.title": "FEDOSOV:<br />брендинг и система",
-    "projects.fedosov.problem": "Бренду премиальных продуктов требовалась целостная айдентика для разных форматов и сред.",
-    "projects.fedosov.solution": "Я создала тактильную визуальную систему с упаковкой, этикетками и адаптивной бренд-графикой.",
+    "projects.barcelona.problem": "Отрефлексировать поездку в Испанию через сканы и визуальные фрагменты, собранные в процессе наблюдения за Барселоной и ее архитектурной средой",
+    "projects.barcelona.solution": "Я использую сделанные во время поездки сканы как основу серии работ, где архитектурные элементы города превращаются в графические композиции памяти. Поверх них накладываются цветовые маркеры, фиксирующие впечатления и формирующие личный визуальный дневник опыта",
+    "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система",
+    "projects.fedosov.problem": "Создать визуальную айдентику для персонального бренда FEDOSOV как целостную систему, способную адаптироваться к разным форматам и средам",
+    "projects.fedosov.solution": "Я разработала айдентику, где фамилия становится главным визуальным элементом. Через модульную структуру и гибкую типографическую систему я создала масштабируемый визуальный язык, который остается узнаваемым в разных применениях и сохраняет консистентность бренда",
     "about.title": "Дизайнер с ясной идеей",
     "about.body": "Я превращаю сложные задачи в сильные визуальные решения без лишнего шума. Сначала формулирую смысл, потом строю вокруг него дизайн.",
     "about.hierarchy": "Иерархия",
@@ -149,16 +149,16 @@ function normalizeDesktopProjectTitles(lang) {
 
   const desktopTitles = {
     en: {
-      "projects.reg.title": "Reg.ru: new identity —<br />system development",
-      "projects.day.title": "Entrepreneur's Day:<br />special campaign for<br />Reg.solutions",
+      "projects.reg.title": "Reg.ru: expanding<br />the brand identity<br />challenge",
+      "projects.day.title": "Entrepreneur's Day:<br />special campaign for<br />Reg.solutions challenge",
       "projects.barcelona.title": "Barcelona<br />Visual Diary",
-      "projects.fedosov.title": "FEDOSOV:<br />Branding & Visual System"
+      "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System"
     },
     ru: {
-      "projects.reg.title": "Рег.ру: новая айдентика —<br />развитие системы",
-      "projects.day.title": "День предпринимателя:<br />спецпроект для<br />Reg.solutions",
+      "projects.reg.title": "Рег.ру: развитие<br />айдентики бренда",
+      "projects.day.title": "День<br />предпринимателя:<br />спецпроект для<br />Reg.solutions",
       "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
-      "projects.fedosov.title": "FEDOSOV:<br />брендинг и система"
+      "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система"
     }
   };
 
@@ -323,51 +323,201 @@ function createCubeFrameAnimator() {
   requestAnimationFrame(render);
 }
 
-function createProjectAccordions() {
-  document.querySelectorAll("[data-project-gallery]").forEach((gallery) => {
-    const cards = Array.from(gallery.querySelectorAll(".project-card"));
-    const controls = gallery.querySelector(".project-gallery-controls");
-    if (!cards.length || !controls) return;
+function createProjectCarousels() {
+  const tracks = Array.from(document.querySelectorAll(".project-media-grid"));
+  const carouselQuery = window.matchMedia("(max-width: 1199px)");
+  const mobileCarouselQuery = window.matchMedia("(max-width: 760px)");
+  if (!tracks.length) return;
 
-    controls.replaceChildren();
+  tracks.forEach((track, projectIndex) => {
+    const cards = Array.from(track.querySelectorAll(".project-card"));
+    if (cards.length < 2) return;
 
-    function setActive(index) {
-      cards.forEach((card, cardIndex) => {
-        const active = cardIndex === index;
-        card.classList.toggle("is-active", active);
-        card.setAttribute("aria-hidden", String(!active));
+    let userSelectedSlide = false;
+    let activeIndex = getPreferredInitialIndex();
+    let scrollFrame = 0;
 
-        const video = card.querySelector("video");
-        if (!video) return;
-
-        if (active) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
+    function getPreferredInitialIndex() {
+      const preferredSelector = (() => {
+        if (track.classList.contains("project-media-grid--reg")) {
+          return mobileCarouselQuery.matches ? ".card-reg-phone" : ".card-reg-logo";
         }
-      });
 
-      controls.querySelectorAll("button").forEach((button, buttonIndex) => {
-        const active = buttonIndex === index;
-        button.classList.toggle("is-active", active);
-        button.setAttribute("aria-selected", String(active));
+        if (track.classList.contains("project-media-grid--day")) {
+          return ".card-day-wide";
+        }
+
+        if (track.classList.contains("project-media-grid--barcelona")) {
+          return ".card-bcn-wide";
+        }
+
+        if (track.classList.contains("project-media-grid--fedosov")) {
+          return mobileCarouselQuery.matches ? ".card-fed-label" : ".card-fed-pack";
+        }
+
+        return "";
+      })();
+
+      if (preferredSelector) {
+        const preferredIndex = cards.findIndex((card) => card.matches(preferredSelector));
+        return preferredIndex >= 0 ? preferredIndex : 0;
+      }
+
+      return 0;
+    }
+
+    const shell = document.createElement("div");
+    shell.className = "project-carousel-shell";
+    track.before(shell);
+    shell.append(track);
+
+    const controls = document.createElement("div");
+    controls.className = "project-carousel-controls";
+
+    const prevButton = document.createElement("button");
+    prevButton.className = "project-carousel-button project-carousel-button--prev";
+    prevButton.type = "button";
+    prevButton.setAttribute("aria-label", "Previous project card");
+    prevButton.textContent = "\u2190";
+
+    const dots = document.createElement("div");
+    dots.className = "project-carousel-dots";
+    dots.setAttribute("aria-label", "Project card slides");
+    dots.style.setProperty("--slide-count", String(cards.length));
+    dots.style.setProperty("--active-index", "0");
+
+    const nextButton = document.createElement("button");
+    nextButton.className = "project-carousel-button project-carousel-button--next";
+    nextButton.type = "button";
+    nextButton.setAttribute("aria-label", "Next project card");
+    nextButton.textContent = "\u2192";
+
+    const dotButtons = cards.map((card, index) => {
+      const dot = document.createElement("button");
+      dot.className = "project-carousel-dot";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Show project card ${index + 1}`);
+      dot.addEventListener("click", () => {
+        userSelectedSlide = true;
+        setActiveSlide(index);
+      });
+      dots.append(dot);
+      return dot;
+    });
+
+    controls.append(prevButton, dots, nextButton);
+    shell.append(controls);
+
+    function playVisibleVideos() {
+      cards.forEach((card, index) => {
+        card.querySelectorAll("video").forEach((video) => {
+          if (!carouselQuery.matches || index === activeIndex) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
       });
     }
 
-    cards.forEach((_, index) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.setAttribute("role", "tab");
-      button.setAttribute("aria-label", `Show media ${index + 1}`);
-      button.addEventListener("click", () => setActive(index));
-      controls.append(button);
+    function setActiveSlide(index, options = {}) {
+      activeIndex = (index + cards.length) % cards.length;
+
+      dotButtons.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === activeIndex);
+        dot.setAttribute("aria-current", dotIndex === activeIndex ? "true" : "false");
+      });
+      dots.style.setProperty("--active-index", String(activeIndex));
+
+      cards.forEach((card, cardIndex) => {
+        card.classList.toggle("is-active", cardIndex === activeIndex);
+      });
+
+      if (carouselQuery.matches && options.scroll !== false) {
+        const left = cards[activeIndex].offsetLeft - track.offsetLeft;
+        track.scrollTo({
+          left,
+          behavior: options.instant ? "auto" : "smooth"
+        });
+      }
+
+      playVisibleVideos();
+    }
+
+    function updateFromScroll() {
+      if (!carouselQuery.matches) return;
+
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        const nextIndex = cards.reduce((closestIndex, card, index) => {
+          const currentDistance = Math.abs(cards[closestIndex].offsetLeft - track.offsetLeft - track.scrollLeft);
+          const nextDistance = Math.abs(card.offsetLeft - track.offsetLeft - track.scrollLeft);
+          return nextDistance < currentDistance ? index : closestIndex;
+        }, activeIndex);
+
+        if (nextIndex !== activeIndex) {
+          setActiveSlide(nextIndex, { scroll: false });
+        }
+      });
+    }
+
+    function syncCarouselMode() {
+      const enabled = carouselQuery.matches;
+
+      if (enabled && !userSelectedSlide) {
+        activeIndex = getPreferredInitialIndex();
+      }
+
+      controls.hidden = !enabled;
+      shell.classList.toggle("is-carousel", enabled);
+      track.classList.toggle("is-carousel", enabled);
+      track.tabIndex = enabled ? 0 : -1;
+      track.setAttribute("aria-roledescription", enabled ? "carousel" : "media grid");
+      track.setAttribute("aria-label", `Project ${projectIndex + 1} cards`);
+
+      cards.forEach((card, index) => {
+        if (enabled) {
+          card.setAttribute("role", "group");
+          card.setAttribute("aria-label", `${index + 1} of ${cards.length}`);
+        } else {
+          card.removeAttribute("role");
+          card.removeAttribute("aria-label");
+        }
+      });
+
+      setActiveSlide(activeIndex, { instant: true });
+    }
+
+    prevButton.addEventListener("click", () => {
+      userSelectedSlide = true;
+      setActiveSlide(activeIndex - 1);
+    });
+    nextButton.addEventListener("click", () => {
+      userSelectedSlide = true;
+      setActiveSlide(activeIndex + 1);
+    });
+    track.addEventListener("scroll", updateFromScroll, { passive: true });
+    track.addEventListener("keydown", (event) => {
+      if (!carouselQuery.matches) return;
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        userSelectedSlide = true;
+        setActiveSlide(activeIndex - 1);
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        userSelectedSlide = true;
+        setActiveSlide(activeIndex + 1);
+      }
     });
 
-    const initialIndex = Math.max(0, cards.findIndex((card) => card.classList.contains("is-active")));
-    setActive(initialIndex);
+    carouselQuery.addEventListener("change", syncCarouselMode);
+    syncCarouselMode();
   });
 }
 
 applyLanguage(detectInitialLanguage());
 createCubeFrameAnimator();
-createProjectAccordions();
+createProjectCarousels();

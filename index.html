@@ -8,7 +8,7 @@
       name="description"
       content="Portfolio landing page for Polina Fedosova, senior graphics and communication designer."
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260615-responsive-card-assets" />
   </head>
   <body>
     <header class="site-header">
@@ -142,22 +142,35 @@
       <section class="projects projects-coded" id="projects" aria-label="Selected projects">
         <h2 data-i18n="projects.title">Selected projects</h2>
 
-        <article class="coded-project coded-project--reg" data-project>
-          <h3 data-i18n-html="projects.reg.title">Reg.ru: new identity<br />system development</h3>
-          <div class="project-note project-note--problem">
-            <p class="label" data-i18n="projects.problem">/Problem</p>
-            <p data-i18n="projects.reg.problem"></p>
-          </div>
-          <div class="project-note project-note--solution">
-            <p class="label" data-i18n="projects.solution">/Solution</p>
-            <p data-i18n="projects.reg.solution"></p>
-          </div>
-          <div class="project-media-grid" data-project-gallery>
-            <figure class="project-card card-reg-logo is-active"><img src="./assets/projects/1/column 1/card.jpg" width="440" height="180" loading="lazy" decoding="async" alt="Reg.ru identity card" /></figure>
-            <figure class="project-card card-reg-man"><img src="./assets/projects/1/column 2/card_1.jpg" width="440" height="272" loading="lazy" decoding="async" alt="Reg.ru campaign portrait" /></figure>
-            <figure class="project-card card-reg-sign"><img src="./assets/projects/1/column 2/card_2.jpg" width="440" height="175" loading="lazy" decoding="async" alt="Reg.ru outdoor communication" /></figure>
-            <figure class="project-card card-reg-type"><img src="./assets/projects/1/column 3/card_1.jpg" width="440" height="161" loading="lazy" decoding="async" alt="Reg.ru type system" /></figure>
-            <figure class="project-card card-reg-phone"><img src="./assets/projects/1/column 3/card_2.jpg" width="440" height="338" loading="lazy" decoding="async" alt="Reg.ru mobile website" /></figure>
+        <article class="coded-project coded-project--reg is-open">
+          <h3><span class="project-title" data-i18n-html="projects.reg.title">Reg.ru: expanding<br />the brand identity<br />challenge</span></h3>
+          <div class="project-body" id="project-reg-panel">
+            <div class="project-note project-note--problem">
+              <p class="label" data-i18n="projects.problem">/Problem</p>
+              <p data-i18n="projects.reg.problem"></p>
+            </div>
+            <div class="project-media-grid project-media-grid--reg">
+            <div class="project-media-column">
+              <figure class="project-card card-reg-logo">
+                <picture>
+                  <source media="(min-width: 761px) and (max-width: 1199px)" srcset="./assets/projects/responsive/tablet/reg-identity.png" />
+                  <img src="./assets/projects/1/column 1/card.jpg" width="666" height="304" loading="lazy" decoding="async" alt="Reg.ru identity card" />
+                </picture>
+              </figure>
+            </div>
+            <div class="project-media-column">
+              <figure class="project-card card-reg-man"><img src="./assets/projects/1/column 2/card_1.jpg" width="354" height="272" loading="lazy" decoding="async" alt="Reg.ru campaign portrait" /></figure>
+              <figure class="project-card card-reg-sign"><img src="./assets/projects/1/column 2/card_2.jpg" width="354" height="175" loading="lazy" decoding="async" alt="Reg.ru outdoor communication" /></figure>
+            </div>
+            <div class="project-media-column">
+              <figure class="project-card card-reg-type"><img src="./assets/projects/1/column 3/card_1.jpg" width="313" height="161" loading="lazy" decoding="async" alt="Reg.ru type system" /></figure>
+              <figure class="project-card card-reg-phone">
+                <picture>
+                  <source media="(max-width: 760px)" srcset="./assets/projects/responsive/mobile/reg-phone.png" />
+                  <img src="./assets/projects/1/column 3/card_2.jpg" width="313" height="338" loading="lazy" decoding="async" alt="Reg.ru mobile website" />
+                </picture>
+              </figure>
+            </div>
             <div class="project-float float-reg-done" aria-hidden="true">
               <span class="reg-done-icon"></span>
               <span lang="en">Done</span>
@@ -165,70 +178,123 @@
             </div>
             <div class="project-float float-reg-percent" aria-hidden="true"><span>+5%</span></div>
             <div class="project-float float-reg-plus" aria-hidden="true"><span></span></div>
-            <div class="project-gallery-controls" aria-label="Project media"></div>
+            </div>
+            <div class="project-note project-note--solution">
+              <p class="label" data-i18n="projects.solution">/Solution</p>
+              <p data-i18n="projects.reg.solution"></p>
+            </div>
           </div>
         </article>
 
-        <article class="coded-project coded-project--day" data-project>
-          <h3 data-i18n-html="projects.day.title">Entrepreneur's Day:<br />special campaign for Reg.solutions</h3>
-          <div class="project-note project-note--problem">
-            <p class="label" data-i18n="projects.problem">/Problem</p>
-            <p data-i18n="projects.day.problem"></p>
-          </div>
-          <div class="project-note project-note--solution">
-            <p class="label" data-i18n="projects.solution">/Solution</p>
-            <p data-i18n="projects.day.solution"></p>
-          </div>
-          <div class="project-media-grid" data-project-gallery>
-            <figure class="project-card card-day-video is-active"><video src="./assets/projects/2/column 1/card_1.MOV" poster="./assets/projects/2/column 1/1.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
-            <figure class="project-card card-day-phone"><img src="./assets/projects/2/column 1/3.jpg" width="440" height="393" loading="lazy" decoding="async" alt="Entrepreneur day mobile screen" /></figure>
-            <figure class="project-card card-day-wide"><img src="./assets/projects/2/column 2/card_1.jpg" width="670" height="355" loading="lazy" decoding="async" alt="Entrepreneur day campaign banner" /></figure>
-            <figure class="project-card card-day-small"><img src="./assets/projects/2/column 1/card_2.png" width="157" height="157" loading="lazy" decoding="async" alt="Entrepreneur day icon card" /></figure>
-            <img class="project-float float-day-circle" src="./assets/projects/2/column 2/small_circle.jpg" width="124" height="124" loading="lazy" decoding="async" alt="" aria-hidden="true" />
-            <div class="project-gallery-controls" aria-label="Project media"></div>
-          </div>
-        </article>
-
-        <article class="coded-project coded-project--barcelona" data-project>
-          <h3 data-i18n-html="projects.barcelona.title">Barcelona<br />Visual Diary</h3>
-          <div class="project-note project-note--problem">
-            <p class="label" data-i18n="projects.problem">/Problem</p>
-            <p data-i18n="projects.barcelona.problem"></p>
-          </div>
-          <div class="project-note project-note--solution">
-            <p class="label" data-i18n="projects.solution">/Solution</p>
-            <p data-i18n="projects.barcelona.solution"></p>
-          </div>
-          <a class="project-link project-link--barcelona" href="#contact"><span lang="en">View the project</span><span lang="ru">Смотреть проект</span></a>
-          <div class="project-media-grid" data-project-gallery>
-            <figure class="project-card card-bcn-cover is-active"><img src="./assets/projects/3/1.jpg" width="440" height="347" loading="lazy" decoding="async" alt="Barcelona diary cover" /></figure>
-            <figure class="project-card card-bcn-tall"><img src="./assets/projects/3/2.jpg" width="210" height="266" loading="lazy" decoding="async" alt="Barcelona diary poster" /></figure>
-            <figure class="project-card card-bcn-small-a"><img src="./assets/projects/3/3.jpg" width="210" height="210" loading="lazy" decoding="async" alt="Barcelona diary fragment" /></figure>
-            <figure class="project-card card-bcn-large"><img src="./assets/projects/3/4.jpg" width="440" height="440" loading="lazy" decoding="async" alt="Barcelona diary spread" /></figure>
-            <figure class="project-card card-bcn-small-b"><img src="./assets/projects/3/5.jpg" width="210" height="210" loading="lazy" decoding="async" alt="Barcelona diary poster detail" /></figure>
-            <div class="project-gallery-controls" aria-label="Project media"></div>
+        <article class="coded-project coded-project--day">
+          <h3><span class="project-title" data-i18n-html="projects.day.title">Entrepreneur's Day:<br />special campaign for<br />Reg.solutions challenge</span></h3>
+          <div class="project-body" id="project-day-panel">
+            <div class="project-note project-note--problem">
+              <p class="label" data-i18n="projects.problem">/Problem</p>
+              <p data-i18n="projects.day.problem"></p>
+            </div>
+            <div class="project-media-grid project-media-grid--day">
+            <div class="project-media-column">
+              <figure class="project-card card-day-video"><video src="./assets/projects/2/column 1/card_1.MOV" poster="./assets/projects/2/column 1/1.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
+              <div class="project-media-row project-media-row--day">
+                <figure class="project-card card-day-small"><img src="./assets/projects/2/column 1/card_2.png" width="157" height="157" loading="lazy" decoding="async" alt="Entrepreneur day icon card" /></figure>
+                <figure class="project-card card-day-phone"><img src="./assets/projects/2/column 1/3.jpg" width="335" height="393" loading="lazy" decoding="async" alt="Entrepreneur day mobile screen" /></figure>
+              </div>
+            </div>
+            <div class="project-media-column">
+              <figure class="project-card card-day-wide">
+                <picture>
+                  <source media="(max-width: 760px)" srcset="./assets/projects/responsive/mobile/day-campaign.png" />
+                  <source media="(min-width: 761px) and (max-width: 1199px)" srcset="./assets/projects/responsive/tablet/day-campaign.png" />
+                  <img src="./assets/projects/2/column 2/card_1.jpg" width="508" height="355" loading="lazy" decoding="async" alt="Entrepreneur day campaign banner" />
+                </picture>
+              </figure>
+            </div>
+            <img class="project-float float-day-circle" src="./assets/projects/2/column 2/small_circle.jpg" width="134" height="134" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+            </div>
+            <div class="project-note project-note--solution">
+              <p class="label" data-i18n="projects.solution">/Solution</p>
+              <p data-i18n="projects.day.solution"></p>
+            </div>
           </div>
         </article>
 
-        <article class="coded-project coded-project--fedosov" data-project>
-          <h3 data-i18n-html="projects.fedosov.title">FEDOSOV:<br />Branding & Visual System</h3>
-          <div class="project-note project-note--problem">
-            <p class="label" data-i18n="projects.problem">/Problem</p>
-            <p data-i18n="projects.fedosov.problem"></p>
+        <article class="coded-project coded-project--barcelona">
+          <h3><span class="project-title" data-i18n-html="projects.barcelona.title">Barcelona<br />Visual Diary</span></h3>
+          <div class="project-body" id="project-barcelona-panel">
+            <div class="project-note project-note--problem">
+              <p class="label" data-i18n="projects.problem">/Problem</p>
+              <p data-i18n="projects.barcelona.problem"></p>
+            </div>
+            <div class="project-media-grid project-media-grid--barcelona">
+            <div class="project-media-column">
+              <figure class="project-card card-bcn-wide">
+                <picture>
+                  <source media="(max-width: 760px)" srcset="./assets/projects/responsive/mobile/barcelona-diary.png" />
+                  <source media="(min-width: 761px) and (max-width: 1199px)" srcset="./assets/projects/responsive/tablet/barcelona-diary.png" />
+                  <img src="./assets/projects/3/1.jpg" width="510" height="142" loading="lazy" decoding="async" alt="Barcelona diary spread" />
+                </picture>
+              </figure>
+              <div class="project-media-row project-media-row--barcelona">
+                <div class="project-media-column project-media-column--narrow">
+                  <figure class="project-card card-bcn-poster-a"><img src="./assets/projects/3/4.jpg" width="157" height="210" loading="lazy" decoding="async" alt="Barcelona diary blue poster" /></figure>
+                  <figure class="project-card card-bcn-poster-b"><img src="./assets/projects/3/6.jpg" width="157" height="210" loading="lazy" decoding="async" alt="Barcelona diary green poster" /></figure>
+                </div>
+                <figure class="project-card card-bcn-large"><img src="./assets/projects/3/5.jpg" width="333" height="440" loading="lazy" decoding="async" alt="Barcelona diary wall poster" /></figure>
+              </div>
+            </div>
+            <div class="project-media-column">
+              <div class="project-media-row project-media-row--barcelona-top">
+                <figure class="project-card card-bcn-cover"><img src="./assets/projects/3/2.jpg" width="333" height="347" loading="lazy" decoding="async" alt="Barcelona diary cover" /></figure>
+                <figure class="project-card card-bcn-tall"><img src="./assets/projects/3/3.jpg" width="157" height="199" loading="lazy" decoding="async" alt="Barcelona diary poster detail" /></figure>
+              </div>
+            </div>
+            </div>
+            <div class="project-note project-note--solution">
+              <p class="label" data-i18n="projects.solution">/Solution</p>
+              <p data-i18n="projects.barcelona.solution"></p>
+            </div>
+            <a class="project-link project-link--barcelona" href="#contact"><span lang="en">View full case study on Behance →</span><span lang="ru">Смотреть более подробный кейс на Behance →</span></a>
           </div>
-          <div class="project-note project-note--solution">
-            <p class="label" data-i18n="projects.solution">/Solution</p>
-            <p data-i18n="projects.fedosov.solution"></p>
-          </div>
-          <a class="project-link project-link--fedosov" href="#contact"><span lang="en">View the project</span><span lang="ru">Смотреть проект</span></a>
-          <div class="project-media-grid" data-project-gallery>
-            <figure class="project-card card-fed-pack is-active"><img src="./assets/projects/4/2.jpg" width="670" height="285" loading="lazy" decoding="async" alt="Fedosov packaging system" /></figure>
-            <figure class="project-card card-fed-label"><img src="./assets/projects/4/1.jpg" width="442" height="300" loading="lazy" decoding="async" alt="Fedosov label design" /></figure>
-            <figure class="project-card card-fed-box"><img src="./assets/projects/4/3.jpg" width="210" height="311" loading="lazy" decoding="async" alt="Fedosov product box" /></figure>
-            <figure class="project-card card-fed-poster"><img src="./assets/projects/4/4.jpg" width="442" height="219" loading="lazy" decoding="async" alt="Fedosov visual poster" /></figure>
-            <img class="project-float float-fed-a" src="./assets/projects/4/circle 1.jpg" width="123" height="123" loading="lazy" decoding="async" alt="" aria-hidden="true" />
-            <img class="project-float float-fed-b" src="./assets/projects/4/circle 2.jpg" width="124" height="124" loading="lazy" decoding="async" alt="" aria-hidden="true" />
-            <div class="project-gallery-controls" aria-label="Project media"></div>
+        </article>
+
+        <article class="coded-project coded-project--fedosov">
+          <h3><span class="project-title" data-i18n-html="projects.fedosov.title">FEDOSOV: Branding<br />& Visual System</span></h3>
+          <div class="project-body" id="project-fedosov-panel">
+            <div class="project-note project-note--problem">
+              <p class="label" data-i18n="projects.problem">/Problem</p>
+              <p data-i18n="projects.fedosov.problem"></p>
+            </div>
+            <div class="project-media-grid project-media-grid--fedosov">
+            <div class="project-media-column">
+              <figure class="project-card card-fed-pack">
+                <picture>
+                  <source media="(min-width: 761px) and (max-width: 1199px)" srcset="./assets/projects/responsive/tablet/fedosov-bottles.png" />
+                  <img src="./assets/projects/4/1.jpg" width="508" height="216" loading="lazy" decoding="async" alt="Fedosov packaging system" />
+                </picture>
+              </figure>
+            </div>
+            <div class="project-media-column">
+              <figure class="project-card card-fed-label">
+                <picture>
+                  <source media="(max-width: 760px)" srcset="./assets/projects/responsive/mobile/fedosov-pack.png" />
+                  <img src="./assets/projects/4/2.jpg" width="333" height="300" loading="lazy" decoding="async" alt="Fedosov label design" />
+                </picture>
+              </figure>
+              <figure class="project-card card-fed-poster"><img src="./assets/projects/4/4.jpg" width="333" height="219" loading="lazy" decoding="async" alt="Fedosov visual poster" /></figure>
+            </div>
+            <div class="project-media-column">
+              <figure class="project-card card-fed-box"><img src="./assets/projects/4/3.jpg" width="159" height="240" loading="lazy" decoding="async" alt="Fedosov product box" /></figure>
+              <figure class="project-card card-fed-small"><img src="./assets/projects/4/5.jpg" width="159" height="115" loading="lazy" decoding="async" alt="Fedosov grape detail" /></figure>
+            </div>
+            <img class="project-float float-fed-a" src="./assets/projects/4/circle 1.jpg" width="164" height="164" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+            <img class="project-float float-fed-b" src="./assets/projects/4/circle 2.jpg" width="164" height="164" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+            </div>
+            <div class="project-note project-note--solution">
+              <p class="label" data-i18n="projects.solution">/Solution</p>
+              <p data-i18n="projects.fedosov.solution"></p>
+            </div>
+            <a class="project-link project-link--fedosov" href="#contact"><span lang="en">View full case study on Behance →</span><span lang="ru">Смотреть более подробный кейс на Behance →</span></a>
           </div>
         </article>
       </section>
@@ -319,6 +385,6 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=20260615-coded-projects"></script>
+    <script src="./script.js?v=20260615-responsive-card-assets"></script>
   </body>
 </html>
