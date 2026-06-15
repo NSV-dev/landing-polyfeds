@@ -9,11 +9,11 @@ const translations = {
     "hero.cta": "Get in touch",
     "hero.discipline": "Graphics /<br />Communication",
     "projects.title": "Selected projects",
-    "projects.problem": "Problem",
-    "projects.solution": "Solution",
-    "projects.reg.title": "Reg.ru: expanding<br />the brand identity challenge",
-    "projects.reg.problem": "As Reg.ru expanded its services, the brand's visual communication system became inconsistent across touchpoints.",
-    "projects.reg.solution": "We built a flexible identity toolkit with modular graphics, clear hierarchy, and reusable layouts for social and product communication.",
+    "projects.problem": "/Problem",
+    "projects.solution": "/Solution",
+    "projects.reg.title": "Reg.ru: new identity —<br />system development",
+    "projects.reg.problem": "Join Reg.ru’s rebrand at an early stage and develop the brand’s visual communication, including the website and other touchpoints",
+    "projects.reg.solution": "I actively refined the brand’s visual system and contributed to the full website rebrand. Together with the team, we defined and strengthened a new visual language across graphics and key communication elements, shaping a cohesive digital brand presence",
     "projects.day.title": "Entrepreneur's Day:<br />special campaign for Reg.solutions challenge",
     "projects.day.problem": "The campaign needed to connect with entrepreneurs using a bold, digital-first voice.",
     "projects.day.solution": "We created a bright campaign system for landing pages, banners, social media and CRM communication.",
@@ -62,11 +62,11 @@ const translations = {
     "hero.cta": "Написать",
     "hero.discipline": "Графика /<br />коммуникация",
     "projects.title": "Избранные проекты",
-    "projects.problem": "Задача",
-    "projects.solution": "Решение",
-    "projects.reg.title": "Reg.ru: новая айдентика —<br />развитие системы",
-    "projects.reg.problem": "При расширении сервисов Reg.ru визуальная коммуникация бренда стала выглядеть неоднородно на разных носителях.",
-    "projects.reg.solution": "Мы собрали гибкую систему с модульной графикой, понятной иерархией и шаблонами для продукта и коммуникаций.",
+    "projects.problem": "/Задача",
+    "projects.solution": "/Решение",
+    "projects.reg.title": "Рег.ру: новая<br />айдентика —<br />развитие системы",
+    "projects.reg.problem": "Подключиться к ребрендингу Рег.ру на раннем этапе и развить визуальную коммуникацию бренда, включая сайт и другие носители",
+    "projects.reg.solution": "Активно дорабатывала визуальную систему бренда и участвовала в полном ребрендинге сайта. Мы с командой задали и усилили новый визуальный язык в графике и ключевых коммуникационных элементах, сформировав цельное цифровое присутствие бренда",
     "projects.day.title": "День предпринимателя:<br />спецпроект для Reg.solutions",
     "projects.day.problem": "Кампании нужно было говорить с предпринимателями ярко, понятно и в digital-среде.",
     "projects.day.solution": "Мы сделали визуальную систему для лендинга, баннеров, соцсетей и CRM-коммуникаций.",
@@ -139,6 +139,32 @@ function applyLanguage(lang) {
 
   document.querySelectorAll("[data-i18n-html]").forEach((node) => {
     node.innerHTML = dictionary[node.dataset.i18nHtml] || "";
+  });
+
+  normalizeDesktopProjectTitles(lang);
+}
+
+function normalizeDesktopProjectTitles(lang) {
+  if (!window.matchMedia("(min-width: 1200px)").matches) return;
+
+  const desktopTitles = {
+    en: {
+      "projects.reg.title": "Reg.ru: new identity —<br />system development",
+      "projects.day.title": "Entrepreneur's Day:<br />special campaign for<br />Reg.solutions",
+      "projects.barcelona.title": "Barcelona<br />Visual Diary",
+      "projects.fedosov.title": "FEDOSOV:<br />Branding & Visual System"
+    },
+    ru: {
+      "projects.reg.title": "Рег.ру: новая айдентика —<br />развитие системы",
+      "projects.day.title": "День предпринимателя:<br />спецпроект для<br />Reg.solutions",
+      "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
+      "projects.fedosov.title": "FEDOSOV:<br />брендинг и система"
+    }
+  };
+
+  document.querySelectorAll("[data-i18n-html^='projects.']").forEach((node) => {
+    const value = desktopTitles[lang]?.[node.dataset.i18nHtml];
+    if (value) node.innerHTML = value;
   });
 }
 
@@ -297,5 +323,51 @@ function createCubeFrameAnimator() {
   requestAnimationFrame(render);
 }
 
+function createProjectAccordions() {
+  document.querySelectorAll("[data-project-gallery]").forEach((gallery) => {
+    const cards = Array.from(gallery.querySelectorAll(".project-card"));
+    const controls = gallery.querySelector(".project-gallery-controls");
+    if (!cards.length || !controls) return;
+
+    controls.replaceChildren();
+
+    function setActive(index) {
+      cards.forEach((card, cardIndex) => {
+        const active = cardIndex === index;
+        card.classList.toggle("is-active", active);
+        card.setAttribute("aria-hidden", String(!active));
+
+        const video = card.querySelector("video");
+        if (!video) return;
+
+        if (active) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+
+      controls.querySelectorAll("button").forEach((button, buttonIndex) => {
+        const active = buttonIndex === index;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+    }
+
+    cards.forEach((_, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("role", "tab");
+      button.setAttribute("aria-label", `Show media ${index + 1}`);
+      button.addEventListener("click", () => setActive(index));
+      controls.append(button);
+    });
+
+    const initialIndex = Math.max(0, cards.findIndex((card) => card.classList.contains("is-active")));
+    setActive(initialIndex);
+  });
+}
+
 applyLanguage(detectInitialLanguage());
 createCubeFrameAnimator();
+createProjectAccordions();
