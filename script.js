@@ -123,6 +123,11 @@ const langToggle = document.querySelector("[data-lang-toggle]");
 const currentLang = document.querySelector("[data-current-lang]");
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
+const BREAKPOINTS = {
+  mobileMax: 760,
+  carouselMax: 1199,
+  desktopMin: 1200
+};
 
 function setMenuOpen(isOpen) {
   nav.classList.toggle("is-open", isOpen);
@@ -157,7 +162,7 @@ function applyLanguage(lang) {
 }
 
 function normalizeDesktopProjectTitles(lang) {
-  if (!window.matchMedia("(min-width: 1200px)").matches) return;
+  if (!window.matchMedia(`(min-width: ${BREAKPOINTS.desktopMin}px)`).matches) return;
 
   const desktopTitles = {
     en: {
@@ -337,8 +342,7 @@ function createCubeFrameAnimator() {
 
 function createProjectCarousels() {
   const tracks = Array.from(document.querySelectorAll(".project-media-grid"));
-  const carouselQuery = window.matchMedia("(max-width: 1199px)");
-  const mobileCarouselQuery = window.matchMedia("(max-width: 760px)");
+  const carouselQuery = window.matchMedia(`(max-width: ${BREAKPOINTS.carouselMax}px)`);
   if (!tracks.length) return;
 
   tracks.forEach((track, projectIndex) => {
