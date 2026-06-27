@@ -11,7 +11,7 @@ const translations = {
     "projects.title": "Selected projects",
     "projects.problem": "/Problem",
     "projects.solution": "/Solution",
-    "projects.reg.title": "Reg.ru: expanding<br />the brand identity",
+    "projects.reg.title": "Reg.ru: expanding<br />the brand identity<br />challenge",
     "projects.reg.problem": "Joined Reg.ru’s rebranding process at an early stage to help shape and expand the brand’s visual communication system across the website and other touchpoints",
     "projects.reg.solution": "Contributed to the development of the brand’s visual system and took part in the full website redesign. Together with the team, we established and strengthened a new visual language across graphics and key communication elements, creating a more cohesive digital brand experience.",
     "projects.day.title": "Entrepreneur's Day:<br />special campaign for<br />Reg.solutions challenge",
@@ -71,8 +71,8 @@ const translations = {
     "projects.problem": "/Задача",
     "projects.solution": "/Решение",
     "projects.reg.title": "Рег.ру: новая айдентика —<br />развитие системы",
-    "projects.reg.problem": "Подключиться к ребрендингу Рег.ру на раннем этапе и помочь сформировать и расширить визуальную коммуникационную систему бренда на сайте и других точках контакта",
-    "projects.reg.solution": "Внесла вклад в развитие визуальной системы бренда и участвовала в полном редизайне сайта. Вместе с командой мы задали и усилили новый визуальный язык в графике и ключевых коммуникационных элементах, сформировав более цельный цифровой бренд-опыт.",
+    "projects.reg.problem": "Подключиться к ребрендингу Рег.ру на раннем этапе и развить визуальную коммуникацию бренда, включая сайт и другие носители",
+    "projects.reg.solution": "Активно дорабатывала визуальную систему бренда и участвовала в полном ребрендинге сайта. Мы с командой задали и усилили новый визуальный язык в графике и ключевых коммуникационных элементах, сформировав цельное цифровое присутствие бренда",
     "projects.day.title": "День предпринимателя:<br />спецпроект для Reg.решений",
     "projects.day.problem": "Разработать KV для проекта в поддержку нового позиционирования Рег.ру и масштабировать визуальную систему на большую коммуникационную кампанию — от digital-носителей до контентных и промо-форматов",
     "projects.day.solution": "Кампания собрала более 1 млн контактов с брендом благодаря промо, контенту и интерактивным механикам. KV с гибкой архитектурой позволил привлечь новую аудиторию и сохранить консистентность бренда",
@@ -172,7 +172,7 @@ function normalizeDesktopProjectTitles(lang) {
       "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System"
     },
     ru: {
-      "projects.reg.title": "Рег.ру: развитие<br />айдентики бренда",
+      "projects.reg.title": "Рег.ру: новая<br />айдентика —<br />развитие системы",
       "projects.day.title": "День<br />предпринимателя:<br />спецпроект для<br />Reg.solutions",
       "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
       "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система"
