@@ -346,35 +346,10 @@ function createProjectCarousels() {
     if (cards.length < 2) return;
 
     let userSelectedSlide = false;
-    let activeIndex = getPreferredInitialIndex();
+    let activeIndex = 0;
     let scrollFrame = 0;
 
     function getPreferredInitialIndex() {
-      const preferredSelector = (() => {
-        if (track.classList.contains("project-media-grid--reg")) {
-          return ".card-reg-logo";
-        }
-
-        if (track.classList.contains("project-media-grid--day")) {
-          return ".card-day-wide";
-        }
-
-        if (track.classList.contains("project-media-grid--barcelona")) {
-          return ".card-bcn-wide";
-        }
-
-        if (track.classList.contains("project-media-grid--fedosov")) {
-          return ".card-fed-pack";
-        }
-
-        return "";
-      })();
-
-      if (preferredSelector) {
-        const preferredIndex = cards.findIndex((card) => card.matches(preferredSelector));
-        return preferredIndex >= 0 ? preferredIndex : 0;
-      }
-
       return 0;
     }
 
@@ -456,6 +431,15 @@ function createProjectCarousels() {
       playVisibleVideos();
     }
 
+    function resetInitialScrollPosition() {
+      if (!carouselQuery.matches || userSelectedSlide) return;
+
+      activeIndex = getPreferredInitialIndex();
+      setActiveSlide(activeIndex, { instant: true });
+      track.scrollTo({ left: 0, behavior: "auto" });
+      track.scrollLeft = 0;
+    }
+
     function updateFromScroll() {
       if (!carouselQuery.matches) return;
 
@@ -498,6 +482,15 @@ function createProjectCarousels() {
       });
 
       setActiveSlide(activeIndex, { instant: true });
+
+      if (enabled) {
+        requestAnimationFrame(() => {
+          resetInitialScrollPosition();
+          requestAnimationFrame(resetInitialScrollPosition);
+        });
+        window.setTimeout(resetInitialScrollPosition, 120);
+        window.setTimeout(resetInitialScrollPosition, 360);
+      }
     }
 
     prevButton.addEventListener("click", () => {
@@ -526,6 +519,7 @@ function createProjectCarousels() {
     });
 
     carouselQuery.addEventListener("change", syncCarouselMode);
+    window.addEventListener("load", resetInitialScrollPosition, { once: true });
     syncCarouselMode();
   });
 }

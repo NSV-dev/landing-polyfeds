@@ -4084,6 +4084,54 @@ html[lang="ru"] .coded-project--day h3 {
   .project-media-grid--fedosov .card-fed-pack {
     border-radius: 24px;
   }
+
+  .project-body .project-media-grid--reg {
+    align-items: flex-start;
+    height: 326px;
+  }
+
+  .project-body .project-media-grid--reg .project-card {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 326px;
+    aspect-ratio: auto;
+    background: transparent;
+  }
+
+  .project-body .project-media-grid--reg .card-reg-logo {
+    width: 100%;
+  }
+
+  .project-body .project-media-grid--reg .card-reg-man {
+    width: 100%;
+  }
+
+  .project-body .project-media-grid--reg .card-reg-sign {
+    width: 100%;
+  }
+
+  .project-body .project-media-grid--reg .card-reg-type {
+    width: 100%;
+  }
+
+  .project-body .project-media-grid--reg .card-reg-phone {
+    width: 100%;
+  }
+
+  .project-body .project-media-grid--reg .project-card picture {
+    width: auto;
+    height: 326px;
+    max-width: 100%;
+  }
+
+  .project-body .project-media-grid--reg .project-card img {
+    width: auto;
+    height: 326px;
+    max-width: 100%;
+    object-fit: contain;
+  }
 }
 
 @media (max-width: 760px) {
@@ -4144,6 +4192,23 @@ html[lang="ru"] .coded-project--day h3 {
   .project-media-grid--fedosov .card-fed-pack {
     aspect-ratio: 347 / 346;
     border-radius: 10px;
+  }
+
+  .project-body .project-media-grid--reg {
+    align-items: center;
+    height: 326px;
+  }
+
+  .project-body .project-media-grid--reg .project-card {
+    flex: 0 0 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  .project-body .project-media-grid--reg .project-card picture,
+  .project-body .project-media-grid--reg .project-card img {
+    height: auto;
   }
 
   .project-carousel-controls {
@@ -4216,7 +4281,7 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .coded-project--reg .project-note--solution {
-    top: 357px;
+    top: 386px;
     left: 0;
     width: 325px;
   }
@@ -4258,7 +4323,7 @@ html[lang="ru"] .coded-project--day h3 {
 
 @media (min-width: 1440px) {
   .coded-project--reg .project-note--solution {
-    top: 388px;
+    top: 421px;
     width: 440px;
   }
 
