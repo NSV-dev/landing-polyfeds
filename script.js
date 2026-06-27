@@ -469,8 +469,6 @@ function createProjectCarousels() {
       }
 
       controls.hidden = !enabled;
-      shell.classList.toggle("is-carousel", enabled);
-      track.classList.toggle("is-carousel", enabled);
       track.tabIndex = enabled ? 0 : -1;
       track.setAttribute("aria-roledescription", enabled ? "carousel" : "media grid");
       track.setAttribute("aria-label", `Project ${projectIndex + 1} cards`);
