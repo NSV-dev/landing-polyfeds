@@ -2373,11 +2373,18 @@ html[lang="ru"] .project-link span[lang="ru"] {
 }
 
 .project-card img,
+.project-card picture,
 .project-card video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.project-float img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .project-card picture {
@@ -2467,143 +2474,6 @@ html[lang="ru"] .project-link span[lang="ru"] {
   left: 763px;
   width: 313px;
   height: 338px;
-}
-
-.float-reg-done {
-  top: 309px;
-  left: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  width: 137px;
-  height: 56px;
-  padding: 0 18px 0 12px;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
-  color: var(--ink);
-  font-size: 16px;
-  line-height: 1;
-  animation: none;
-}
-
-.float-reg-percent {
-  top: 363px;
-  left: 656px;
-  display: grid;
-  place-items: center;
-  width: 142px;
-  height: 142px;
-  border-radius: 999px;
-  background: #fff;
-  animation: none;
-}
-
-.float-reg-plus {
-  top: 180px;
-  left: 1057px;
-  display: grid;
-  place-items: center;
-  width: 55px;
-  height: 55px;
-  border: 5px solid var(--bg);
-  border-radius: 999px;
-  background: #1ede7b;
-  animation: none;
-}
-
-.float-reg-done span[lang] {
-  display: none;
-}
-
-html[lang="en"] .float-reg-done span[lang="en"],
-html[lang="ru"] .float-reg-done span[lang="ru"] {
-  display: inline;
-}
-
-.reg-done-icon {
-  position: relative;
-  display: block;
-  flex: 0 0 auto;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background: #31dd79;
-}
-
-.reg-done-icon::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 9px;
-  width: 11px;
-  height: 7px;
-  border-left: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  transform: rotate(-45deg);
-}
-
-.float-reg-percent::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  background: conic-gradient(from 157deg, #31dd79 0deg 280deg, transparent 280deg 360deg);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 17px), #000 calc(100% - 16px));
-  mask: radial-gradient(farthest-side, transparent calc(100% - 17px), #000 calc(100% - 16px));
-}
-
-.float-reg-percent::after {
-  content: "";
-  position: absolute;
-  top: 38px;
-  right: 20px;
-  z-index: 2;
-  width: 18px;
-  height: 18px;
-  border-radius: inherit;
-  background: #103f35;
-}
-
-.float-reg-percent span {
-  position: relative;
-  z-index: 1;
-  font-size: 31px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.float-reg-plus span,
-.float-reg-plus span::before,
-.float-reg-plus span::after {
-  content: "";
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--ink);
-}
-
-.float-reg-plus span {
-  position: relative;
-  box-shadow:
-    0 -9px 0 var(--ink),
-    0 -18px 0 var(--ink),
-    0 9px 0 var(--ink),
-    0 18px 0 var(--ink),
-    -9px 0 0 var(--ink),
-    -18px 0 0 var(--ink),
-    9px 0 0 var(--ink),
-    18px 0 0 var(--ink);
-}
-
-.float-reg-plus span::before {
-  display: none;
-}
-
-.float-reg-plus span::after {
-  display: none;
 }
 
 .coded-project--day {
@@ -2864,14 +2734,6 @@ html[lang="ru"] .float-reg-done span[lang="ru"] {
   .card-reg-phone {
     left: 956px;
     width: 440px;
-  }
-
-  .float-reg-percent {
-    left: 888px;
-  }
-
-  .float-reg-plus {
-    left: 1380px;
   }
 
   .coded-project--day {
@@ -3394,24 +3256,56 @@ html[lang="ru"] .project-link span[lang="ru"] {
   pointer-events: none;
 }
 
+.float-reg-done,
+.float-reg-percent,
+.float-reg-plus {
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  animation: none;
+}
+
+.float-reg-done {
+  clip-path: inset(0 round 999px);
+}
+
+.float-reg-percent,
+.float-reg-plus {
+  clip-path: circle(50% at 50% 50%);
+}
+
 .card-reg-logo {
-  aspect-ratio: 666 / 304;
+  width: 333px;
+  height: 152px;
+  aspect-ratio: auto;
 }
 
 .card-reg-man {
-  aspect-ratio: 354 / 272;
+  width: 354px;
+  height: 272px;
+  aspect-ratio: auto;
 }
 
 .card-reg-sign {
-  aspect-ratio: 354 / 175;
+  width: 354px;
+  height: 175px;
+  aspect-ratio: auto;
 }
 
 .card-reg-type {
-  aspect-ratio: 313 / 161;
+  width: 313px;
+  height: 161px;
+  aspect-ratio: auto;
 }
 
 .card-reg-phone {
-  aspect-ratio: 313 / 338;
+  width: 313px;
+  height: 338px;
+  aspect-ratio: auto;
 }
 
 .card-day-video {
@@ -3481,10 +3375,12 @@ html[lang="ru"] .project-link span[lang="ru"] {
 .coded-project--reg .project-note--problem {
   grid-column: 7 / -1;
   align-self: end;
+  justify-self: end;
+  width: 440px;
 }
 
 .project-media-grid--reg {
-  grid-template-columns: 333fr 354fr 313fr;
+  grid-template-columns: 333px 354px 313px;
   align-items: start;
   margin-top: 14px;
 }
@@ -3494,127 +3390,24 @@ html[lang="ru"] .project-link span[lang="ru"] {
 }
 
 .float-reg-done {
-  top: 82px;
-  left: -25px;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  width: auto;
-  height: 39px;
-  padding: 0 13px 0 8px;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.float-reg-done span[lang] {
-  display: none;
-}
-
-html[lang="en"] .float-reg-done span[lang="en"],
-html[lang="ru"] .float-reg-done span[lang="ru"] {
-  display: inline;
-}
-
-.reg-done-icon {
-  position: relative;
-  display: block;
-  flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  background: #31dd79;
-}
-
-.reg-done-icon::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 7px;
-  width: 9px;
-  height: 6px;
-  border-left: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  transform: rotate(-45deg);
+  top: 102px;
+  left: -36px;
+  width: 163px;
+  height: auto;
 }
 
 .float-reg-percent {
-  top: 246px;
-  left: 51.5%;
-  display: grid;
-  place-items: center;
-  width: 142px;
-  height: 142px;
-  border-radius: 999px;
-  background: #fff;
-}
-
-.float-reg-percent::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: conic-gradient(from 157deg, #31dd79 0deg 280deg, transparent 280deg 360deg);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 17px), #000 calc(100% - 16px));
-  mask: radial-gradient(farthest-side, transparent calc(100% - 17px), #000 calc(100% - 16px));
-}
-
-.float-reg-percent::after {
-  content: "";
-  position: absolute;
-  top: 38px;
-  right: 20px;
-  width: 18px;
-  height: 18px;
-  border-radius: inherit;
-  background: #103f35;
-}
-
-.float-reg-percent span {
-  position: relative;
-  z-index: 1;
-  font-size: 31px;
-  font-weight: 700;
-  line-height: 1;
+  top: 156px;
+  left: 620px;
+  width: 168px;
+  height: auto;
 }
 
 .float-reg-plus {
-  top: -26px;
-  right: 55px;
-  display: grid;
-  place-items: center;
+  top: -28px;
+  left: 1021px;
   width: 55px;
-  height: 55px;
-  border: 5px solid var(--bg);
-  border-radius: 999px;
-  background: #1ede7b;
-}
-
-.float-reg-plus span {
-  position: relative;
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--ink);
-  box-shadow:
-    0 -9px 0 var(--ink),
-    0 -18px 0 var(--ink),
-    0 9px 0 var(--ink),
-    0 18px 0 var(--ink),
-    -9px 0 0 var(--ink),
-    -18px 0 0 var(--ink),
-    9px 0 0 var(--ink),
-    18px 0 0 var(--ink);
-}
-
-.float-reg-plus span::before,
-.float-reg-plus span::after {
-  display: none;
+  height: auto;
 }
 
 .coded-project--day h3 {
@@ -3743,12 +3536,54 @@ html[lang="ru"] .coded-project--day h3 {
     column-gap: 20px;
   }
 
-  .coded-project--reg .project-note--solution {
-    top: 450px;
+  .project-media-grid--reg {
+    grid-template-columns: repeat(3, 440px);
+  }
+
+  .card-reg-logo {
+    width: 440px;
+    height: 180px;
+  }
+
+  .card-reg-man {
+    width: 440px;
+    height: 272px;
+  }
+
+  .card-reg-sign {
+    width: 440px;
+    height: 175px;
+  }
+
+  .card-reg-type {
+    width: 440px;
+    height: 161px;
+  }
+
+  .card-reg-phone {
+    width: 440px;
+    height: 338px;
+  }
+
+  .coded-project--reg .project-note--problem {
+    width: 440px;
+  }
+
+  .float-reg-done {
+    top: 133px;
+    left: -36px;
+    width: 163px;
+  }
+
+  .float-reg-percent {
+    top: 168px;
+    left: 768px;
+    width: 195px;
   }
 
   .float-reg-plus {
-    right: -16px;
+    top: -29px;
+    left: 1341px;
   }
 }
 
@@ -4077,6 +3912,7 @@ html[lang="ru"] .coded-project--day h3 {
     display: block;
     flex: 0 0 100%;
     width: 100%;
+    height: auto;
     aspect-ratio: 648 / 264;
     margin: 0;
     border-radius: 18px;
@@ -4380,7 +4216,7 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .coded-project--reg .project-note--solution {
-    top: 347px;
+    top: 357px;
     left: 0;
     width: 325px;
   }
@@ -4422,7 +4258,8 @@ html[lang="ru"] .coded-project--day h3 {
 
 @media (min-width: 1440px) {
   .coded-project--reg .project-note--solution {
-    top: 450px;
+    top: 388px;
+    width: 440px;
   }
 
   .coded-project--barcelona .project-note--solution {
@@ -4433,9 +4270,6 @@ html[lang="ru"] .coded-project--day h3 {
     top: 890px;
   }
 
-  .float-reg-plus {
-    right: -16px;
-  }
 }
 
 /* Figma-matched lower sections */
