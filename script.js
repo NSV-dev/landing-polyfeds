@@ -23,19 +23,25 @@ const translations = {
     "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System",
     "projects.fedosov.problem": "Create a visual identity for the FEDOSOV personal brand as a cohesive system capable of adapting across different formats and environments",
     "projects.fedosov.solution": "I developed a typography-driven identity where the surname itself becomes the core visual element. Through a modular structure and flexible typography system, I created a scalable visual language that remains recognizable across different applications while preserving brand consistency",
-    "about.title": "Concept-driven clarity",
-    "about.body": "I turn complex tasks into strong visual ideas that communicate clearly without unnecessary noise. I always start with meaning first, then build the design around it.",
+    "about.title": "Conceptual clarity",
+    "about.body": "I turn a task into a strong idea that works without visual noise. I always start with meaning, not form, and build the design around it.",
     "about.hierarchy": "Hierarchy",
-    "about.hierarchyBody": "I create visual systems with clear hierarchy, where primary and secondary elements are instantly recognizable.",
-    "about.systems": "Systems thinking",
-    "about.systemsBody": "I approach design decisions through logic, context and business goals.",
+    "about.hierarchyBody": "I build visual systems with clear hierarchy, where primary and secondary elements are immediately understandable and meaning reads quickly in any format.",
+    "about.systems": "Systems",
+    "about.systemsBody": "I make and defend design decisions through task logic and context, not taste. I can explain every decision so it is clear to business and team.",
     "experience.title": "Experience",
+    "experience.item1.date": "September 2025 - Present",
+    "experience.item1.company": "Reg.ru / leading Russian hosting provider",
     "experience.item1.title": "Communication Designer",
-    "experience.item1.body": "Working with the brand's visual language across digital, merchandise, and event communication.",
+    "experience.item1.body": "Working with the brand's visual language: digital, merchandise and events, including major conferences and client events. Supporting and developing the visual system after the rebrand, collaborating with the team to implement solutions quickly",
+    "experience.item2.date": "September 2021 - Present",
+    "experience.item2.company": "Art direction (projects) / work across formats and environments",
     "experience.item2.title": "Multidisciplinary Designer",
-    "experience.item2.body": "Taking care of identity, landing pages, presentations and complete visual systems.",
+    "experience.item2.body": "Working across different design directions, from small projects to major clients and the full visual cycle",
+    "experience.item3.date": "April 2024 - August 2025",
+    "experience.item3.company": "Pravoe Polusharie Introverta / online self-development platform",
     "experience.item3.title": "Graphic / Communication Designer",
-    "experience.item3.body": "Focused on external brand communication across digital platforms and social media.",
+    "experience.item3.body": "Focused on external brand communication in digital environments and social media, developing visual content and campaigns. Creating merchandise and design materials for different audience touchpoints.",
     "experience.cta": "View full experience in CV →",
     "contact.title": "Let's work<br />together ;)",
     "contact.cta": "Contact me",
@@ -76,19 +82,25 @@ const translations = {
     "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система",
     "projects.fedosov.problem": "Создать визуальную айдентику для персонального бренда FEDOSOV как целостную систему, способную адаптироваться к разным форматам и средам",
     "projects.fedosov.solution": "Я разработала айдентику, где фамилия становится главным визуальным элементом. Через модульную структуру и гибкую типографическую систему я создала масштабируемый визуальный язык, который остается узнаваемым в разных применениях и сохраняет консистентность бренда",
-    "about.title": "Дизайнер с ясной идеей",
-    "about.body": "Я превращаю сложные задачи в сильные визуальные решения без лишнего шума. Сначала формулирую смысл, потом строю вокруг него дизайн.",
+    "about.title": "Концептуальная ясность",
+    "about.body": "Умею превращать задачу в сильную идею, которая работает без визуального шума. Всегда начинаю со смысла, а не с формы, и строю дизайн вокруг него",
     "about.hierarchy": "Иерархия",
-    "about.hierarchyBody": "Создаю визуальные системы, где главное и второстепенное считываются быстро и уверенно.",
-    "about.systems": "Системное мышление",
-    "about.systemsBody": "Смотрю на дизайн через логику, контекст и бизнес-задачи.",
+    "about.hierarchyBody": "Строю визуальные системы с четкой иерархией, где сразу понятно главное и второстепенное, а смысл быстро считывается в любом формате",
+    "about.systems": "Системность",
+    "about.systemsBody": "Принимаю и защищаю дизайн-решения через логику задачи и контекст, а не через вкус. Могу объяснить каждое решение так, чтобы оно было понятно бизнесу и команде",
     "experience.title": "Опыт работы",
-    "experience.item1.title": "Communication Designer",
-    "experience.item1.body": "Работаю с визуальным языком бренда в digital, мерче и event-коммуникациях.",
+    "experience.item1.date": "сент. 2025 г. — настоящее время",
+    "experience.item1.company": "Рег.ру / крупнейший российский хостинг-провайдер",
+    "experience.item1.title": "Коммуникационный дизайнер",
+    "experience.item1.body": "Работаю с визуальным языком бренда: digital, мерч и ивент, включая крупные конференции и клиентские мероприятия. Поддерживаю и развиваю визуальную систему после ребрендинга, взаимодействую с командой для быстрой реализации решений",
+    "experience.item2.date": "сент. 2021 г. — настоящее время",
+    "experience.item2.company": "Арт-дирекшн (проекты) / работа в разных форматах и средах",
     "experience.item2.title": "Мультидисциплинарный дизайнер",
-    "experience.item2.body": "Разрабатываю айдентику, лендинги, презентации и цельные визуальные системы.",
+    "experience.item2.body": "Работа с разными направлениями дизайна — от небольших проектов до крупных клиентов и полного визуального цикла",
+    "experience.item3.date": "апр. 2024 г. — авг. 2025 г.",
+    "experience.item3.company": "Правое полушарие интроверта / онлайн-платформа для саморазвития",
     "experience.item3.title": "Graphic / Communication Designer",
-    "experience.item3.body": "Фокус на внешней бренд-коммуникации для digital-платформ и социальных сетей.",
+    "experience.item3.body": "Фокус на внешней коммуникации бренда в digital-среде и социальных сетях, разработка визуального контента и кампаний. Создание мерча и дизайн-материалов для разных точек контакта с аудиторией",
     "experience.cta": "Ознакомиться с опытом детальнее в CV →",
     "contact.title": "Давайте работать<br />вместе ;)",
     "contact.cta": "Связаться",
@@ -340,7 +352,7 @@ function createProjectCarousels() {
     function getPreferredInitialIndex() {
       const preferredSelector = (() => {
         if (track.classList.contains("project-media-grid--reg")) {
-          return mobileCarouselQuery.matches ? ".card-reg-phone" : ".card-reg-logo";
+          return ".card-reg-logo";
         }
 
         if (track.classList.contains("project-media-grid--day")) {
@@ -352,7 +364,7 @@ function createProjectCarousels() {
         }
 
         if (track.classList.contains("project-media-grid--fedosov")) {
-          return mobileCarouselQuery.matches ? ".card-fed-label" : ".card-fed-pack";
+          return ".card-fed-pack";
         }
 
         return "";
