@@ -66,7 +66,7 @@ const translations = {
     "hero.role": "Senior дизайнер",
     "hero.name": "ПОЛИНА<br />ФЕДОСОВА",
     "hero.cta": "Написать",
-    "hero.discipline": "Графика /<br />коммуникация",
+    "hero.discipline": "Графика/<br />коммуникации",
     "projects.title": "Избранные проекты",
     "projects.problem": "/Задача",
     "projects.solution": "/Решение",

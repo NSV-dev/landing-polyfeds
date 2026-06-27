@@ -914,12 +914,12 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
   .hero-title p,
   .hero-discipline {
-    font-size: 20px;
+    font-size: 24px;
     line-height: 1;
   }
 
   .hero-name {
-    top: 66px;
+    top: 56px;
     width: 432px;
     font-size: 62px;
     line-height: 64px;
@@ -928,6 +928,12 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .hero-mark {
     top: 11px;
     width: 352px;
+    height: 263px;
+    aspect-ratio: auto;
+  }
+
+  .hero .cube-frame {
+    padding: 0;
   }
 
   .hero .primary-button {
@@ -935,7 +941,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     min-height: 36.5px;
     padding: 11px 18px;
     border-width: 2px;
-    border-radius: 9px;
+    border-radius: 8px;
     font-size: 14px;
     box-shadow: 0 4px 0 white;
   }
@@ -1234,7 +1240,13 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .hero-mark {
     top: 24.675px;
     width: 280.833px;
+    height: 227.247px;
+    aspect-ratio: auto;
     margin: 0;
+  }
+
+  .hero .cube-frame {
+    padding: 0;
   }
 
   .hero .primary-button {
@@ -1245,7 +1257,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     min-height: 31.4px;
     padding: 10px 15px;
     border-width: 2px;
-    border-radius: 12px;
+    border-radius: 14px;
     font-size: 12px;
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 0 white;
