@@ -1,4 +1,4 @@
-const translations = {
+﻿const translations = {
   en: {
     "nav.projects": "Projects",
     "nav.about": "About",
@@ -14,7 +14,7 @@ const translations = {
     "projects.reg.title": "Reg.ru: expanding<br />the brand identity<br />challenge",
     "projects.reg.problem": "Joined Reg.ru’s rebranding process at an early stage to help shape and expand the brand’s visual communication system across the website and other touchpoints",
     "projects.reg.solution": "Contributed to the development of the brand’s visual system and took part in the full website redesign. Together with the team, we established and strengthened a new visual language across graphics and key communication elements, creating a more cohesive digital brand experience.",
-    "projects.day.title": "Entrepreneur's Day:<br />special campaign for<br />Reg.solutions challenge",
+    "projects.day.title": "Entrepreneur\u2019s Day:<br />special campaign for\u00a0Reg.solutions challenge",
     "projects.day.problem": "Create a key visual for a campaign supporting Reg.ru’s new positioning and expand the visual system across a large-scale campaign, from digital assets to content and promo materials",
     "projects.day.solution": "The campaign generated over 1 million brand interactions through promo mechanics, content, and interactive experiences. The flexible KV system helped attract a new audience while maintaining consistency across all communication channels",
     "projects.barcelona.title": "Barcelona<br />Visual Diary",
@@ -73,9 +73,9 @@ const translations = {
     "projects.reg.title": "Рег.ру: новая айдентика —<br />развитие системы",
     "projects.reg.problem": "Подключиться к ребрендингу Рег.ру на раннем этапе и развить визуальную коммуникацию бренда, включая сайт и другие носители",
     "projects.reg.solution": "Активно дорабатывала визуальную систему бренда и участвовала в полном ребрендинге сайта. Мы с командой задали и усилили новый визуальный язык в графике и ключевых коммуникационных элементах, сформировав цельное цифровое присутствие бренда",
-    "projects.day.title": "День предпринимателя:<br />спецпроект для Reg.решений",
-    "projects.day.problem": "Разработать KV для проекта в поддержку нового позиционирования Рег.ру и масштабировать визуальную систему на большую коммуникационную кампанию — от digital-носителей до контентных и промо-форматов",
-    "projects.day.solution": "Кампания собрала более 1 млн контактов с брендом благодаря промо, контенту и интерактивным механикам. KV с гибкой архитектурой позволил привлечь новую аудиторию и сохранить консистентность бренда",
+    "projects.day.title": "День предпринимателя:<br />спецпроект для Рег.решений",
+    "projects.day.problem": "Разработать KV для проекта в поддержку нового позиционирования Рег.ру и масштабировать визуальную систему на большую коммуникационную кампанию — от digital-носителей до контентных и промо-форматов",
+    "projects.day.solution": "Кампания собрала более 1 млн контактов с брендом благодаря промо, контенту и интерактивным механикам. KV с гибкой архитектурой позволил привлечь новую аудиторию и сохранил целостность и консистентность бренда.",
     "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
     "projects.barcelona.problem": "Отрефлексировать поездку в Испанию через сканы и визуальные фрагменты, собранные в процессе наблюдения за Барселоной и ее архитектурной средой",
     "projects.barcelona.solution": "Я использую сделанные во время поездки сканы как основу серии работ, где архитектурные элементы города превращаются в графические композиции памяти. Поверх них накладываются цветовые маркеры, фиксирующие впечатления и формирующие личный визуальный дневник опыта",
@@ -126,7 +126,8 @@ const nav = document.querySelector(".nav");
 const BREAKPOINTS = {
   mobileMax: 760,
   carouselMax: 1199,
-  desktopMin: 1200
+  desktopMin: 1200,
+  wideDesktopMin: 1440
 };
 
 function setMenuOpen(isOpen) {
@@ -162,18 +163,25 @@ function applyLanguage(lang) {
 }
 
 function normalizeDesktopProjectTitles(lang) {
-  if (!window.matchMedia(`(min-width: ${BREAKPOINTS.desktopMin}px)`).matches) return;
+  const isTablet = window.matchMedia(`(min-width: ${BREAKPOINTS.mobileMax + 1}px) and (max-width: ${BREAKPOINTS.carouselMax}px)`).matches;
+  const isDesktop = window.matchMedia(`(min-width: ${BREAKPOINTS.desktopMin}px)`).matches;
+  if (!isTablet && !isDesktop) return;
+  const isWideDesktop = window.matchMedia(`(min-width: ${BREAKPOINTS.wideDesktopMin}px)`).matches;
 
   const desktopTitles = {
     en: {
       "projects.reg.title": "Reg.ru: expanding<br />the brand identity<br />challenge",
-      "projects.day.title": "Entrepreneur's Day:<br />special campaign for<br />Reg.solutions challenge",
+      "projects.day.title": "Entrepreneur\u2019s Day:<br />special campaign for\u00a0Reg.solutions challenge",
       "projects.barcelona.title": "Barcelona<br />Visual Diary",
       "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System"
     },
     ru: {
       "projects.reg.title": "Рег.ру: новая<br />айдентика —<br />развитие системы",
-      "projects.day.title": "День<br />предпринимателя:<br />спецпроект для<br />Reg.solutions",
+      "projects.day.title": isTablet
+        ? "\u0414\u0435\u043d\u044c \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044f:<br />\u0441\u043f\u0435\u0446\u043f\u0440\u043e\u0435\u043a\u0442 \u0434\u043b\u044f\u00a0\u0420\u0435\u0433.\u0440\u0435\u0448\u0435\u043d\u0438\u0439"
+        : isWideDesktop
+        ? "\u0414\u0435\u043d\u044c \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044f:<br />\u0441\u043f\u0435\u0446\u043f\u0440\u043e\u0435\u043a\u0442 \u0434\u043b\u044f\u00a0\u0420\u0435\u0433.\u0440\u0435\u0448\u0435\u043d\u0438\u0439"
+        : "\u0414\u0435\u043d\u044c<br />\u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044f:<br />\u0441\u043f\u0435\u0446\u043f\u0440\u043e\u0435\u043a\u0442<br />\u0434\u043b\u044f\u00a0\u0420\u0435\u0433.\u0440\u0435\u0448\u0435\u043d\u0438\u0439",
       "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
       "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система"
     }
@@ -188,6 +196,10 @@ function normalizeDesktopProjectTitles(lang) {
 langToggle.addEventListener("click", () => {
   const nextLang = document.documentElement.lang === "ru" ? "en" : "ru";
   applyLanguage(nextLang);
+});
+
+window.addEventListener("resize", () => {
+  normalizeDesktopProjectTitles(document.documentElement.lang);
 });
 
 menuButton.addEventListener("click", () => {

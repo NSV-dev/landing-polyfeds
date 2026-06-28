@@ -1763,7 +1763,7 @@ html[lang="ru"] .coded-project--day h3 {
 
   .coded-project h3 {
     max-width: 100%;
-    margin-bottom: 18px;
+    margin-bottom: 0;
     font-size: clamp(30px, 8.4vw, 42px);
     line-height: 1;
   }
@@ -1885,12 +1885,13 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--day,
   .coded-project--barcelona,
   .coded-project--fedosov {
-    display: block;
+    display: grid;
     width: 100%;
     height: auto;
-    margin: 0 0 92px;
+    margin: 0 0 100px;
     padding: 0;
     border: 0;
+    row-gap: 20px;
   }
 
   .coded-project:last-child {
@@ -1904,15 +1905,28 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--barcelona h3,
   .coded-project--fedosov h3 {
     display: block;
-    width: 100%;
-    max-width: 640px;
-    margin: 0 0 24px;
-    font-size: 42px;
-    line-height: 0.98;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    text-align: left;
+  }
+
+  .coded-project:nth-of-type(even) h3 {
+    text-align: right;
+  }
+
+  html[lang="ru"] .coded-project:nth-of-type(even) h3 {
+    text-align: right;
   }
 
   html[lang="ru"] .coded-project--day h3 {
-    font-size: 40px;
+    font-size: 26px;
+    line-height: 1;
   }
 
   .project-body,
@@ -1939,7 +1953,7 @@ html[lang="ru"] .coded-project--day h3 {
     order: 2;
     position: relative;
     min-width: 0;
-    margin: 18px 0 22px;
+    margin: 0 0 22px;
   }
 
   .project-body > .project-note--solution {
@@ -1953,7 +1967,7 @@ html[lang="ru"] .coded-project--day h3 {
 
   .project-body .project-note .label,
   .project-body .project-note p:not(.label) {
-    margin: 0 0 20px;
+    margin: 0;
     font-size: 13px;
     font-weight: 500;
     line-height: 1.2;
@@ -1967,6 +1981,10 @@ html[lang="ru"] .coded-project--day h3 {
 
   .project-body .project-note p:not(.label) {
     grid-column: 2;
+  }
+
+  .project-body > .project-note--problem {
+    margin-bottom: 20px;
   }
 
   .project-body .project-media-grid {
@@ -2110,14 +2128,6 @@ html[lang="ru"] .coded-project--day h3 {
     font-size: 37px;
   }
 
-  .coded-project--reg {
-    margin-bottom: 56px;
-  }
-
-  .coded-project--day {
-    margin-bottom: 139px;
-  }
-
   .coded-project,
   .coded-project--reg,
   .coded-project--day,
@@ -2126,6 +2136,11 @@ html[lang="ru"] .coded-project--day h3 {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     column-gap: 20px;
+    margin-bottom: 100px;
+  }
+
+  .coded-project:last-child {
+    margin-bottom: 0;
   }
 
   .coded-project h3,
@@ -2135,7 +2150,7 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--fedosov h3,
   html[lang="ru"] .coded-project--day h3 {
     max-width: 334px;
-    margin-bottom: 18px;
+    margin-bottom: 0;
     font-size: 26px;
     line-height: 1;
   }
@@ -2178,6 +2193,12 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--day h3,
   .coded-project--fedosov h3 {
     grid-column: 4 / -1;
+  }
+
+  .coded-project--day h3,
+  html[lang="ru"] .coded-project--day h3 {
+    grid-column: 1 / -1;
+    max-width: none;
   }
 
   .coded-project .project-body {
@@ -2260,6 +2281,7 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--day,
   .coded-project--barcelona,
   .coded-project--fedosov {
+    display: block;
     margin-bottom: 72px;
   }
 
@@ -2268,13 +2290,22 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--day h3,
   .coded-project--barcelona h3,
   .coded-project--fedosov h3 {
-    margin-bottom: 24px;
+    width: auto;
+    max-width: none;
+    grid-column: auto;
+    margin-bottom: 20px;
     font-size: 22px;
     line-height: 1;
+    text-align: left;
   }
 
   html[lang="ru"] .coded-project--day h3 {
     font-size: 22px;
+    text-align: left;
+  }
+
+  .coded-project:nth-of-type(even) h3 {
+    text-align: right;
   }
 
   .project-body,
@@ -2361,8 +2392,32 @@ html[lang="ru"] .coded-project--day h3 {
     padding-bottom: 129px;
   }
 
+  .coded-project--reg {
+    margin-bottom: 220px;
+  }
+
   .coded-project--day {
+    display: block;
+    min-height: 846px;
     margin-bottom: 187px;
+  }
+
+  .coded-project--day h3 {
+    position: absolute;
+    top: 0;
+    left: calc((100% + 20px) / 2);
+    width: 505px;
+    max-width: none;
+    margin: 0;
+  }
+
+  .coded-project--day .project-note--problem {
+    position: absolute;
+    top: auto;
+    bottom: 616px;
+    left: 0;
+    width: 505px;
+    transform: none;
   }
 
   .coded-project--barcelona {
@@ -2396,7 +2451,7 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .coded-project--day .project-note--solution {
-    top: 793px;
+    top: 785px;
     left: calc((100% + 20px) / 2);
     width: 505px;
   }
@@ -2448,6 +2503,188 @@ html[lang="ru"] .coded-project--day h3 {
     top: 890px;
   }
 
+}
+
+@media (min-width: 1200px) {
+  .project-media-grid--day {
+    position: absolute;
+    top: 260px;
+    left: 0;
+    display: grid;
+    width: 1037px;
+    height: 513px;
+    grid-template-columns: 157px 335px 508px;
+    grid-template-rows: 250px 85px 120px 148px;
+    align-items: start;
+    margin-top: 0;
+  }
+
+  .card-day-video {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    width: 512px;
+    height: 250px;
+    aspect-ratio: auto;
+  }
+
+  .card-day-wide {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    width: 508px;
+    height: 355px;
+    aspect-ratio: auto;
+  }
+
+  .card-day-small {
+    grid-column: 1;
+    grid-row: 2;
+    width: 157px;
+    height: 157px;
+    aspect-ratio: auto;
+  }
+
+  .card-day-phone {
+    grid-column: 2;
+    grid-row: 2 / 5;
+    width: 335px;
+    height: 393px;
+    aspect-ratio: auto;
+  }
+
+  .card-day-story {
+    grid-column: 3;
+    grid-row: 3;
+    width: 505px;
+    height: 120px;
+    aspect-ratio: auto;
+  }
+
+  .float-day-circle {
+    top: 304px;
+    left: 949px;
+    right: auto;
+    width: 134px;
+    height: 134px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .coded-project--day .project-note--problem {
+    position: absolute;
+    top: auto;
+    bottom: 709px;
+    left: 0;
+    width: 670px;
+    transform: none;
+  }
+
+  .coded-project--day .project-note--solution {
+    top: 733px;
+    left: 690px;
+    width: 670px;
+  }
+
+  .coded-project--day {
+    display: block;
+    min-height: 938px;
+    margin-bottom: 187px;
+  }
+
+  .coded-project--day h3 {
+    position: absolute;
+    top: 0;
+    left: 690px;
+    width: 670px;
+    max-width: none;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .project-media-grid--day {
+    position: absolute;
+    top: 170px;
+    left: 0;
+    display: block;
+    width: 1360px;
+    height: 768px;
+    grid-template-columns: 210px 440px 670px;
+    grid-template-rows: 266px 69px 158px 126px;
+    margin-top: 0;
+  }
+
+  .card-day-video {
+    position: absolute;
+    top: 89px;
+    left: 0;
+    width: 670px;
+    height: 266px;
+  }
+
+  .card-day-wide {
+    position: absolute;
+    top: 0;
+    left: 690px;
+    width: 670px;
+    height: 355px;
+  }
+
+  .card-day-small {
+    position: absolute;
+    top: 375px;
+    left: 0;
+    width: 210px;
+    height: 210px;
+  }
+
+  .card-day-phone {
+    position: absolute;
+    top: 375px;
+    left: 230px;
+    width: 440px;
+    height: 393px;
+  }
+
+  .card-day-story {
+    position: absolute;
+    top: 375px;
+    left: 690px;
+    width: 670px;
+    height: 158px;
+  }
+
+  .float-day-circle {
+    top: 298px;
+    left: 1232px;
+    right: auto;
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .project-body .project-media-grid--day .project-card:not(.card-day-video) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .project-body .project-media-grid--day .project-card:not(.card-day-video) picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .project-body .project-media-grid--day .project-card:not(.card-day-video) img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 }
 
 /* Figma-matched lower sections */
