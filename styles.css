@@ -1292,13 +1292,11 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 .project-link {
   position: static;
   z-index: 2;
-  display: inline-flex;
+  display: inline-block;
   top: auto;
   right: auto;
   bottom: auto;
   left: auto;
-  align-items: center;
-  justify-content: flex-start;
   width: fit-content;
   height: auto;
   min-height: 22px;
@@ -1306,9 +1304,10 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   padding: 0;
   border: 0;
   border-radius: 0;
-  color: rgba(5, 5, 5, 0.42);
+  color: #878585;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.2;
   text-decoration: none;
 }
@@ -1317,12 +1316,22 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   color: var(--ink);
 }
 
-.project-link span {
+.project-link > span {
   display: none;
 }
 
-html[lang="en"] .project-link span[lang="en"],
-html[lang="ru"] .project-link span[lang="ru"] {
+.project-link-tail {
+  white-space: nowrap;
+}
+
+.project-link-arrow {
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: -1px;
+}
+
+html[lang="en"] .project-link > span[lang="en"],
+html[lang="ru"] .project-link > span[lang="ru"] {
   display: inline;
 }
 
@@ -1362,6 +1371,13 @@ html[lang="ru"] .project-link span[lang="ru"] {
   width: 333px;
   height: 152px;
   aspect-ratio: auto;
+  overflow: hidden;
+  border-radius: 11px;
+}
+
+.card-reg-logo picture,
+.card-reg-logo img {
+  border-radius: 11px;
 }
 
 .card-reg-man {
@@ -1423,6 +1439,15 @@ html[lang="ru"] .project-link span[lang="ru"] {
 
 .card-bcn-large {
   aspect-ratio: 333 / 440;
+}
+
+.card-bcn-wide {
+  background: #000;
+}
+
+.card-bcn-wide img {
+  object-fit: contain;
+  background: #000;
 }
 
 .card-fed-pack {
@@ -1558,21 +1583,65 @@ html[lang="ru"] .coded-project--day h3 {
   grid-template-columns: 333fr 157fr;
 }
 
-.project-media-row--barcelona-top::after {
-  content: "";
+.bcn-ellipses {
   position: absolute;
-  right: 40px;
-  bottom: -70px;
+  z-index: 12;
+  display: block;
+  width: 213px;
+  height: 156px;
+  pointer-events: none;
+}
+
+.bcn-ellipse {
+  position: absolute;
+  box-sizing: border-box;
+  display: block;
   width: 38px;
   height: 38px;
+  border: 0;
   border-radius: 999px;
-  background: #fb1717;
-  box-shadow:
-    50px 18px 0 #f5458b,
-    86px 20px 0 #ff8336,
-    122px 23px 0 #969d42,
-    166px 48px 0 #5ab9ee,
-    86px 72px 0 #fee477;
+}
+
+.bcn-ellipse--on-card {
+  box-sizing: content-box;
+  border: 5px solid #fafef8;
+  transform: translate(-5px, -5px);
+}
+
+.bcn-ellipse--red {
+  top: 49px;
+  left: 0;
+  background: #f07834;
+}
+
+.bcn-ellipse--pink {
+  top: 64px;
+  left: 45px;
+  background: #fb3f7b;
+}
+
+.bcn-ellipse--orange {
+  top: 66px;
+  left: 84px;
+  background: #96a153;
+}
+
+.bcn-ellipse--olive {
+  top: 68px;
+  left: 122px;
+  background: #5fc3ff;
+}
+
+.bcn-ellipse--blue {
+  top: 115px;
+  left: 45px;
+  background: #ffe987;
+}
+
+.bcn-ellipse--yellow {
+  top: 0;
+  left: 45px;
+  background: #f40307;
 }
 
 .coded-project--fedosov h3 {
@@ -1740,7 +1809,7 @@ html[lang="ru"] .coded-project--day h3 {
   .float-day-circle,
   .float-fed-a,
   .float-fed-b,
-  .project-media-row--barcelona-top::after {
+  .bcn-ellipses {
     display: none;
   }
 }
@@ -1844,7 +1913,7 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .project-float,
-  .project-media-row--barcelona-top::after {
+  .bcn-ellipses {
     display: none;
   }
 }
@@ -2046,7 +2115,7 @@ html[lang="ru"] .coded-project--day h3 {
 
   .project-body .project-link {
     display: inline-flex;
-    margin: 0;
+    margin: 8px 0 0;
     color: rgba(5, 5, 5, 0.42);
     font-size: 13px;
   }
@@ -2115,8 +2184,47 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .project-body .project-float,
-  .project-media-row--barcelona-top::after {
+  .bcn-ellipses {
     display: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .project-media-grid--barcelona .card-bcn-poster-b,
+  .project-media-grid--barcelona .card-bcn-large {
+    display: none;
+  }
+
+  .project-media-grid--barcelona .card-bcn-wide {
+    order: 1;
+  }
+
+  .project-media-grid--barcelona .card-bcn-cover {
+    order: 2;
+  }
+
+  .project-media-grid--barcelona .card-bcn-tall {
+    order: 3;
+  }
+
+  .project-media-grid--barcelona .card-bcn-poster-a {
+    order: 4;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-wide {
+    aspect-ratio: 648 / 264;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-cover {
+    aspect-ratio: 554 / 264;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-tall {
+    aspect-ratio: 553 / 264;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-poster-a {
+    aspect-ratio: 371 / 264;
   }
 }
 
@@ -2260,6 +2368,50 @@ html[lang="ru"] .coded-project--day h3 {
     max-width: 100%;
     object-fit: contain;
   }
+
+  .project-body .project-media-grid--barcelona {
+    align-items: center;
+    height: 264px;
+  }
+
+  .project-body .project-media-grid--barcelona .project-card {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 264px;
+    aspect-ratio: auto;
+    background: transparent;
+  }
+
+  .project-body .project-media-grid--barcelona .project-card picture {
+    width: auto;
+    height: 264px;
+    max-width: 100%;
+  }
+
+  .project-body .project-media-grid--barcelona .project-card img {
+    width: auto;
+    height: 264px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-wide {
+    overflow: hidden;
+    background: #000;
+  }
+
+  .project-body .project-media-grid--barcelona [data-carousel-exclude="true"] {
+    display: none;
+  }
+
+  .project-body .project-link-arrow {
+    width: 10px;
+    height: 14px;
+    margin-left: 4px;
+    vertical-align: -2px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -2281,8 +2433,19 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--day,
   .coded-project--barcelona,
   .coded-project--fedosov {
+    position: relative;
     display: block;
     margin-bottom: 72px;
+  }
+
+  .coded-project:not(:last-of-type)::after {
+    content: "";
+    position: absolute;
+    right: 5%;
+    bottom: -36px;
+    left: 5%;
+    height: 0;
+    border: 1px solid #000;
   }
 
   .coded-project h3,
@@ -2308,6 +2471,10 @@ html[lang="ru"] .coded-project--day h3 {
     text-align: right;
   }
 
+  .coded-project--barcelona h3 {
+    width: 72%;
+  }
+
   .project-body,
   .project-body .project-note {
     grid-template-columns: 64px minmax(0, 1fr);
@@ -2322,7 +2489,14 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .project-body .project-media-grid {
+    align-items: center;
     gap: var(--carousel-gap);
+  }
+
+  .project-body .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .project-body .project-card,
@@ -2332,6 +2506,22 @@ html[lang="ru"] .coded-project--day h3 {
   .project-media-grid--fedosov .card-fed-pack {
     aspect-ratio: 347 / 346;
     border-radius: 10px;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-wide {
+    aspect-ratio: 327 / 326;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-cover {
+    aspect-ratio: 327 / 275;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-tall {
+    aspect-ratio: 327 / 157;
+  }
+
+  .project-body .project-media-grid--barcelona .card-bcn-poster-a {
+    aspect-ratio: 327 / 326;
   }
 
   .project-body .project-media-grid--reg {
@@ -2379,11 +2569,34 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .project-body .project-link {
-    margin-left: 0;
+    display: inline;
+    margin: 8px 0 0;
+  }
+
+  .project-body .project-link-arrow {
+    width: 8px;
+    height: 10px;
+    margin-left: 4px;
+    vertical-align: -1px;
+  }
+
+  .project-body .project-media-grid--barcelona [data-carousel-exclude="true"] {
+    display: none;
   }
 }
 
 @media (min-width: 1200px) {
+  .project-link {
+    font-size: 18px;
+  }
+
+  .project-link-arrow {
+    width: 17px;
+    height: 13px;
+    margin-left: 8px;
+    vertical-align: -1px;
+  }
+
   html[lang="en"] .projects.projects-coded {
     padding-bottom: 184px;
   }
@@ -2457,7 +2670,7 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .coded-project--barcelona .project-note--solution {
-    top: 582px;
+    top: 539px;
     left: calc((100% + 20px) / 2);
     width: 505px;
   }
@@ -2476,8 +2689,10 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .coded-project--barcelona .project-link {
-    top: 742px;
+    top: 724px;
     left: calc((100% + 20px) / 2);
+    max-width: 332px;
+    white-space: normal;
   }
 
   .coded-project--fedosov .project-link {
@@ -2496,16 +2711,167 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .coded-project--barcelona .project-note--solution {
-    top: 710px;
+    top: 649px;
+    left: 690px;
+    width: 670px;
   }
 
   .coded-project--barcelona .project-link {
-    top: 890px;
+    top: 810px;
+    left: 690px;
+    max-width: none;
   }
 
 }
 
 @media (min-width: 1200px) {
+  .coded-project--barcelona {
+    display: block;
+    min-height: 772px;
+  }
+
+  .coded-project--barcelona h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 505px;
+    margin: 0;
+    font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .coded-project--barcelona .project-note--problem {
+    position: absolute;
+    top: 30px;
+    left: calc((100% + 20px) / 2);
+    width: 508px;
+    margin: 0;
+  }
+
+  .project-media-grid--barcelona {
+    position: absolute;
+    top: 162px;
+    left: 0;
+    display: block;
+    width: 1055px;
+    height: 610px;
+    margin-top: 0;
+  }
+
+  .project-media-grid--barcelona > .project-media-column,
+  .project-media-row--barcelona,
+  .project-media-row--barcelona > .project-media-column,
+  .project-media-row--barcelona-top {
+    display: block;
+  }
+
+  .card-bcn-wide,
+  .card-bcn-poster-a,
+  .card-bcn-poster-b,
+  .card-bcn-large,
+  .card-bcn-cover,
+  .card-bcn-tall {
+    position: absolute;
+    aspect-ratio: auto;
+  }
+
+  .card-bcn-wide {
+    top: 8px;
+    left: 0;
+    width: 510px;
+    height: 142px;
+  }
+
+  .card-bcn-poster-a {
+    top: 170px;
+    left: 0;
+    width: 157px;
+    height: 210px;
+  }
+
+  .card-bcn-poster-b {
+    top: 400px;
+    left: 0;
+    width: 157px;
+    height: 210px;
+  }
+
+  .card-bcn-large {
+    top: 170px;
+    left: 177px;
+    width: 333px;
+    height: 440px;
+  }
+
+  .card-bcn-cover {
+    top: 0;
+    left: 530px;
+    width: 333px;
+    height: 347px;
+  }
+
+  .card-bcn-tall {
+    top: 0;
+    left: 883px;
+    width: 157px;
+    height: 199px;
+  }
+
+  .bcn-ellipses {
+    top: 225px;
+    left: 842px;
+    width: 218px;
+    height: 156px;
+  }
+
+  .bcn-ellipse {
+    width: 45px;
+    height: 45px;
+  }
+
+  .bcn-ellipse--on-card {
+    border-width: 5px;
+  }
+
+  .bcn-ellipse--red {
+    top: 0;
+    left: 42px;
+    background: #f40307;
+  }
+
+  .bcn-ellipse--pink {
+    top: 43px;
+    left: 5px;
+    background: #fb3f7b;
+  }
+
+  .bcn-ellipse--orange {
+    top: 55px;
+    left: 68px;
+    background: #f07834;
+  }
+
+  .bcn-ellipse--olive {
+    top: 43px;
+    left: 99px;
+    background: #96a153;
+  }
+
+  .bcn-ellipse--blue {
+    top: 66px;
+    left: 173px;
+    background: #5fc3ff;
+  }
+
+  .bcn-ellipse--yellow {
+    top: 111px;
+    left: 42px;
+    background: #ffe987;
+  }
+
   .project-media-grid--day {
     position: absolute;
     top: 260px;
@@ -2569,6 +2935,111 @@ html[lang="ru"] .coded-project--day h3 {
 }
 
 @media (min-width: 1440px) {
+  .coded-project--barcelona {
+    min-height: 837px;
+  }
+
+  .coded-project--barcelona h3 {
+    width: 670px;
+  }
+
+  .coded-project--barcelona .project-note--problem {
+    top: 36px;
+    left: 690px;
+    width: 670px;
+  }
+
+  .project-media-grid--barcelona {
+    top: 162px;
+    width: 1372px;
+    height: 675px;
+  }
+
+  .card-bcn-wide {
+    top: 8px;
+    width: 670px;
+    height: 207px;
+  }
+
+  .card-bcn-poster-a {
+    top: 235px;
+    width: 210px;
+    height: 210px;
+  }
+
+  .card-bcn-poster-b {
+    top: 465px;
+    width: 210px;
+    height: 210px;
+  }
+
+  .card-bcn-large {
+    top: 235px;
+    left: 230px;
+    width: 440px;
+    height: 440px;
+  }
+
+  .card-bcn-cover {
+    top: 0;
+    left: 690px;
+    width: 440px;
+    height: 347px;
+  }
+
+  .card-bcn-tall {
+    top: 0;
+    left: 1150px;
+    width: 210px;
+    height: 266px;
+  }
+
+  .bcn-ellipses {
+    top: 263px;
+    left: 1113px;
+    width: 259px;
+    height: 189px;
+  }
+
+  .bcn-ellipse {
+    width: 55px;
+    height: 55px;
+  }
+
+  .bcn-ellipse--on-card {
+    border-width: 5px;
+  }
+
+  .bcn-ellipse--red {
+    top: 67px;
+    left: 77px;
+  }
+
+  .bcn-ellipse--pink {
+    top: 52px;
+    left: 0;
+  }
+
+  .bcn-ellipse--orange {
+    top: 52px;
+    left: 114px;
+  }
+
+  .bcn-ellipse--olive {
+    top: 80px;
+    left: 204px;
+  }
+
+  .bcn-ellipse--blue {
+    top: 135px;
+    left: 45px;
+  }
+
+  .bcn-ellipse--yellow {
+    top: 0;
+    left: 45px;
+  }
+
   .coded-project--day .project-note--problem {
     position: absolute;
     top: auto;

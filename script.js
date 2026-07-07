@@ -19,7 +19,7 @@
     "projects.day.solution": "The campaign generated over 1 million brand interactions through promo mechanics, content, and interactive experiences. The flexible KV system helped attract a new audience while maintaining consistency across all communication channels",
     "projects.barcelona.title": "Barcelona<br />Visual Diary",
     "projects.barcelona.problem": "Reflect on a trip to Spain through scans and visual fragments collected while observing Barcelona and its architectural environment",
-    "projects.barcelona.solution": "I use scans captured during the trip as the foundation for a series of works where architectural elements transform into graphic memory compositions. Layered colors capture emotional impressions and shape a personal visual diary of the experience",
+    "projects.barcelona.solution": "I use scans captured during the trip as the foundation for a series of works where architectural elements transform into graphic memory compositions. Layered color markers capture emotional impressions and shape a personal visual diary of the experience",
     "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System",
     "projects.fedosov.problem": "Create a visual identity for the FEDOSOV personal brand as a cohesive system capable of adapting across different formats and environments",
     "projects.fedosov.solution": "I developed a typography-driven identity where the surname itself becomes the core visual element. Through a modular structure and flexible typography system, I created a scalable visual language that remains recognizable across different applications while preserving brand consistency",
@@ -77,8 +77,8 @@
     "projects.day.problem": "Разработать KV для проекта в поддержку нового позиционирования Рег.ру и масштабировать визуальную систему на большую коммуникационную кампанию — от digital-носителей до контентных и промо-форматов",
     "projects.day.solution": "Кампания собрала более 1 млн контактов с брендом благодаря промо, контенту и интерактивным механикам. KV с гибкой архитектурой позволил привлечь новую аудиторию и сохранил целостность и консистентность бренда.",
     "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
-    "projects.barcelona.problem": "Отрефлексировать поездку в Испанию через сканы и визуальные фрагменты, собранные в процессе наблюдения за Барселоной и ее архитектурной средой",
-    "projects.barcelona.solution": "Я использую сделанные во время поездки сканы как основу серии работ, где архитектурные элементы города превращаются в графические композиции памяти. Поверх них накладываются цветовые маркеры, фиксирующие впечатления и формирующие личный визуальный дневник опыта",
+    "projects.barcelona.problem": "Отрефлексировать поездку в Испанию через сканы и визуальные фрагменты, собранные в процессе наблюдения за Барселоной и её архитектурной средой",
+    "projects.barcelona.solution": "Я использую сделанные во время поездки сканы как основу серии работ, где архитектурные элементы города превращаются в графические композиции памяти. Поверх них накладываются цветовые маркеры, фиксирующие впечатления и формируя личный визуальный дневник опыта",
     "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система",
     "projects.fedosov.problem": "Создать визуальную айдентику для персонального бренда FEDOSOV как целостную систему, способную адаптироваться к разным форматам и средам",
     "projects.fedosov.solution": "Я разработала айдентику, где фамилия становится главным визуальным элементом. Через модульную структуру и гибкую типографическую систему я создала масштабируемый визуальный язык, который остается узнаваемым в разных применениях и сохраняет консистентность бренда",
@@ -358,7 +358,13 @@ function createProjectCarousels() {
   if (!tracks.length) return;
 
   tracks.forEach((track, projectIndex) => {
-    const cards = Array.from(track.querySelectorAll(".project-card"));
+    const cards = Array.from(track.querySelectorAll(".project-card")).filter((card) => {
+      return !card.matches("[data-carousel-exclude='true']");
+    }).sort((a, b) => {
+      const aOrder = Number.parseInt(window.getComputedStyle(a).order, 10) || 0;
+      const bOrder = Number.parseInt(window.getComputedStyle(b).order, 10) || 0;
+      return aOrder - bOrder;
+    });
     if (cards.length < 2) return;
 
     let userSelectedSlide = false;
