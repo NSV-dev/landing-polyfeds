@@ -470,18 +470,47 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 .hello-strip {
   display: flex;
   align-items: center;
-  width: min(1200px, 100vw);
+  width: 100vw;
   height: 196px;
   margin: 0 auto;
+  padding-inline: var(--page-pad);
   overflow: hidden;
   white-space: nowrap;
-  font-size: clamp(42px, 7vw, 92px);
+  font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+  font-size: 80.1048px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 83px;
+  text-align: center;
 }
 
-.hello-strip span {
+.hello-strip__track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: hello-strip-move 10s linear infinite;
+  will-change: transform;
+}
+
+.hello-strip__text {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.35em;
+  padding-right: 0.35em;
+  color: var(--ink);
+}
+
+.hello-strip__text span:nth-child(even) {
   color: var(--pink);
+}
+
+@keyframes hello-strip-move {
+  from {
+    transform: translateX(-25%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 
@@ -1124,9 +1153,10 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
   .hello-strip {
     width: 100vw;
-    height: 37px;
-    margin: 0;
-    font-size: 37px;
+    height: 76px;
+    margin: 0 auto;
+    font-size: 38px;
+    line-height: 26px;
   }
 
 }
@@ -2232,8 +2262,9 @@ html[lang="ru"] .coded-project--day h3 {
   .hello-strip {
     width: 100vw;
     height: 76px;
-    margin: 0;
-    font-size: 37px;
+    margin: 0 auto;
+    font-size: 50px;
+    line-height: 26px;
   }
 
   .coded-project,
