@@ -637,9 +637,11 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
   .site-header,
   html[lang="en"] .site-header {
+    left: 0;
     grid-template-columns: 1fr auto;
     align-items: center;
     padding-inline: var(--page-pad);
+    transform: none;
     backdrop-filter: none;
   }
 
@@ -668,10 +670,12 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     z-index: 100;
     display: block;
     width: auto;
-    height: auto;
+    height: calc(100dvh - (var(--menu-border-space) * 2));
+    min-height: calc(100vh - (var(--menu-border-space) * 2));
     margin-top: 0;
     padding: 0;
     border-radius: 16px;
+    background: var(--ink);
     opacity: 0;
     pointer-events: none;
     transform: scale(0.02);
@@ -914,12 +918,14 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   }
 
   .site-header {
+    left: 0;
     width: 100%;
     grid-template-columns: 1fr auto;
     align-items: center;
     height: var(--header-height);
     margin: 0 auto;
     padding: 0 var(--page-pad);
+    transform: none;
     backdrop-filter: none;
   }
 
@@ -954,10 +960,12 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     z-index: 100;
     display: block;
     width: auto;
-    height: auto;
+    height: calc(100dvh - (var(--menu-border-space) * 2));
+    min-height: calc(100vh - (var(--menu-border-space) * 2));
     margin-top: 0;
     padding: 0;
     border-radius: 16px;
+    background: var(--ink);
     opacity: 0;
     pointer-events: none;
     transform: scale(0.02);
