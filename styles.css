@@ -3561,7 +3561,7 @@ html[lang="ru"] .coded-project--day h3 {
 .about {
   position: relative;
   display: grid;
-  grid-template-columns: 435px minmax(0, 520px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 74px;
   align-items: start;
   height: 1050px;
@@ -3569,120 +3569,196 @@ html[lang="ru"] .coded-project--day h3 {
   padding: 170px 80px 0;
 }
 
-.approach-card {
+.about-carousel {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 435px;
-  height: 582px;
-  min-height: 0;
-  padding: 0;
+  container-type: inline-size;
+  width: 100%;
+  max-width: 670px;
+  height: 682px;
   overflow: hidden;
-  border: 0;
-  border-radius: 9px;
+  border-radius: 25px;
   background: var(--pink);
   color: var(--ink);
 }
 
-.approach-tabs,
-.approach-visual,
-.approach-panel,
-.approach-accent,
-.approach-card .slider-line {
-  display: none;
+.about-dots {
+  position: absolute;
+  left: 50%;
+  top: 48px;
+  z-index: 6;
+  display: flex;
+  width: 50%;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--bg);
+  transform: translateX(-50%);
 }
 
-.approach-card .shape {
+.about-dots::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 33.3333%;
+  content: "";
+  border-radius: inherit;
+  background: var(--ink);
+  transform: translateX(calc(var(--about-active-index, 0) * 100%));
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-dot {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.about-dot.is-active {
+  background: transparent;
+}
+
+.about-card-track {
+  position: absolute;
+  inset: 0;
+}
+
+.about-shape-svg {
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 169px;
-  height: 155px;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 23px;
-  font-weight: 700;
-  line-height: 1.05;
-  text-align: center;
-  background: transparent;
-  transform: translate(-50%, -44%);
+  width: 65%;
+  max-height: 445px;
+  height: auto;
+  overflow: visible;
+  transform: translate(-50%, -50%);
 }
 
-.approach-card .shape::before {
+.about-shape-svg [data-about-shape-path] {
+  fill: var(--bg);
+}
+
+.about-svg-title-stage {
+  position: relative;
+  width: 503px;
+  height: 541px;
+}
+
+.about-card {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  content: "";
-  background: var(--bg);
-  clip-path: polygon(26% 4%, 74% 16%, 91% 39%, 84% 73%, 62% 96%, 27% 88%, 8% 64%, 10% 30%);
-  transform: rotate(8deg);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 220ms ease;
 }
 
-.approach-progress {
+.about-card.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.about-card-title-strip {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 38px;
+  font-size: 74px;
+  line-height: 1;
+  white-space: nowrap;
+  transform-origin: center;
+  transform: translate(var(--about-title-offset, 0px), -50%);
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-card-title-strip span {
+  flex: 0 0 auto;
+  color: rgba(5, 5, 5, 0.32);
+  transition: color 220ms ease;
+}
+
+.about-card-title-strip span.is-active {
+  color: var(--ink);
+}
+
+.about-arrows {
   position: absolute;
   left: 50%;
-  top: 54px;
-  z-index: 2;
-  width: 124px;
-  height: 4px;
-  margin: 0;
-  background: rgba(250, 254, 248, 0.72);
+  bottom: 50px;
+  z-index: 6;
+  display: flex;
+  gap: 55px;
   transform: translateX(-50%);
 }
 
-.approach-progress span {
+.about-arrow {
+  display: grid;
+  place-items: center;
+  width: clamp(24px, 8.2cqw, 38px);
+  height: clamp(34px, 11.4cqw, 52px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.about-arrow svg {
   display: block;
-  width: 42px;
-  height: 100%;
-  background: var(--ink);
+  width: 90%;
+  height: auto;
 }
 
-.approach-card .shape span[lang] {
-  display: none;
-}
-
-html[lang="en"] .approach-card .shape span[lang="en"],
-html[lang="ru"] .approach-card .shape span[lang="ru"] {
-  display: inline;
-}
-
-.approach-card .arrows {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: block;
-  color: var(--bg);
-  font-size: 62px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.approach-card .arrows::before,
-.approach-card .arrows::after {
-  content: none;
-}
-
-.approach-card .arrows span {
-  position: absolute;
-  top: 50%;
-  display: block;
-  transform: translateY(-50%);
-}
-
-.approach-card .arrows span:first-child {
-  left: 74px;
-}
-
-.approach-card .arrows span:last-child {
-  right: 74px;
+.about-arrow--prev svg {
+  transform: scaleX(-1);
 }
 
 .about-copy {
-  width: 520px;
-  padding-top: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 682px;
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.about-copy-slide {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translate(-56px, -50%);
+}
+
+.about-copy-slide.is-active {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translate(0, -50%);
+}
+
+.about-copy-slide.is-entering {
+  animation: about-copy-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.about-copy-slide.is-leaving {
+  visibility: visible;
+  animation: about-copy-out 300ms ease both;
 }
 
 .about-copy h2,
@@ -3692,21 +3768,65 @@ html[lang="ru"] .approach-card .shape span[lang="ru"] {
 
 .about-copy h2 {
   margin: 0 0 24px;
-  font-size: 56px;
-  line-height: 0.96;
+  font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 100%;
 }
 
 .about-copy h3 {
   margin: 44px 0 12px;
-  font-size: var(--heading-size-section);
-  line-height: 1;
+  font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 100%;
 }
 
 .about-copy p {
-  max-width: 520px;
+  max-width: 100%;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
   font-size: 18px;
-  font-weight: 700;
-  line-height: 1.24;
+  font-weight: 500;
+  line-height: 120%;
+}
+
+.about-copy .about-lead {
+  max-width: 100%;
+  padding-top: 0;
+  font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 100%;
+}
+
+.about-pink {
+  color: var(--pink);
+}
+
+@keyframes about-copy-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--about-copy-enter-x, 56px), -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+@keyframes about-copy-out {
+  from {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--about-copy-exit-x, -56px), -50%);
+  }
 }
 
 .experience {
@@ -3964,165 +4084,88 @@ html[lang="ru"] .approach-card .shape span[lang="ru"] {
 
 @media (min-width: 761px) and (max-width: 1199px) {
   .about {
-    grid-template-columns: 275.4px 332px;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
     gap: 40.6px;
     width: 100vw;
     height: 569px;
     padding: 100px 60px 0;
   }
 
-  .approach-card {
-    width: 275.4px;
-    height: 368.28px;
-    padding: 18px 17px 15px;
-    border-radius: 6px;
+  .about-carousel {
+    width: 100%;
+    height: 370px;
+    border-radius: 15px;
   }
 
-  .approach-card .shape {
-    width: 107px;
-    height: 98px;
-    font-size: 15px;
+  .about-dots {
+    top: 24px;
+    width: 50%;
+    height: 6px;
   }
 
-  .approach-progress {
-    top: 34px;
-    width: 78px;
-    height: 3px;
+  .about-shape-svg {
+    width: 65%;
+    height: auto;
   }
 
-  .approach-progress span {
-    width: 27px;
+  .about-card-title-strip {
+    gap: 38px;
+    font-size: 74px;
   }
 
-  .approach-card .arrows {
-    inset: 0;
-  }
-
-  .approach-card .arrows::before,
-  .approach-card .arrows::after {
-    font-size: 39px;
-  }
-
-  .approach-card .arrows {
-    font-size: 39px;
-  }
-
-  .approach-card .arrows span:first-child {
-    left: 47px;
-  }
-
-  .approach-card .arrows span:last-child {
-    right: 47px;
-  }
-
-  .approach-tabs {
-    height: 27px;
-    gap: 5px;
-    font-size: 9px;
-  }
-
-  .approach-tabs > span {
-    border-width: 1.5px;
-  }
-
-  .approach-visual {
-    height: 244px;
-    margin-top: 14px;
-    border-width: 2px;
-  }
-
-  .approach-mark {
-    left: 26px;
-    top: 51px;
-    width: 138px;
-    height: 138px;
-  }
-
-  .approach-panel {
-    border-width: 2px;
-  }
-
-  .approach-panel--top {
-    right: 19px;
-    top: 27px;
-    width: 80px;
-    height: 47px;
-  }
-
-  .approach-panel--side {
-    right: 28px;
-    bottom: 35px;
-    width: 66px;
-    height: 90px;
-  }
-
-  .approach-accent {
-    left: 47px;
+  .about-arrows {
     bottom: 25px;
-    width: 117px;
-    height: 20px;
+    gap: 30px;
   }
 
-  .approach-progress {
-    width: 101px;
-    height: 3px;
-    margin-top: 15px;
-  }
-
-  .approach-progress span {
-    width: 35px;
+  .about-arrow {
+    width: clamp(24px, 8.2cqw, 38px);
+    height: clamp(34px, 11.4cqw, 52px);
   }
 
   .about-copy {
     position: relative;
-    width: 332px;
+    width: 100%;
     height: 368px;
+    min-height: 370px;
     padding: 0;
+  }
+
+  .about-copy-slide {
+    width: 100%;
   }
 
   .about-copy h2,
   .about-copy h3,
   .about-copy p {
-    position: absolute;
-    width: 332px;
+    position: static;
     margin: 0;
   }
 
   .about-copy h2 {
-    top: 3px;
-    font-size: 26px;
-    line-height: 28px;
+    margin-bottom: 9px;
+    font-size: 24px;
+    line-height: 100%;
     white-space: nowrap;
   }
 
   .about-copy p {
     font-size: 14px;
-    line-height: 1.22;
-  }
-
-  .about-copy p:nth-of-type(1) {
-    top: 37px;
+    font-weight: 500;
+    line-height: 120%;
   }
 
   .about-copy h3 {
-    font-size: 28px;
-    line-height: 1;
+    margin: 28px 0 8px;
+    font-size: 24px;
+    line-height: 100%;
   }
 
-  .about-copy h3:nth-of-type(1) {
-    top: 137px;
-  }
-
-  .about-copy p:nth-of-type(2) {
-    top: 172px;
-  }
-
-  .about-copy h3:nth-of-type(2) {
-    top: 268px;
-  }
-
-  .about-copy p:nth-of-type(3) {
-    top: 297px;
+  .about-copy .about-lead {
+    max-width: 100%;
+    padding-top: 0;
+    font-size: 24px;
+    line-height: 100%;
   }
 
   .experience {
@@ -4271,128 +4314,117 @@ html[lang="ru"] .approach-card .shape span[lang="ru"] {
     padding: 44px 24px 72px;
   }
 
-  .approach-card {
-    width: 327px;
+  .about-carousel {
+    width: 100%;
     max-width: 100%;
-    height: 210px;
-    padding: 12px 12px 10px;
-    border-radius: 6px;
+    height: 235px;
+    border-radius: 15px;
   }
 
-  .approach-card .shape {
-    width: 88px;
-    height: 82px;
-    font-size: 12px;
+  .about-dots {
+    top: 20px;
+    width: 50%;
+    height: 4px;
   }
 
-  .approach-progress {
-    top: 22px;
-    width: 78px;
-    height: 3px;
+  .about-shape-svg {
+    width: 65%;
+    max-height: 160px;
+    height: auto;
   }
 
-  .approach-progress span {
-    width: 27px;
+  .about-card-title-strip {
+    gap: 38px;
+    font-size: 74px;
   }
 
-  .approach-card .arrows {
-    inset: 0;
+  .about-arrows {
+    left: 0;
+    right: 0;
+    bottom: auto;
+    top: 50%;
+    justify-content: space-between;
+    gap: 0;
+    padding-inline: 20px;
+    transform: translateY(-50%);
   }
 
-  .approach-card .arrows::before,
-  .approach-card .arrows::after {
-    font-size: 31px;
-  }
-
-  .approach-card .arrows {
-    font-size: 31px;
-  }
-
-  .approach-card .arrows span:first-child {
-    left: 54px;
-  }
-
-  .approach-card .arrows span:last-child {
-    right: 54px;
-  }
-
-  .approach-tabs {
-    height: 24px;
-    gap: 5px;
-    font-size: 9px;
-  }
-
-  .approach-tabs > span {
-    border-width: 1.5px;
-  }
-
-  .approach-visual {
-    height: 134px;
-    margin-top: 9px;
-    border-width: 2px;
-  }
-
-  .approach-mark {
-    left: 34px;
-    top: 24px;
-    width: 92px;
-    height: 92px;
-  }
-
-  .approach-panel {
-    border-width: 2px;
-  }
-
-  .approach-panel--top {
-    right: 48px;
-    top: 18px;
-    width: 62px;
-    height: 35px;
-  }
-
-  .approach-panel--side {
-    right: 61px;
-    bottom: 17px;
-    width: 48px;
-    height: 62px;
-  }
-
-  .approach-accent {
-    left: 59px;
-    bottom: 15px;
-    width: 88px;
-    height: 15px;
-  }
-
-  .approach-progress {
-    width: 96px;
-    height: 3px;
-    margin-top: 8px;
-  }
-
-  .approach-progress span {
-    width: 34px;
+  .about-arrow {
+    width: clamp(24px, 8.2cqw, 38px);
+    height: clamp(34px, 11.4cqw, 52px);
   }
 
   .about-copy {
-    width: 327px;
+    align-items: flex-start;
+    width: 100%;
     max-width: 100%;
+    min-height: 326px;
     padding: 0;
+  }
+
+  .about-copy-slide {
+    top: 0;
+    width: 100%;
+    transform: translateX(-56px);
+  }
+
+  .about-copy-slide.is-active {
+    transform: translateX(0);
+  }
+
+  .about-copy-slide.is-entering {
+    animation-name: about-copy-in-mobile;
+  }
+
+  .about-copy-slide.is-leaving {
+    animation-name: about-copy-out-mobile;
   }
 
   .about-copy h2 {
     margin-bottom: 14px;
-    font-size: 30px;
+    font-size: 18px;
+    line-height: 100%;
   }
 
   .about-copy h3 {
     margin: 22px 0 8px;
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 100%;
   }
 
   .about-copy p {
     font-size: 12px;
-    line-height: 1.24;
+    font-weight: 500;
+    line-height: 120%;
+  }
+
+  .about-copy .about-lead {
+    max-width: 100%;
+    padding-top: 0;
+    font-size: 18px;
+    line-height: 100%;
+  }
+
+  @keyframes about-copy-in-mobile {
+    from {
+      opacity: 0;
+      transform: translateX(var(--about-copy-enter-x, 56px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes about-copy-out-mobile {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(var(--about-copy-exit-x, -56px));
+    }
   }
 
   .experience {

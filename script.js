@@ -23,12 +23,20 @@
     "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System",
     "projects.fedosov.problem": "Create a visual identity for the FEDOSOV personal brand as a cohesive system capable of adapting across different formats and environments",
     "projects.fedosov.solution": "I developed a typography-driven identity where the surname itself becomes the core visual element. Through a modular structure and flexible typography system, I created a scalable visual language that remains recognizable across different applications while preserving brand consistency",
-    "about.title": "Conceptual clarity",
-    "about.body": "I turn a task into a strong idea that works without visual noise. I always start with meaning, not form, and build the design around it.",
-    "about.hierarchy": "Hierarchy",
-    "about.hierarchyBody": "I build visual systems with clear hierarchy, where primary and secondary elements are immediately understandable and meaning reads quickly in any format.",
-    "about.systems": "Systems",
-    "about.systemsBody": "I make and defend design decisions through task logic and context, not taste. I can explain every decision so it is clear to business and team.",
+    "about.card.approach": "Approach",
+    "about.card.me": "About me",
+    "about.card.expertise": "Expertise",
+    "about.approach.title": "Concept-driven clarity",
+    "about.approach.body": "I turn complex tasks into strong visual ideas that communicate clearly without unnecessary noise. I always start with meaning first, then build the design around it",
+    "about.approach.hierarchy": "Hierarchy",
+    "about.approach.hierarchyBody": "I create visual systems with clear hierarchy, where primary and secondary elements are instantly recognizable and information feels easy to navigate in any format",
+    "about.approach.systems": "Systems thinking",
+    "about.approach.systemsBody": "I approach design decisions through logic, context, and business goals — not personal taste. I can clearly explain and defend every decision to both teams and stakeholders",
+    "about.me.body": "Designer with<br /><span class=\"about-pink\">5+ years of experience.</span><br />I work with visual concepts and build clear, engaging communication between brands and people",
+    "about.expertise.graphic": "Graphic Design",
+    "about.expertise.graphicBody": "Identity systems and visual design with strong attention to detail and consistency across all touchpoints — from core graphic elements to scalable solutions for both digital and offline environments",
+    "about.expertise.art": "Art Direction",
+    "about.expertise.artBody": "Shaping the visual direction of projects: from concept development and defining the stylistic approach to maintaining consistency throughout every stage of execution",
     "experience.title": "Experience",
     "experience.item1.date": "September 2025 - Present",
     "experience.item1.company": "Reg.ru / leading Russian hosting provider",
@@ -82,12 +90,20 @@
     "projects.fedosov.title": "FEDOSOV: брендинг<br />и система",
     "projects.fedosov.problem": "Создать визуальную идентичность персонального бренда FEDOSOV как цельную систему, способную работать в разных средах и масштабах",
     "projects.fedosov.solution": "Я разработала типографическую айдентику, где фамилия работает как главный визуальный элемент. Через модульную структуру и вариативную типографику собрала гибкий язык, который масштабируется на носители и удерживает цельность бренда",
-    "about.title": "Концептуальная ясность",
-    "about.body": "Умею превращать задачу в сильную идею, которая работает без визуального шума. Всегда начинаю со смысла, а не с формы, и строю дизайн вокруг него",
-    "about.hierarchy": "Иерархия",
-    "about.hierarchyBody": "Строю визуальные системы с четкой иерархией, где сразу понятно главное и второстепенное, а смысл быстро считывается в любом формате",
-    "about.systems": "Системность",
-    "about.systemsBody": "Принимаю и защищаю дизайн-решения через логику задачи и контекст, а не через вкус. Могу объяснить каждое решение так, чтобы оно было понятно бизнесу и команде",
+    "about.card.approach": "Подход",
+    "about.card.me": "Обо мне",
+    "about.card.expertise": "Экспертиза",
+    "about.approach.title": "Концептуальная ясность",
+    "about.approach.body": "Умею превращать задачу в сильную идею, которая работает без визуального шума. Всегда начинаю со смысла, а не с формы, и строю дизайн вокруг него",
+    "about.approach.hierarchy": "Иерархия",
+    "about.approach.hierarchyBody": "Строю визуальные системы с четкой иерархией, где сразу понятно главное и второстепенное, а смысл быстро считывается в любом формате",
+    "about.approach.systems": "Системность",
+    "about.approach.systemsBody": "Принимаю и защищаю дизайн-решения через логику задачи и контекст, а не через вкус. Могу объяснить каждое решение так, чтобы оно было понятно бизнесу и команде",
+    "about.me.body": "Дизайнер <span class=\"about-pink\">с 5+ лет опыта.</span><br />Работаю с визуальными концепциями и <span class=\"about-pink\">выстраиваю понятную коммуникацию</span> бренда с пользователем",
+    "about.expertise.graphic": "Графический дизайн",
+    "about.expertise.graphicBody": "Айдентика и визуальные системы, с вниманием к деталям и консистентности на всех носителях: от базовых графических элементов до масштабируемых решений для цифровых и офлайн-форматов.",
+    "about.expertise.art": "Арт-дирекшн",
+    "about.expertise.artBody": "Формирование визуального направления проектов: работа с концепцией, определение стилевого вектора и контроль целостности на всех этапах — от идеи до реализации.",
     "experience.title": "Опыт работы",
     "experience.item1.date": "сент. 2025 г. — настоящее время",
     "experience.item1.company": "Рег.ру / крупнейший российский хостинг-провайдер",
@@ -226,8 +242,8 @@ nav.addEventListener("click", () => {
 });
 
 function createCubeFrameAnimator() {
-  const cubePath = document.querySelector("[data-cube-path]");
-  if (!cubePath) return;
+  const cubePaths = [...document.querySelectorAll("[data-cube-path]")];
+  if (!cubePaths.length) return;
 
   const frameData = [
     { viewBox: "0 0 503 541", d: "M3.52096 210.833L15.6139 339.321C19.2533 377.99 21.073 397.324 31.6264 412.528C42.1798 427.733 59.6564 436.2 94.6094 453.134L214.004 510.977C258.917 532.736 281.373 543.616 304.098 539.444C326.822 535.273 343.95 517.127 378.207 480.836L451.148 403.561L451.149 403.561C468.095 385.608 476.568 376.632 481.468 365.569C486.369 354.506 487.324 342.199 489.234 317.586L499.224 188.872C503.571 132.859 505.745 104.852 490.981 84.0249C476.218 63.1978 449.071 55.9753 394.778 41.5304L274.466 9.52077C247.477 2.34028 233.983 -1.24996 220.469 0.393614C206.956 2.03719 194.715 8.75739 170.235 22.1978L76.1275 73.8645C36.6912 95.5158 16.9731 106.341 7.08532 124.994C-2.80246 143.647 -0.694658 166.043 3.52096 210.833Z" },
@@ -330,7 +346,13 @@ function createCubeFrameAnimator() {
   const transitionDuration = 520;
   const pauseDuration = 90;
 
-  cubePath.setAttribute("d", pointsToPath(frames[0]));
+  function setPathData(pathData) {
+    cubePaths.forEach((cubePath) => {
+      cubePath.setAttribute("d", pathData);
+    });
+  }
+
+  setPathData(pointsToPath(frames[0]));
 
   function render(now) {
     if (document.hidden) {
@@ -345,7 +367,7 @@ function createCubeFrameAnimator() {
     if (elapsed >= transitionDuration + pauseDuration) {
       frameIndex = nextIndex;
       transitionStart = now;
-      cubePath.setAttribute("d", pointsToPath(frames[frameIndex]));
+      setPathData(pointsToPath(frames[frameIndex]));
       requestAnimationFrame(render);
       return;
     }
@@ -360,11 +382,251 @@ function createCubeFrameAnimator() {
       };
     });
 
-    cubePath.setAttribute("d", pointsToPath(morphedPoints));
+    setPathData(pointsToPath(morphedPoints));
     requestAnimationFrame(render);
   }
 
   requestAnimationFrame(render);
+}
+
+function createAboutCarousel() {
+  const carousel = document.querySelector("[data-about-carousel]");
+  if (!carousel) return;
+
+  const slides = [...carousel.querySelectorAll("[data-about-slide]")];
+  const dots = [...carousel.querySelectorAll(".about-dot")];
+  const copySlides = [...document.querySelectorAll("[data-about-copy]")];
+  const titleStrip = carousel.querySelector("[data-about-title-strip]");
+  const titleItems = [...carousel.querySelectorAll("[data-about-title-item]")];
+  const prevButton = carousel.querySelector("[data-about-prev]");
+  const nextButton = carousel.querySelector("[data-about-next]");
+  const shapePath = carousel.querySelector("[data-about-shape-path]");
+  const clipPath = carousel.querySelector("[data-about-clip-path]");
+  let activeIndex = 0;
+  let titlePosition = 3;
+  let shapeAnimationFrame = 0;
+
+  const shapeData = [
+    {
+      viewBox: "0 0 471 498",
+      d: "M3.93169 323.484L14.7016 195.014C16.1348 177.918 16.8514 169.37 19.5492 161.316C22.247 153.261 26.8233 146.006 35.976 131.495L71.5536 75.0917C97.8727 33.3663 111.032 12.5036 132.266 3.99266C153.5 -4.51827 177.426 1.48004 225.278 13.4767L344.575 43.3849C390.403 54.8743 413.317 60.619 427.847 77.1875C442.376 93.7561 445.078 117.224 450.484 164.161L465.736 296.595C470.484 337.817 472.858 358.429 464.697 376.301C456.537 394.174 439.408 405.88 405.149 429.293L345.641 469.962L345.64 469.962C323.048 485.402 311.752 493.122 298.738 496.109C285.725 499.095 272.193 497.073 245.129 493.029L123.741 474.891C61.719 465.623 30.7083 460.99 13.3909 439.105C-3.92644 417.22 -1.30706 385.975 3.93169 323.484Z"
+    },
+    {
+      viewBox: "0 0 408 475",
+      d: "M1.31289 272.21L16.8947 126.186C23.2973 66.1846 26.4985 36.1839 46.6238 18.092C66.749 0 96.92 0 157.262 0H249.23C309.22 0 339.214 0 359.301 17.9433C379.388 35.8866 382.759 65.691 389.5 125.3V125.3L405.856 269.916C407.351 283.142 408.099 289.754 407.608 296.352C407.117 302.949 405.398 309.378 401.961 322.237L389.204 369.957C375.747 420.298 369.018 445.468 350.005 460.066C330.992 474.664 304.938 474.664 252.829 474.664H148.076C89.4472 474.664 60.133 474.664 40.201 457.296C20.2689 439.927 16.2588 410.888 8.23861 352.811L1.84308 306.499C0.662993 297.953 0.0729501 293.68 0.00643009 289.378C-0.0600899 285.076 0.39757 280.787 1.31289 272.21Z"
+    },
+    {
+      viewBox: "0 0 491 532",
+      d: "M5.29671 302.391L21.4304 184.952C26.6657 146.844 29.2833 127.791 40.3153 113.131C51.3472 98.472 68.9317 90.6814 104.101 75.1003L211.192 27.6547C259.129 6.41673 283.098 -4.20224 306.498 1.54713C329.898 7.2965 346.217 27.8139 378.854 68.8485L437.71 142.85C449.688 157.909 455.676 165.439 459.414 174.176C463.152 182.914 464.461 192.445 467.08 211.508L467.08 211.508L483.237 329.115C491.115 386.457 495.053 415.128 480.861 437.106C466.668 459.084 438.915 467.289 383.41 483.699L383.409 483.699L264.775 518.774C230.744 528.835 213.728 533.866 196.982 530.709C180.236 527.552 166.22 516.671 138.188 494.909L58.5825 433.111C27.1638 408.72 11.4544 396.524 4.31547 379.011C-2.82347 361.498 -0.116741 341.796 5.29671 302.391Z"
+    }
+  ];
+  const shapeFrames = shapeData.map(sampleSvgPath);
+
+  function sampleSvgPath(frame) {
+    const samplerSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const samplerPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    const sampleCount = 96;
+    const targetWidth = 503;
+    const targetHeight = 541;
+    const [, , width, height] = frame.viewBox.split(" ").map(Number);
+    const scale = Math.min(targetWidth / width, targetHeight / height);
+    const offsetX = (targetWidth - width * scale) / 2;
+    const offsetY = (targetHeight - height * scale) / 2;
+
+    samplerSvg.style.position = "absolute";
+    samplerSvg.style.width = "0";
+    samplerSvg.style.height = "0";
+    samplerSvg.style.overflow = "hidden";
+    samplerPath.setAttribute("d", frame.d);
+    samplerSvg.appendChild(samplerPath);
+    document.body.appendChild(samplerSvg);
+
+    const length = samplerPath.getTotalLength();
+    const points = Array.from({ length: sampleCount }, (_, index) => {
+      const point = samplerPath.getPointAtLength((length * index) / sampleCount);
+      return {
+        x: offsetX + point.x * scale,
+        y: offsetY + point.y * scale
+      };
+    });
+
+    samplerSvg.remove();
+    return points;
+  }
+
+  function pointsToPath(points) {
+    const [first, ...rest] = points;
+    return `M ${first.x.toFixed(2)} ${first.y.toFixed(2)} ${rest
+      .map((point) => `L ${point.x.toFixed(2)} ${point.y.toFixed(2)}`)
+      .join(" ")} Z`;
+  }
+
+  function easeInOutCubic(value) {
+    return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
+  }
+
+  function setShapePath(pathData) {
+    shapePath.setAttribute("d", pathData);
+    clipPath.setAttribute("d", pathData);
+  }
+
+  function animateShape(fromIndex, toIndex) {
+    cancelAnimationFrame(shapeAnimationFrame);
+
+    const fromFrame = shapeFrames[fromIndex];
+    const toFrame = shapeFrames[toIndex];
+    const startedAt = performance.now();
+    const duration = 460;
+
+    function render(now) {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+      const currentFrame = fromFrame.map((point, index) => {
+        const nextPoint = toFrame[index];
+        return {
+          x: point.x + (nextPoint.x - point.x) * easedProgress,
+          y: point.y + (nextPoint.y - point.y) * easedProgress
+        };
+      });
+
+      setShapePath(pointsToPath(currentFrame));
+
+      if (progress < 1) {
+        shapeAnimationFrame = requestAnimationFrame(render);
+      }
+    }
+
+    shapeAnimationFrame = requestAnimationFrame(render);
+  }
+
+  function setActiveSlide(nextIndex) {
+    const previousIndex = activeIndex;
+    const normalizedIndex = (nextIndex + slides.length) % slides.length;
+    const direction = nextIndex > previousIndex ? 1 : nextIndex < previousIndex ? -1 : normalizedIndex >= previousIndex ? 1 : -1;
+
+    if (normalizedIndex === activeIndex) return;
+
+    prepareTitleWrap(previousIndex, normalizedIndex, direction);
+    carousel.style.setProperty("--about-active-index", normalizedIndex);
+    carousel.style.setProperty("--about-copy-enter-x", `${direction * 56}px`);
+    carousel.style.setProperty("--about-copy-exit-x", `${direction * -56}px`);
+    animateShape(previousIndex, normalizedIndex);
+    activeIndex = normalizedIndex;
+    titlePosition = getNextTitlePosition(normalizedIndex, direction);
+
+    slides.forEach((slide, index) => {
+      const isActive = index === activeIndex;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", String(!isActive));
+    });
+
+    updateTitleStrip();
+
+    copySlides.forEach((slide, index) => {
+      const isActive = index === activeIndex;
+      slide.classList.toggle("is-active", isActive);
+      slide.classList.remove("is-entering", "is-leaving");
+      if (index === activeIndex) slide.classList.add("is-entering");
+      if (index === previousIndex) slide.classList.add("is-leaving");
+      slide.setAttribute("aria-hidden", String(!isActive));
+    });
+
+    dots.forEach((dot, index) => {
+      const isActive = index === activeIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-selected", String(isActive));
+    });
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => setActiveSlide(index));
+  });
+
+  prevButton.addEventListener("click", () => setActiveSlide(activeIndex - 1));
+  nextButton.addEventListener("click", () => setActiveSlide(activeIndex + 1));
+  carousel.style.setProperty("--about-active-index", "0");
+  setShapePath(pointsToPath(shapeFrames[0]));
+  slides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== 0)));
+  copySlides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== 0)));
+
+  function getCenteredTitlePosition() {
+    return activeIndex + 3;
+  }
+
+  function getNextTitlePosition(index, direction) {
+    const candidatePositions = getTitlePositions(index);
+
+    if (direction > 0) {
+      return candidatePositions.find((position) => position > titlePosition) ?? candidatePositions[0];
+    }
+
+    return [...candidatePositions].reverse().find((position) => position < titlePosition) ?? candidatePositions[candidatePositions.length - 1];
+  }
+
+  function getTitlePositions(index) {
+    return titleItems
+      .map((item, position) => ({ item, position }))
+      .filter(({ item }) => Number(item.dataset.aboutTitleItem) === index)
+      .map(({ position }) => position);
+  }
+
+  function prepareTitleWrap(previousIndex, nextIndex, direction) {
+    const candidatePositions = getTitlePositions(nextIndex);
+    const hasVisibleDestination =
+      direction > 0
+        ? candidatePositions.some((position) => position > titlePosition)
+        : candidatePositions.some((position) => position < titlePosition);
+
+    if (hasVisibleDestination) return;
+
+    const previousPositions = getTitlePositions(previousIndex);
+    titlePosition = direction > 0 ? previousPositions[0] : previousPositions[previousPositions.length - 1];
+    updateTitleStrip({ instant: true });
+  }
+
+
+  function updateTitleStrip({ instant = false } = {}) {
+    if (instant) {
+      titleStrip.style.transition = "none";
+    }
+
+    titleItems.forEach((item) => {
+      item.classList.toggle("is-active", Number(item.dataset.aboutTitleItem) === activeIndex);
+    });
+
+    const activeItem = titleItems[titlePosition];
+    if (!activeItem) return;
+
+    const stageRect = titleStrip.parentElement.getBoundingClientRect();
+    const itemRect = activeItem.getBoundingClientRect();
+    const stageCenter = stageRect.left + stageRect.width / 2;
+    const itemCenter = itemRect.left + itemRect.width / 2;
+    const stageScale = stageRect.width / titleStrip.parentElement.offsetWidth || 1;
+    const currentTransform = new DOMMatrixReadOnly(getComputedStyle(titleStrip).transform);
+    const nextOffset = currentTransform.m41 + (stageCenter - itemCenter) / stageScale;
+    carousel.style.setProperty("--about-title-offset", `${nextOffset}px`);
+
+    if (instant) {
+      requestAnimationFrame(() => {
+        titleStrip.style.transition = "";
+      });
+    }
+  }
+
+  function normalizeTitlePosition() {
+    const centeredPosition = getCenteredTitlePosition();
+    if (titlePosition === centeredPosition) return;
+
+    titlePosition = centeredPosition;
+    updateTitleStrip({ instant: true });
+  }
+
+  titleStrip.addEventListener("transitionend", (event) => {
+    if (event.propertyName === "transform") normalizeTitlePosition();
+  });
+
+  requestAnimationFrame(() => updateTitleStrip({ instant: true }));
+  window.addEventListener("resize", () => updateTitleStrip({ instant: true }));
 }
 
 function createProjectCarousels() {
@@ -561,4 +823,5 @@ function createProjectCarousels() {
 
 applyLanguage(detectInitialLanguage());
 createCubeFrameAnimator();
+createAboutCarousel();
 createProjectCarousels();

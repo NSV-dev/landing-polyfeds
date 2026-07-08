@@ -488,38 +488,71 @@
       </section>
 
       <section class="section about" id="about">
-        <div class="approach-card" aria-hidden="true">
-          <div class="approach-tabs">
-            <span><span lang="en">Expertise</span><span lang="ru">Экспертиза</span></span>
-            <span><span lang="en">Approach</span><span lang="ru">Подход</span></span>
-            <span><span lang="en">About me</span><span lang="ru">Обо мне</span></span>
+        <div class="about-carousel" data-about-carousel>
+          <div class="about-dots" role="tablist" aria-label="About cards">
+            <button class="about-dot is-active" type="button" aria-label="Approach" aria-selected="true"></button>
+            <button class="about-dot" type="button" aria-label="About me" aria-selected="false"></button>
+            <button class="about-dot" type="button" aria-label="Expertise" aria-selected="false"></button>
           </div>
-          <div class="approach-visual">
-            <div class="approach-mark"></div>
-            <div class="approach-panel approach-panel--top"></div>
-            <div class="approach-panel approach-panel--side"></div>
-            <div class="approach-accent"></div>
+          <svg class="about-shape-svg" viewBox="0 0 503 541" aria-hidden="true">
+            <defs>
+              <clipPath id="about-shape-clip">
+                <path data-about-clip-path></path>
+              </clipPath>
+            </defs>
+            <path data-about-shape-path></path>
+            <foreignObject x="0" y="0" width="503" height="541" clip-path="url(#about-shape-clip)">
+              <div class="about-svg-title-stage" xmlns="http://www.w3.org/1999/xhtml">
+                <div class="about-card-title-strip" data-about-title-strip>
+                  <span data-about-title-item="0" data-i18n="about.card.approach">Approach</span>
+                  <span data-about-title-item="1" data-i18n="about.card.me">About me</span>
+                  <span data-about-title-item="2" data-i18n="about.card.expertise">Expertise</span>
+                  <span data-about-title-item="0" data-i18n="about.card.approach">Approach</span>
+                  <span data-about-title-item="1" data-i18n="about.card.me">About me</span>
+                  <span data-about-title-item="2" data-i18n="about.card.expertise">Expertise</span>
+                  <span data-about-title-item="0" data-i18n="about.card.approach">Approach</span>
+                </div>
+              </div>
+            </foreignObject>
+          </svg>
+          <div class="about-card-track">
+            <article class="about-card is-active" data-about-slide="0"></article>
+            <article class="about-card" data-about-slide="1"></article>
+            <article class="about-card" data-about-slide="2"></article>
           </div>
-          <div class="approach-progress"><span></span></div>
-          <div class="slider-line"></div>
-          <div class="shape"><span lang="en">Approach</span><span lang="ru">Подход</span></div>
-          <div class="arrows" aria-hidden="true"><span>→</span><span>←</span></div>
+          <div class="about-arrows">
+            <button class="about-arrow about-arrow--prev" type="button" data-about-prev aria-label="Previous about card">
+              <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M2.97427e-05 9.18506L22.707 9.18506" stroke="white" stroke-width="1.62"/>
+                <path d="M14.8811 0.572754L23.4941 9.18575L14.8811 17.7988" stroke="white" stroke-width="1.62"/>
+              </svg>
+            </button>
+            <button class="about-arrow about-arrow--next" type="button" data-about-next aria-label="Next about card">
+              <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M2.97427e-05 9.18506L22.707 9.18506" stroke="white" stroke-width="1.62"/>
+                <path d="M14.8811 0.572754L23.4941 9.18575L14.8811 17.7988" stroke="white" stroke-width="1.62"/>
+              </svg>
+            </button>
+          </div>
         </div>
         <div class="about-copy">
-          <h2 data-i18n="about.title">Concept-driven clarity</h2>
-          <p data-i18n="about.body">
-            I turn complex tasks into strong visual ideas that communicate clearly without
-            unnecessary noise. I always start with meaning first, then build the design around it.
-          </p>
-          <h3 data-i18n="about.hierarchy">Hierarchy</h3>
-          <p data-i18n="about.hierarchyBody">
-            I create visual systems with clear hierarchy, where primary and secondary elements are
-            instantly recognizable.
-          </p>
-          <h3 data-i18n="about.systems">Systems thinking</h3>
-          <p data-i18n="about.systemsBody">
-            I approach design decisions through logic, context and business goals.
-          </p>
+          <article class="about-copy-slide is-active" data-about-copy="0">
+            <h2 data-i18n="about.approach.title">Concept-driven clarity</h2>
+            <p data-i18n="about.approach.body">I turn complex tasks into strong visual ideas that communicate clearly without unnecessary noise. I always start with meaning first, then build the design around it</p>
+            <h3 data-i18n="about.approach.hierarchy">Hierarchy</h3>
+            <p data-i18n="about.approach.hierarchyBody">I create visual systems with clear hierarchy, where primary and secondary elements are instantly recognizable and information feels easy to navigate in any format</p>
+            <h3 data-i18n="about.approach.systems">Systems thinking</h3>
+            <p data-i18n="about.approach.systemsBody">I approach design decisions through logic, context, and business goals — not personal taste. I can clearly explain and defend every decision to both teams and stakeholders</p>
+          </article>
+          <article class="about-copy-slide" data-about-copy="1">
+            <p class="about-lead" data-i18n-html="about.me.body">Designer with<br />5+ years of experience.<br />I work with visual concepts and build clear, engaging communication between brands and people</p>
+          </article>
+          <article class="about-copy-slide" data-about-copy="2">
+            <h2 data-i18n="about.expertise.graphic">Graphic Design</h2>
+            <p data-i18n="about.expertise.graphicBody">Identity systems and visual design with strong attention to detail and consistency across all touchpoints — from core graphic elements to scalable solutions for both digital and offline environments</p>
+            <h3 data-i18n="about.expertise.art">Art Direction</h3>
+            <p data-i18n="about.expertise.artBody">Shaping the visual direction of projects: from concept development and defining the stylistic approach to maintaining consistency throughout every stage of execution</p>
+          </article>
         </div>
       </section>
 
