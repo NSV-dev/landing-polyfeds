@@ -1770,6 +1770,45 @@ html[lang="ru"] .coded-project--day h3 {
     top: -29px;
     left: 1341px;
   }
+
+  .project-media-grid--fedosov {
+    grid-template-columns: 670px 442px 210px;
+  }
+
+  .card-fed-pack {
+    aspect-ratio: 670 / 285;
+  }
+
+  .card-fed-label {
+    aspect-ratio: 442 / 300;
+  }
+
+  .card-fed-box {
+    aspect-ratio: 210 / 311;
+  }
+
+  .card-fed-poster {
+    aspect-ratio: 442 / 219;
+  }
+
+  .card-fed-small {
+    aspect-ratio: 210 / 149;
+  }
+
+  .float-fed-a {
+    top: 180px;
+    left: -49px;
+    width: 154px;
+    height: 154px;
+  }
+
+  .float-fed-b {
+    top: -27px;
+    left: 1065px;
+    right: auto;
+    width: 154px;
+    height: 154px;
+  }
 }
 
 @media (min-width: 761px) and (max-width: 1199px) {
@@ -2256,6 +2295,47 @@ html[lang="ru"] .coded-project--day h3 {
   .project-body .project-media-grid--barcelona .card-bcn-poster-a {
     aspect-ratio: 371 / 264;
   }
+
+  .project-body .project-media-grid--fedosov {
+    align-items: center;
+    height: 264px;
+  }
+
+  .project-body .project-media-grid--fedosov .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 264px;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .project-body .project-media-grid--fedosov .project-card picture,
+  .project-body .project-media-grid--fedosov .project-card img {
+    width: auto;
+    max-width: 100%;
+    height: 264px;
+    border-radius: 18px;
+  }
+
+  .project-body .project-media-grid--fedosov .card-fed-pack picture,
+  .project-body .project-media-grid--fedosov .card-fed-pack img,
+  .project-body .project-media-grid--fedosov .card-fed-poster picture,
+  .project-body .project-media-grid--fedosov .card-fed-poster img {
+    width: 648px;
+  }
+
+  .project-body .project-media-grid--fedosov .card-fed-label picture,
+  .project-body .project-media-grid--fedosov .card-fed-label img {
+    width: 397px;
+  }
+
+  .project-body .project-media-grid--fedosov .card-fed-box picture,
+  .project-body .project-media-grid--fedosov .card-fed-box img,
+  .project-body .project-media-grid--fedosov .card-fed-small picture,
+  .project-body .project-media-grid--fedosov .card-fed-small img {
+    width: 475px;
+  }
 }
 
 @media (min-width: 761px) and (max-width: 1199px) {
@@ -2614,6 +2694,50 @@ html[lang="ru"] .coded-project--day h3 {
   .project-body .project-media-grid--barcelona [data-carousel-exclude="true"] {
     display: none;
   }
+
+  .project-body .project-media-grid--fedosov {
+    align-items: center;
+    height: 327px;
+  }
+
+  .project-body .project-media-grid--fedosov .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 327px;
+    aspect-ratio: auto;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .project-body .project-media-grid--fedosov .project-card picture,
+  .project-body .project-media-grid--fedosov .project-card img {
+    width: min(100%, 327px);
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .project-body .project-media-grid--fedosov .card-fed-pack picture,
+  .project-body .project-media-grid--fedosov .card-fed-pack img,
+  .project-body .project-media-grid--fedosov .card-fed-small picture,
+  .project-body .project-media-grid--fedosov .card-fed-small img {
+    aspect-ratio: 327 / 327;
+  }
+
+  .project-body .project-media-grid--fedosov .card-fed-label picture,
+  .project-body .project-media-grid--fedosov .card-fed-label img {
+    aspect-ratio: 1400 / 930;
+  }
+
+  .project-body .project-media-grid--fedosov .card-fed-poster picture,
+  .project-body .project-media-grid--fedosov .card-fed-poster img {
+    aspect-ratio: 327 / 237;
+  }
+
+  .project-body .project-media-grid--fedosov .card-fed-box picture,
+  .project-body .project-media-grid--fedosov .card-fed-box img {
+    aspect-ratio: 327 / 140;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -2732,6 +2856,11 @@ html[lang="ru"] .coded-project--day h3 {
 }
 
 @media (min-width: 1440px) {
+  .coded-project--fedosov {
+    width: calc(100% + 112px);
+    margin-left: -56px;
+  }
+
   .coded-project--reg .project-note--problem {
     grid-column: 9 / -1;
   }
@@ -2753,6 +2882,62 @@ html[lang="ru"] .coded-project--day h3 {
     max-width: none;
   }
 
+  .coded-project--fedosov h3 {
+    position: relative;
+    left: -56px;
+  }
+
+  .coded-project--fedosov .project-note--solution {
+    top: 546px;
+  }
+
+  .coded-project--fedosov .project-link {
+    top: 723px;
+  }
+
+  .project-media-grid--fedosov .project-media-column:last-of-type {
+    margin-top: 59px;
+  }
+
+  .coded-project--fedosov .float-fed-b {
+    top: -27px;
+    left: 1065px;
+    right: auto;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .coded-project--fedosov {
+    width: calc(100% + 66px);
+    margin-left: -33px;
+  }
+
+  .coded-project--fedosov .project-note--solution {
+    top: 520px;
+  }
+
+  .coded-project--fedosov .project-link {
+    top: 702px;
+    max-width: 320px;
+    white-space: normal;
+  }
+
+  .project-media-grid--fedosov .project-media-column:last-of-type {
+    margin-top: 164px;
+  }
+
+  .coded-project--fedosov .float-fed-a {
+    width: 154px;
+    height: 154px;
+  }
+
+  .coded-project--fedosov .float-fed-b {
+    top: -16px;
+    left: 856px;
+    right: auto;
+    width: 154px;
+    height: 154px;
+  }
 }
 
 @media (min-width: 1200px) {

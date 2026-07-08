@@ -79,9 +79,9 @@
     "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
     "projects.barcelona.problem": "Отрефлексировать поездку в Испанию через сканы и визуальные фрагменты, собранные в процессе наблюдения за Барселоной и её архитектурной средой",
     "projects.barcelona.solution": "Я использую сделанные во время поездки сканы как основу серии работ, где архитектурные элементы города превращаются в графические композиции памяти. Поверх них накладываются цветовые маркеры, фиксирующие впечатления и формируя личный визуальный дневник опыта",
-    "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система",
-    "projects.fedosov.problem": "Создать визуальную айдентику для персонального бренда FEDOSOV как целостную систему, способную адаптироваться к разным форматам и средам",
-    "projects.fedosov.solution": "Я разработала айдентику, где фамилия становится главным визуальным элементом. Через модульную структуру и гибкую типографическую систему я создала масштабируемый визуальный язык, который остается узнаваемым в разных применениях и сохраняет консистентность бренда",
+    "projects.fedosov.title": "FEDOSOV: брендинг<br />и система",
+    "projects.fedosov.problem": "Создать визуальную идентичность персонального бренда FEDOSOV как цельную систему, способную работать в разных средах и масштабах",
+    "projects.fedosov.solution": "Я разработала типографическую айдентику, где фамилия работает как главный визуальный элемент. Через модульную структуру и вариативную типографику собрала гибкий язык, который масштабируется на носители и удерживает цельность бренда",
     "about.title": "Концептуальная ясность",
     "about.body": "Умею превращать задачу в сильную идею, которая работает без визуального шума. Всегда начинаю со смысла, а не с формы, и строю дизайн вокруг него",
     "about.hierarchy": "Иерархия",
@@ -164,8 +164,9 @@ function applyLanguage(lang) {
 
 function normalizeDesktopProjectTitles(lang) {
   const isTablet = window.matchMedia(`(min-width: ${BREAKPOINTS.mobileMax + 1}px) and (max-width: ${BREAKPOINTS.carouselMax}px)`).matches;
+  const isMobile = window.matchMedia(`(max-width: ${BREAKPOINTS.mobileMax}px)`).matches;
   const isDesktop = window.matchMedia(`(min-width: ${BREAKPOINTS.desktopMin}px)`).matches;
-  if (!isTablet && !isDesktop) return;
+  if (!isMobile && !isTablet && !isDesktop) return;
   const isWideDesktop = window.matchMedia(`(min-width: ${BREAKPOINTS.wideDesktopMin}px)`).matches;
 
   const desktopTitles = {
@@ -183,7 +184,9 @@ function normalizeDesktopProjectTitles(lang) {
         ? "\u0414\u0435\u043d\u044c \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044f:<br />\u0441\u043f\u0435\u0446\u043f\u0440\u043e\u0435\u043a\u0442 \u0434\u043b\u044f\u00a0\u0420\u0435\u0433.\u0440\u0435\u0448\u0435\u043d\u0438\u0439"
         : "\u0414\u0435\u043d\u044c<br />\u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044f:<br />\u0441\u043f\u0435\u0446\u043f\u0440\u043e\u0435\u043a\u0442<br />\u0434\u043b\u044f\u00a0\u0420\u0435\u0433.\u0440\u0435\u0448\u0435\u043d\u0438\u0439",
       "projects.barcelona.title": "Визуальный<br />дневник Барселоны",
-      "projects.fedosov.title": "FEDOSOV: брендинг<br />и визуальная система"
+      "projects.fedosov.title": isMobile || isTablet
+        ? "FEDOSOV:<br />брендинг и система"
+        : "FEDOSOV: брендинг<br />и система"
     }
   };
 
