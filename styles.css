@@ -475,6 +475,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   margin: 0 auto;
   padding-inline: var(--page-pad);
   overflow: hidden;
+  scroll-margin-top: calc(var(--header-height) + 10px);
   white-space: nowrap;
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
   font-size: 80.1048px;

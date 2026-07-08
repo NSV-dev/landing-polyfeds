@@ -198,7 +198,19 @@ function normalizeDesktopProjectTitles(lang) {
 
 langToggle.addEventListener("click", () => {
   const nextLang = document.documentElement.lang === "ru" ? "en" : "ru";
+  const helloStrip = document.querySelector(".hello-strip");
+  const stripTopBefore = helloStrip?.getBoundingClientRect().top;
   applyLanguage(nextLang);
+
+  if (helloStrip && typeof stripTopBefore === "number") {
+    requestAnimationFrame(() => {
+      const stripTopAfter = helloStrip.getBoundingClientRect().top;
+      window.scrollBy({
+        top: stripTopAfter - stripTopBefore,
+        behavior: "auto"
+      });
+    });
+  }
 });
 
 window.addEventListener("resize", () => {
