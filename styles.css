@@ -4359,7 +4359,7 @@ html[lang="ru"] .coded-project--day h3 {
     align-items: flex-start;
     width: 100%;
     max-width: 100%;
-    min-height: 326px;
+    min-height: 348px;
     padding: 0;
   }
 
@@ -4383,18 +4383,18 @@ html[lang="ru"] .coded-project--day h3 {
 
   .about-copy h2 {
     margin-bottom: 14px;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 100%;
   }
 
   .about-copy h3 {
     margin: 22px 0 8px;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 100%;
   }
 
   .about-copy p {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     line-height: 120%;
   }
@@ -4402,7 +4402,7 @@ html[lang="ru"] .coded-project--day h3 {
   .about-copy .about-lead {
     max-width: 100%;
     padding-top: 0;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 100%;
   }
 
