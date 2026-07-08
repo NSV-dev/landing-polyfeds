@@ -490,6 +490,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   width: max-content;
   white-space: nowrap;
   animation: hello-strip-move 10s linear infinite;
+  transform: translateX(-50%);
   will-change: transform;
 }
 
@@ -578,11 +579,11 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
 @keyframes hello-strip-move {
   from {
-    transform: translateX(-25%);
+    transform: translateX(-50%);
   }
 
   to {
-    transform: translateX(0);
+    transform: translateX(-25%);
   }
 }
 
