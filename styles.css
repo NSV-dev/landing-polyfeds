@@ -484,6 +484,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 }
 
 .hello-strip__track {
+  align-items: center;
   display: flex;
   width: max-content;
   white-space: nowrap;
@@ -491,7 +492,14 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   will-change: transform;
 }
 
+.hello-strip:hover .hello-strip__track,
+.hello-strip:focus-within .hello-strip__track {
+  animation-play-state: paused;
+}
+
 .hello-strip__text {
+  position: relative;
+  align-items: center;
   display: inline-flex;
   flex: 0 0 auto;
   gap: 0.35em;
@@ -499,8 +507,72 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   color: var(--ink);
 }
 
-.hello-strip__text span:nth-child(even) {
+.hello-strip__text span:nth-of-type(even) {
   color: var(--pink);
+}
+
+.hello-strip__button {
+  box-sizing: border-box;
+  position: absolute;
+  top: -34px;
+  left: 9%;
+  z-index: 1;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 133px;
+  height: 62px;
+  padding: 20px 30px;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  background: #FAFEF8;
+  color: var(--ink);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 7px 0 var(--ink);
+  transform: translateY(0);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.hello-strip__button--linkedin {
+  left: 53%;
+  top: 48px;
+  transform: translateY(0);
+}
+
+.hello-strip__button--email {
+  top: -32px;
+  left: 14%;
+}
+
+.hello-strip__button--telegram {
+  left: 68%;
+  width: 139px;
+  transform: translateY(0);
+}
+
+.hello-strip__button:hover,
+.hello-strip__button:focus-visible {
+  box-shadow: 0 0 0 var(--ink);
+  transform: translateY(7px);
+}
+
+.hello-strip__button--linkedin:hover,
+.hello-strip__button--linkedin:focus-visible {
+  transform: translateY(7px);
+}
+
+.hello-strip__button--telegram:hover,
+.hello-strip__button--telegram:focus-visible {
+  transform: translateY(7px);
+}
+
+.hello-strip__button:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
 }
 
 @keyframes hello-strip-move {
@@ -1157,6 +1229,53 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     margin: 0 auto;
     font-size: 38px;
     line-height: 26px;
+  }
+
+  .hello-strip__button {
+    display: none;
+    top: -23px;
+    left: 9%;
+    width: 78px;
+    height: 38px;
+    padding: 11px 16px;
+    border-width: 2px;
+    border-radius: 9px;
+    font-size: 12px;
+    box-shadow: 0 4px 0 var(--ink);
+    transform: translateY(0);
+  }
+
+  .hello-strip__button--linkedin {
+    left: 53%;
+    top: 26px;
+    width: 88px;
+    transform: translateY(0);
+  }
+
+  .hello-strip__button--email {
+    top: -32px;
+    left: 14%;
+  }
+
+  .hello-strip__button--telegram {
+    left: 68%;
+    width: 96px;
+    transform: translateY(0);
+  }
+
+  .hello-strip__button:hover,
+  .hello-strip__button:focus-visible {
+    transform: translateY(4px);
+  }
+
+  .hello-strip__button--linkedin:hover,
+  .hello-strip__button--linkedin:focus-visible {
+    transform: translateY(4px);
+  }
+
+  .hello-strip__button--telegram:hover,
+  .hello-strip__button--telegram:focus-visible {
+    transform: translateY(4px);
   }
 
 }
@@ -2345,6 +2464,53 @@ html[lang="ru"] .coded-project--day h3 {
     margin: 0 auto;
     font-size: 50px;
     line-height: 26px;
+  }
+
+  .hello-strip__button {
+    display: none;
+    top: -26px;
+    left: 9%;
+    width: 96px;
+    height: 46px;
+    padding: 14px 20px;
+    border-width: 2px;
+    border-radius: 11px;
+    font-size: 14px;
+    box-shadow: 0 5px 0 var(--ink);
+    transform: translateY(0);
+  }
+
+  .hello-strip__button--linkedin {
+    left: 53%;
+    top: 28px;
+    width: 104px;
+    transform: translateY(0);
+  }
+
+  .hello-strip__button--email {
+    top: -32px;
+    left: 14%;
+  }
+
+  .hello-strip__button--telegram {
+    left: 68%;
+    width: 112px;
+    transform: translateY(0);
+  }
+
+  .hello-strip__button:hover,
+  .hello-strip__button:focus-visible {
+    transform: translateY(5px);
+  }
+
+  .hello-strip__button--linkedin:hover,
+  .hello-strip__button--linkedin:focus-visible {
+    transform: translateY(5px);
+  }
+
+  .hello-strip__button--telegram:hover,
+  .hello-strip__button--telegram:focus-visible {
+    transform: translateY(5px);
   }
 
   .coded-project,
