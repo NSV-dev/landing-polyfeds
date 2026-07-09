@@ -4964,3 +4964,41 @@ html[lang="ru"] .coded-project--day h3 {
     --corner-scale: 0.6;
   }
 }
+
+@supports not (corner-shape: squircle) {
+  @media (hover: none), (pointer: coarse) {
+    .primary-button,
+    .outline-button,
+    .hello-strip__button,
+    .experience .experience-button,
+    .hero .primary-button,
+    .contact .big {
+      transition: none;
+    }
+
+    .hero .primary-button:hover {
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 4px 0 white;
+      transform: translate(-50%, -50%);
+    }
+
+    .hello-strip__button:hover,
+    .hello-strip__button:focus-visible,
+    .hello-strip__button--linkedin:hover,
+    .hello-strip__button--linkedin:focus-visible,
+    .hello-strip__button--telegram:hover,
+    .hello-strip__button--telegram:focus-visible {
+      box-shadow: 0 4px 0 var(--ink);
+      transform: translateY(0);
+    }
+
+    .experience .experience-button:hover,
+    .contact .big:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      box-shadow: 0 7px 0 var(--ink);
+      transform: none;
+    }
+  }
+}
