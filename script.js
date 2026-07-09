@@ -178,6 +178,7 @@ function applyLanguage(lang) {
   normalizeDesktopProjectTitles(lang);
   normalizeDesktopExperienceText(lang);
   normalizeExperienceDurations(lang);
+  document.dispatchEvent(new CustomEvent("languagechange"));
 }
 
 function normalizeDesktopProjectTitles(lang) {
@@ -439,6 +440,7 @@ function createAboutCarousel() {
   const dots = [...carousel.querySelectorAll(".about-dot")];
   const copySlides = [...document.querySelectorAll("[data-about-copy]")];
   const titleStrip = carousel.querySelector("[data-about-title-strip]");
+  const titleViewport = carousel.querySelector(".about-title-viewport");
   const titleItems = [...carousel.querySelectorAll("[data-about-title-item]")];
   const prevButton = carousel.querySelector("[data-about-prev]");
   const nextButton = carousel.querySelector("[data-about-next]");
@@ -509,6 +511,10 @@ function createAboutCarousel() {
       .join(" ")} Z`;
   }
 
+  function pointsToPolygon(points) {
+    return `polygon(${points.map((point) => `${((point.x / 503) * 100).toFixed(2)}% ${((point.y / 541) * 100).toFixed(2)}%`).join(", ")})`;
+  }
+
   function easeInOutCubic(value) {
     return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
   }
@@ -516,6 +522,12 @@ function createAboutCarousel() {
   function setShapePath(pathData) {
     shapePath.setAttribute("d", pathData);
     clipPath.setAttribute("d", pathData);
+  }
+
+  function setTitleClip(points) {
+    const polygon = pointsToPolygon(points);
+    titleViewport.style.clipPath = polygon;
+    titleViewport.style.webkitClipPath = polygon;
   }
 
   function animateShape(fromIndex, toIndex) {
@@ -538,6 +550,7 @@ function createAboutCarousel() {
       });
 
       setShapePath(pointsToPath(currentFrame));
+      setTitleClip(currentFrame);
 
       if (progress < 1) {
         shapeAnimationFrame = requestAnimationFrame(render);
@@ -635,6 +648,7 @@ function createAboutCarousel() {
 
   carousel.style.setProperty("--about-active-index", "0");
   setShapePath(pointsToPath(shapeFrames[0]));
+  setTitleClip(shapeFrames[0]);
   slides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== 0)));
   copySlides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== 0)));
 
@@ -690,10 +704,9 @@ function createAboutCarousel() {
     const itemRect = activeItem.getBoundingClientRect();
     const stageCenter = stageRect.left + stageRect.width / 2;
     const itemCenter = itemRect.left + itemRect.width / 2;
-    const stageScale = stageRect.width / titleStrip.parentElement.offsetWidth || 1;
     const currentTransform = new DOMMatrixReadOnly(getComputedStyle(titleStrip).transform);
-    const nextOffset = currentTransform.m41 + (stageCenter - itemCenter) / stageScale;
-    carousel.style.setProperty("--about-title-offset", `${nextOffset}px`);
+    const nextOffset = currentTransform.m41 + stageCenter - itemCenter;
+    titleStrip.style.transform = `translate(${nextOffset}px, -50%)`;
 
     if (instant) {
       requestAnimationFrame(() => {
@@ -712,6 +725,10 @@ function createAboutCarousel() {
 
   titleStrip.addEventListener("transitionend", (event) => {
     if (event.propertyName === "transform") normalizeTitlePosition();
+  });
+
+  document.addEventListener("languagechange", () => {
+    updateTitleStrip({ instant: true });
   });
 
   requestAnimationFrame(() => updateTitleStrip({ instant: true }));

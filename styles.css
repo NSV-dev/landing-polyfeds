@@ -55,6 +55,7 @@
 }
 
 html {
+  background: var(--ink);
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -109,7 +110,20 @@ img {
 }
 
 main {
+  position: relative;
+  z-index: 0;
+  background: var(--bg);
   padding-top: var(--header-height);
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0 50%;
+  z-index: -1;
+  width: 100vw;
+  margin-left: -50vw;
+  background: var(--bg);
 }
 
 .logo,
@@ -639,8 +653,10 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .site-header,
   html[lang="en"] .site-header {
     left: 0;
+    width: 100vw;
     grid-template-columns: 1fr auto;
     align-items: center;
+    margin: 0;
     padding-inline: var(--page-pad);
     transform: none;
     backdrop-filter: none;
@@ -3571,6 +3587,8 @@ html[lang="ru"] .coded-project--day h3 {
 }
 
 .about-carousel {
+  --about-shape-max-height: 445px;
+  --about-shape-width: min(65%, calc(var(--about-shape-max-height) * 503 / 541));
   position: relative;
   z-index: 2;
   container-type: inline-size;
@@ -3634,8 +3652,8 @@ html[lang="ru"] .coded-project--day h3 {
   left: 50%;
   top: 50%;
   z-index: 1;
-  width: 65%;
-  max-height: 445px;
+  width: var(--about-shape-width);
+  max-height: var(--about-shape-max-height);
   height: auto;
   overflow: visible;
   touch-action: pan-y;
@@ -3651,10 +3669,17 @@ html[lang="ru"] .coded-project--day h3 {
   fill: var(--bg);
 }
 
-.about-svg-title-stage {
-  position: relative;
-  width: 503px;
-  height: 541px;
+.about-title-viewport {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: var(--about-shape-width);
+  aspect-ratio: 503 / 541;
+  max-height: var(--about-shape-max-height);
+  overflow: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
 .about-card {
@@ -3678,15 +3703,15 @@ html[lang="ru"] .coded-project--day h3 {
   position: absolute;
   left: 0;
   top: 50%;
-  z-index: 2;
   display: flex;
   align-items: baseline;
-  gap: 38px;
-  font-size: 74px;
+  gap: 16px;
+  font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
+  font-size: 54px;
+  font-weight: 400;
   line-height: 1;
   white-space: nowrap;
-  transform-origin: center;
-  transform: translate(var(--about-title-offset, 0px), -50%);
+  transform: translate(0, -50%);
   transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -3984,6 +4009,7 @@ html[lang="ru"] .coded-project--day h3 {
 
 .footer {
   position: relative;
+  z-index: 0;
   display: block;
   width: min(var(--frame-width), 100vw);
   min-height: 378px;
@@ -4103,6 +4129,7 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .about-carousel {
+    --about-shape-max-height: 445px;
     width: 100%;
     height: 370px;
     border-radius: 15px;
@@ -4115,13 +4142,12 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .about-shape-svg {
-    width: 65%;
     height: auto;
   }
 
   .about-card-title-strip {
-    gap: 38px;
-    font-size: 74px;
+    gap: 8px;
+    font-size: 30px;
   }
 
   .about-arrows {
@@ -4327,6 +4353,7 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .about-carousel {
+    --about-shape-max-height: 160px;
     width: 100%;
     max-width: 100%;
     height: 235px;
@@ -4340,14 +4367,12 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .about-shape-svg {
-    width: 65%;
-    max-height: 160px;
     height: auto;
   }
 
   .about-card-title-strip {
-    gap: 38px;
-    font-size: 74px;
+    gap: 8px;
+    font-size: 24px;
   }
 
   .about-arrows {
