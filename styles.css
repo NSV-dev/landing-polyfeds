@@ -55,7 +55,7 @@
 }
 
 html {
-  background: var(--ink);
+  background: var(--bg);
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -4837,6 +4837,25 @@ icn-ellipses {
     box-shadow: 0 0 0 var(--ink);
     transform: translateY(4px);
   }
+}
+
+html.js .primary-button,
+html.js .outline-button,
+html.js .hello-strip__button,
+html.js .experience .experience-button,
+html.js .hero .primary-button,
+html.js .contact .big {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+html.js:not(.is-ready) body {
+  opacity: 0;
+}
+
+html.js body {
+  transition: opacity 500ms ease;
 }
 
 @media (max-width: 760px) {

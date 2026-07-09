@@ -987,10 +987,44 @@ function squirclePath(width, height, radius, exponent = 4, offset = 0) {
 
 function applySquircle(el, radius = 34, exponent = 4) {
   const namespace = "http://www.w3.org/2000/svg";
-  const originalBackground = getComputedStyle(el).backgroundColor;
-  const originalBorderColor = getComputedStyle(el).borderTopColor;
-  const originalBorderWidth = parseFloat(getComputedStyle(el).borderTopWidth) || 0;
-  const originalBoxShadow = getComputedStyle(el).boxShadow;
+  const rootStyles = getComputedStyle(document.documentElement);
+  const ink = rootStyles.getPropertyValue("--ink").trim() || "#050505";
+  const bg = rootStyles.getPropertyValue("--bg").trim() || "#fafef8";
+  const initialStyles = getComputedStyle(el);
+  const isTransparent = (color) => color === "transparent" || color === "rgba(0, 0, 0, 0)";
+  const fallbackBackground = el.matches(".hero .primary-button") ? ink : bg;
+  const fallbackBorderColor = el.matches(".hero .primary-button") ? "#ffffff" : ink;
+  const originalBackground = isTransparent(initialStyles.backgroundColor)
+    ? fallbackBackground
+    : initialStyles.backgroundColor;
+  const originalBorderColor = isTransparent(initialStyles.borderTopColor)
+    ? fallbackBorderColor
+    : initialStyles.borderTopColor;
+  const originalBorderWidth = parseFloat(initialStyles.borderTopWidth) || 0;
+  const getFallbackShadow = () => {
+    if (el.matches(".hero .primary-button")) {
+      return window.matchMedia("(min-width: 1200px)").matches ? "0px 7px 0px #ffffff" : "0px 4px 0px #ffffff";
+    }
+
+    if (el.matches(".contact .big")) {
+      if (window.matchMedia("(max-width: 760px)").matches) return `0px 5px 0px ${ink}`;
+      if (window.matchMedia("(max-width: 1199px)").matches) return `0px 7px 0px ${ink}`;
+      return `0px 10.8086px 0px ${ink}`;
+    }
+
+    if (el.matches(".experience .experience-button")) {
+      return window.matchMedia("(min-width: 1200px)").matches ? `0px 10px 0px ${ink}` : `0px 7px 0px ${ink}`;
+    }
+
+    if (el.matches(".hello-strip__button")) {
+      if (window.matchMedia("(max-width: 760px)").matches) return `0px 4px 0px ${ink}`;
+      if (window.matchMedia("(max-width: 1199px)").matches) return `0px 5px 0px ${ink}`;
+      return `0px 7px 0px ${ink}`;
+    }
+
+    return rootStyles.getPropertyValue("--button-shadow").trim() || `0px 4px 0px ${ink}`;
+  };
+  const originalBoxShadow = initialStyles.boxShadow === "none" ? getFallbackShadow() : initialStyles.boxShadow;
   const svg = document.createElementNS(namespace, "svg");
   const shadowPath = document.createElementNS(namespace, "path");
   const path = document.createElementNS(namespace, "path");
@@ -999,7 +1033,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
     if (!boxShadow || boxShadow === "none") return null;
 
     const colorMatch = boxShadow.match(/(?:rgba?\([^)]+\)|#[0-9a-fA-F]+)/);
-    const numberMatches = boxShadow.match(/-?\d*\.?\d+px/g) || [];
+    const numberMatches = boxShadow.match(/-?\d*\.?\d+(?:px)?/g) || [];
 
     if (!colorMatch || numberMatches.length < 2) return null;
 
@@ -1008,6 +1042,8 @@ function applySquircle(el, radius = 34, exponent = 4) {
       color: colorMatch[0],
       offsetX,
       offsetY,
+      offsetXValue: parseFloat(offsetX) || 0,
+      offsetYValue: parseFloat(offsetY) || 0,
     };
   };
 
@@ -1017,9 +1053,9 @@ function applySquircle(el, radius = 34, exponent = 4) {
   svg.setAttribute("focusable", "false");
   svg.style.position = "absolute";
   svg.style.inset = "0";
-  svg.style.width = "100%";
-  svg.style.height = "100%";
-  svg.style.zIndex = "-1";
+  svg.style.width = originalShadow ? `calc(100% + ${Math.abs(originalShadow.offsetXValue)}px)` : "100%";
+  svg.style.height = originalShadow ? `calc(100% + ${Math.abs(originalShadow.offsetYValue)}px)` : "100%";
+  svg.style.zIndex = "0";
   svg.style.pointerEvents = "none";
   svg.style.overflow = "visible";
   shadowPath.setAttribute("fill", originalShadow?.color || "transparent");
@@ -1038,8 +1074,8 @@ function applySquircle(el, radius = 34, exponent = 4) {
 
   const getVisualColors = () => {
     const styles = getComputedStyle(el);
-    let fill = styles.backgroundColor === "rgba(0, 0, 0, 0)" ? originalBackground : styles.backgroundColor;
-    let stroke = styles.borderTopColor === "rgba(0, 0, 0, 0)" ? originalBorderColor : styles.borderTopColor;
+    let fill = isTransparent(styles.backgroundColor) ? originalBackground : styles.backgroundColor;
+    let stroke = isTransparent(styles.borderTopColor) ? originalBorderColor : styles.borderTopColor;
 
     if (el.matches(".hero .primary-button:hover")) {
       fill = getComputedStyle(document.documentElement).getPropertyValue("--pink").trim() || "#ef38cf";
@@ -1067,7 +1103,9 @@ function applySquircle(el, radius = 34, exponent = 4) {
 
     if (!width || !height) return;
 
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    const viewBoxWidth = width + (originalShadow ? Math.abs(originalShadow.offsetXValue) : 0);
+    const viewBoxHeight = height + (originalShadow ? Math.abs(originalShadow.offsetYValue) : 0);
+    svg.setAttribute("viewBox", `0 0 ${viewBoxWidth} ${viewBoxHeight}`);
     const shapePath = squirclePath(width - borderWidth, height - borderWidth, radius - inset, exponent, inset);
     shadowPath.setAttribute("d", squirclePath(width, height, radius, exponent));
     shadowPath.style.transform = shadowTransform;
@@ -1087,11 +1125,25 @@ function applySquircle(el, radius = 34, exponent = 4) {
   };
 
   el.style.position = getComputedStyle(el).position === "static" ? "relative" : getComputedStyle(el).position;
+  el.style.zIndex = getComputedStyle(el).zIndex === "auto" ? "0" : getComputedStyle(el).zIndex;
   el.style.isolation = "isolate";
   el.style.backgroundColor = "transparent";
   el.style.borderColor = "transparent";
   el.style.boxShadow = "none";
+  const content = document.createElement("span");
+  content.style.position = "relative";
+  content.style.zIndex = "1";
+  content.style.display = "inline-flex";
+  content.style.alignItems = "center";
+  content.style.justifyContent = "center";
+  content.style.gap = "inherit";
+
+  while (el.firstChild) {
+    content.append(el.firstChild);
+  }
+
   el.prepend(svg);
+  el.append(content);
 
   if (window.ResizeObserver) {
     new ResizeObserver(apply).observe(el);
@@ -1121,3 +1173,8 @@ createCubeFrameAnimator();
 createAboutCarousel();
 createProjectCarousels();
 applyButtonSquircles();
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    document.documentElement.classList.add("is-ready");
+  });
+});
