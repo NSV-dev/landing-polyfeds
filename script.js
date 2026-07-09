@@ -1069,7 +1069,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
 
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
     const shapePath = squirclePath(width - borderWidth, height - borderWidth, radius - inset, exponent, inset);
-    shadowPath.setAttribute("d", shapePath);
+    shadowPath.setAttribute("d", squirclePath(width, height, radius, exponent));
     shadowPath.style.transform = shadowTransform;
     path.setAttribute("d", shapePath);
     path.setAttribute("stroke-width", borderWidth);
