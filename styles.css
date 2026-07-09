@@ -35,6 +35,8 @@
   --line: #d9ddd1;
   --radius: 8px;
   --button-radius: 14px;
+  --button-superellipse-radius: 34px;
+  --button-superellipse-radius-lg: 34px;
   --button-border-width: 3px;
   --button-shadow: 0 4px 0 var(--ink);
   --button-shadow-hero: 0 7px 0 white;
@@ -2721,7 +2723,7 @@ html[lang="ru"] .coded-project--day h3 {
   .projects.projects-coded {
     width: 100vw;
     margin: 0;
-    padding: 0 30px 86px;
+    padding: 0 30px 80px;
     scroll-margin-top: calc(var(--header-height) + 10px);
   }
 
@@ -2738,14 +2740,14 @@ html[lang="ru"] .coded-project--day h3 {
   .coded-project--fedosov {
     position: relative;
     display: block;
-    margin-bottom: 72px;
+    margin-bottom: 100px;
   }
 
   .coded-project:not(:last-of-type)::after {
     content: "";
     position: absolute;
     right: 5%;
-    bottom: -36px;
+    bottom: -50px;
     left: 5%;
     height: 0;
     border: 1px solid #000;
@@ -4349,7 +4351,7 @@ html[lang="ru"] .coded-project--day h3 {
     height: auto;
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 44px 24px 72px;
+    padding: 80px 24px 72px;
   }
 
   .about-carousel {
@@ -4857,14 +4859,14 @@ html[lang="ru"] .coded-project--day h3 {
   .timeline {
     width: 100%;
     margin-top: 34px;
-    gap: 30px;
+    gap: 40px;
   }
 
   .timeline article,
   .timeline article:first-child,
   .timeline article:nth-child(3) {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 14px;
     min-height: 0;
   }
 
@@ -4936,4 +4938,21 @@ html[lang="ru"] .coded-project--day h3 {
     box-shadow: 0 0 0 var(--ink);
     transform: translateY(4px);
   }
+}
+
+/* Continuous Apple-style button corners across all responsive sizes. */
+.primary-button,
+.outline-button,
+.hello-strip__button,
+.experience .experience-button,
+.hero .primary-button {
+  border-radius: var(--button-superellipse-radius);
+  corner-shape: squircle;
+  corner-shape: superellipse(2);
+}
+
+.contact .big {
+  border-radius: var(--button-superellipse-radius-lg);
+  corner-shape: squircle;
+  corner-shape: superellipse(2);
 }
