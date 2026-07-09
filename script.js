@@ -434,6 +434,7 @@ function createAboutCarousel() {
   const carousel = document.querySelector("[data-about-carousel]");
   if (!carousel) return;
 
+  const aboutSection = carousel.closest(".about");
   const slides = [...carousel.querySelectorAll("[data-about-slide]")];
   const dots = [...carousel.querySelectorAll(".about-dot")];
   const copySlides = [...document.querySelectorAll("[data-about-copy]")];
@@ -441,11 +442,17 @@ function createAboutCarousel() {
   const titleItems = [...carousel.querySelectorAll("[data-about-title-item]")];
   const prevButton = carousel.querySelector("[data-about-prev]");
   const nextButton = carousel.querySelector("[data-about-next]");
+  const shapeSvg = carousel.querySelector(".about-shape-svg");
   const shapePath = carousel.querySelector("[data-about-shape-path]");
   const clipPath = carousel.querySelector("[data-about-clip-path]");
   let activeIndex = 0;
   let titlePosition = 3;
   let shapeAnimationFrame = 0;
+  let swipeStartX = 0;
+  let swipeStartY = 0;
+  let swipeStartTime = 0;
+  let swipePointerId = null;
+  let swipeHandled = false;
 
   const shapeData = [
     {
@@ -549,8 +556,8 @@ function createAboutCarousel() {
 
     prepareTitleWrap(previousIndex, normalizedIndex, direction);
     carousel.style.setProperty("--about-active-index", normalizedIndex);
-    carousel.style.setProperty("--about-copy-enter-x", `${direction * 56}px`);
-    carousel.style.setProperty("--about-copy-exit-x", `${direction * -56}px`);
+    aboutSection.style.setProperty("--about-copy-enter-x", `${direction * -100}vw`);
+    aboutSection.style.setProperty("--about-copy-exit-x", `${direction * 100}vw`);
     animateShape(previousIndex, normalizedIndex);
     activeIndex = normalizedIndex;
     titlePosition = getNextTitlePosition(normalizedIndex, direction);
@@ -585,6 +592,47 @@ function createAboutCarousel() {
 
   prevButton.addEventListener("click", () => setActiveSlide(activeIndex - 1));
   nextButton.addEventListener("click", () => setActiveSlide(activeIndex + 1));
+
+  function startShapeSwipe(event) {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    swipeStartX = event.clientX;
+    swipeStartY = event.clientY;
+    swipeStartTime = performance.now();
+    swipePointerId = event.pointerId;
+    swipeHandled = false;
+    shapeSvg.setPointerCapture?.(event.pointerId);
+  }
+
+  function moveShapeSwipe(event) {
+    if (event.pointerId !== swipePointerId || swipeHandled) return;
+
+    const deltaX = event.clientX - swipeStartX;
+    const deltaY = event.clientY - swipeStartY;
+    const elapsed = Math.max(performance.now() - swipeStartTime, 1);
+    const velocityX = Math.abs(deltaX) / elapsed;
+    const isHorizontalSwipe = Math.abs(deltaX) > 26 && Math.abs(deltaX) > Math.abs(deltaY) * 1.35;
+    const isQuickSwipe = Math.abs(deltaX) > 18 && velocityX > 0.45 && Math.abs(deltaX) > Math.abs(deltaY);
+
+    if (!isHorizontalSwipe && !isQuickSwipe) return;
+
+    swipeHandled = true;
+    setActiveSlide(activeIndex + (deltaX < 0 ? 1 : -1));
+  }
+
+  function endShapeSwipe(event) {
+    if (event.pointerId !== swipePointerId) return;
+
+    shapeSvg.releasePointerCapture?.(event.pointerId);
+    swipePointerId = null;
+    swipeHandled = false;
+  }
+
+  shapeSvg.addEventListener("pointerdown", startShapeSwipe);
+  shapeSvg.addEventListener("pointermove", moveShapeSwipe);
+  shapeSvg.addEventListener("pointerup", endShapeSwipe);
+  shapeSvg.addEventListener("pointercancel", endShapeSwipe);
+
   carousel.style.setProperty("--about-active-index", "0");
   setShapePath(pointsToPath(shapeFrames[0]));
   slides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== 0)));
