@@ -35,8 +35,6 @@
   --line: #d9ddd1;
   --radius: 8px;
   --button-radius: 14px;
-  --button-superellipse-radius: 34px;
-  --button-superellipse-radius-lg: 34px;
   --button-border-width: 3px;
   --button-shadow: 0 4px 0 var(--ink);
   --button-shadow-hero: 0 7px 0 white;
@@ -4940,65 +4938,14 @@ html[lang="ru"] .coded-project--day h3 {
   }
 }
 
-/* Continuous Apple-style button corners across all responsive sizes. */
-.primary-button,
-.outline-button,
-.hello-strip__button,
-.experience .experience-button,
-.hero .primary-button {
-  --corner-shape: superellipse(2);
-  border-radius: calc(var(--button-superellipse-radius) * var(--corner-scale, 1));
-  corner-shape: squircle;
-  corner-shape: superellipse(2);
-}
-
-.contact .big {
-  --corner-shape: superellipse(2);
-  border-radius: calc(var(--button-superellipse-radius-lg) * var(--corner-scale, 1));
-  corner-shape: squircle;
-  corner-shape: superellipse(2);
-}
-
-@supports not (corner-shape: squircle) {
-  :root {
-    --corner-scale: 0.6;
-  }
-}
-
-@supports not (corner-shape: squircle) {
-  @media (hover: none), (pointer: coarse) {
-    .primary-button,
-    .outline-button,
-    .hello-strip__button,
-    .experience .experience-button,
-    .hero .primary-button,
-    .contact .big {
-      transition: none;
-    }
-
-    .hero .primary-button:hover {
-      background: var(--ink);
-      color: white;
-      box-shadow: 0 4px 0 white;
-      transform: translate(-50%, -50%);
-    }
-
-    .hello-strip__button:hover,
-    .hello-strip__button:focus-visible,
-    .hello-strip__button--linkedin:hover,
-    .hello-strip__button--linkedin:focus-visible,
-    .hello-strip__button--telegram:hover,
-    .hello-strip__button--telegram:focus-visible {
-      box-shadow: 0 4px 0 var(--ink);
-      transform: translateY(0);
-    }
-
-    .experience .experience-button:hover,
-    .contact .big:hover {
-      border-color: var(--ink);
-      color: var(--ink);
-      box-shadow: 0 7px 0 var(--ink);
-      transform: none;
-    }
+@supports (corner-shape: superellipse(2)) {
+  .primary-button,
+  .outline-button,
+  .hello-strip__button,
+  .experience .experience-button,
+  .hero .primary-button,
+  .contact .big {
+    border-radius: 34px;
+    corner-shape: superellipse(2);
   }
 }
