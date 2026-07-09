@@ -4937,15 +4937,3 @@ icn-ellipses {
     transform: translateY(4px);
   }
 }
-
-@supports (corner-shape: superellipse(2)) {
-  .primary-button,
-  .outline-button,
-  .hello-strip__button,
-  .experience .experience-button,
-  .hero .primary-button,
-  .contact .big {
-    border-radius: 34px;
-    corner-shape: superellipse(2);
-  }
-}

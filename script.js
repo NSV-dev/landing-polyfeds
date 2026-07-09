@@ -927,7 +927,197 @@ function createProjectCarousels() {
   });
 }
 
+function squirclePath(width, height, radius, exponent = 4, offset = 0) {
+  const safeRadius = Math.min(radius, width / 2, height / 2);
+  const power = 2 / exponent;
+  const steps = 8;
+  const maxX = width + offset;
+  const maxY = height + offset;
+  const minX = offset;
+  const minY = offset;
+  const cornerCenter = offset + safeRadius;
+
+  const arc = (centerX, centerY, dxFn, dyFn) => {
+    const points = [];
+
+    for (let i = 0; i <= steps; i += 1) {
+      const unit = (Math.PI / 2) * (i / steps);
+      points.push([
+        centerX + dxFn(unit) * safeRadius,
+        centerY + dyFn(unit) * safeRadius,
+      ]);
+    }
+
+    return points
+      .map(([x, y]) => `L ${x.toFixed(2)},${y.toFixed(2)}`)
+      .join(" ");
+  };
+
+  const topRight = arc(
+    maxX - safeRadius,
+    cornerCenter,
+    (unit) => Math.sin(unit) ** power,
+    (unit) => -(Math.cos(unit) ** power)
+  );
+  const bottomRight = arc(
+    maxX - safeRadius,
+    maxY - safeRadius,
+    (unit) => Math.cos(unit) ** power,
+    (unit) => Math.sin(unit) ** power
+  );
+  const bottomLeft = arc(
+    cornerCenter,
+    maxY - safeRadius,
+    (unit) => -(Math.sin(unit) ** power),
+    (unit) => Math.cos(unit) ** power
+  );
+  const topLeft = arc(
+    cornerCenter,
+    cornerCenter,
+    (unit) => -(Math.cos(unit) ** power),
+    (unit) => -(Math.sin(unit) ** power)
+  );
+
+  return `M ${cornerCenter},${minY} L ${maxX - safeRadius},${minY} ${topRight} L ${maxX},${
+    maxY - safeRadius
+  } ${bottomRight} L ${maxX - safeRadius},${maxY} ${bottomLeft} L ${minX},${
+    maxY - safeRadius
+  } ${topLeft} Z`;
+}
+
+function applySquircle(el, radius = 34, exponent = 4) {
+  const namespace = "http://www.w3.org/2000/svg";
+  const originalBackground = getComputedStyle(el).backgroundColor;
+  const originalBorderColor = getComputedStyle(el).borderTopColor;
+  const originalBorderWidth = parseFloat(getComputedStyle(el).borderTopWidth) || 0;
+  const originalBoxShadow = getComputedStyle(el).boxShadow;
+  const svg = document.createElementNS(namespace, "svg");
+  const shadowPath = document.createElementNS(namespace, "path");
+  const path = document.createElementNS(namespace, "path");
+
+  const parseShadow = (boxShadow) => {
+    if (!boxShadow || boxShadow === "none") return null;
+
+    const colorMatch = boxShadow.match(/(?:rgba?\([^)]+\)|#[0-9a-fA-F]+)/);
+    const numberMatches = boxShadow.match(/-?\d*\.?\d+px/g) || [];
+
+    if (!colorMatch || numberMatches.length < 2) return null;
+
+    const [offsetX, offsetY] = numberMatches;
+    return {
+      color: colorMatch[0],
+      offsetX,
+      offsetY,
+    };
+  };
+
+  const originalShadow = parseShadow(originalBoxShadow);
+
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  svg.style.position = "absolute";
+  svg.style.inset = "0";
+  svg.style.width = "100%";
+  svg.style.height = "100%";
+  svg.style.zIndex = "-1";
+  svg.style.pointerEvents = "none";
+  svg.style.overflow = "visible";
+  shadowPath.setAttribute("fill", originalShadow?.color || "transparent");
+  shadowPath.setAttribute("stroke", "none");
+  shadowPath.style.opacity = originalShadow ? "1" : "0";
+  shadowPath.style.transition = "transform 160ms ease";
+  shadowPath.style.transform = originalShadow
+    ? `translate(${originalShadow.offsetX}, ${originalShadow.offsetY})`
+    : "none";
+  shadowPath.style.transformBox = "fill-box";
+  path.setAttribute("fill", originalBackground);
+  path.setAttribute("stroke", originalBorderColor);
+  path.setAttribute("stroke-linejoin", "round");
+  path.style.transition = "fill 160ms ease, stroke 160ms ease";
+  svg.append(shadowPath, path);
+
+  const getVisualColors = () => {
+    const styles = getComputedStyle(el);
+    let fill = styles.backgroundColor === "rgba(0, 0, 0, 0)" ? originalBackground : styles.backgroundColor;
+    let stroke = styles.borderTopColor === "rgba(0, 0, 0, 0)" ? originalBorderColor : styles.borderTopColor;
+
+    if (el.matches(".hero .primary-button:hover")) {
+      fill = getComputedStyle(document.documentElement).getPropertyValue("--pink").trim() || "#ef38cf";
+      stroke = "#ffffff";
+    }
+
+    if (el.matches(".contact .big:hover")) {
+      stroke = getComputedStyle(document.documentElement).getPropertyValue("--pink").trim() || "#ef38cf";
+    }
+
+    return { fill, stroke };
+  };
+
+  const apply = () => {
+    const { width, height } = el.getBoundingClientRect();
+    const styles = getComputedStyle(el);
+    const borderWidth = parseFloat(styles.borderTopWidth) || originalBorderWidth;
+    const inset = borderWidth / 2;
+    const { fill, stroke } = getVisualColors();
+    const shadowTransform = el.matches(":hover, :focus-visible")
+      ? "translate(0, 0)"
+      : originalShadow
+        ? `translate(${originalShadow.offsetX}, ${originalShadow.offsetY})`
+        : "none";
+
+    if (!width || !height) return;
+
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    const shapePath = squirclePath(width - borderWidth, height - borderWidth, radius - inset, exponent, inset);
+    shadowPath.setAttribute("d", shapePath);
+    shadowPath.style.transform = shadowTransform;
+    path.setAttribute("d", shapePath);
+    path.setAttribute("stroke-width", borderWidth);
+    path.setAttribute("fill", fill);
+    path.setAttribute("stroke", stroke);
+  };
+
+  const scheduleApply = () => {
+    apply();
+    requestAnimationFrame(() => {
+      apply();
+      requestAnimationFrame(apply);
+    });
+    window.setTimeout(apply, 180);
+  };
+
+  el.style.position = getComputedStyle(el).position === "static" ? "relative" : getComputedStyle(el).position;
+  el.style.isolation = "isolate";
+  el.style.backgroundColor = "transparent";
+  el.style.borderColor = "transparent";
+  el.style.boxShadow = "none";
+  el.prepend(svg);
+
+  if (window.ResizeObserver) {
+    new ResizeObserver(apply).observe(el);
+  } else {
+    window.addEventListener("resize", apply);
+  }
+
+  apply();
+  el.addEventListener("mouseenter", scheduleApply);
+  el.addEventListener("mouseleave", scheduleApply);
+  el.addEventListener("focus", scheduleApply);
+  el.addEventListener("blur", scheduleApply);
+  el.addEventListener("transitionrun", scheduleApply);
+  el.addEventListener("transitionend", apply);
+}
+
+function applyButtonSquircles() {
+  document
+    .querySelectorAll(
+      ".primary-button, .outline-button, .hello-strip__button, .experience .experience-button, .hero .primary-button, .contact .big"
+    )
+    .forEach((el) => applySquircle(el, 34, 4));
+}
+
 applyLanguage(detectInitialLanguage());
 createCubeFrameAnimator();
 createAboutCarousel();
 createProjectCarousels();
+applyButtonSquircles();
