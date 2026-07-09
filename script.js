@@ -39,18 +39,18 @@
     "about.expertise.artBody": "Shaping the visual direction of projects: from concept development and defining the stylistic approach to maintaining consistency throughout every stage of execution",
     "experience.title": "Experience",
     "experience.item1.date": "September 2025 - Present",
-    "experience.item1.company": "Reg.ru / leading Russian hosting provider",
+    "experience.item1.company": "Reg.ru / leading russian hosting provider",
     "experience.item1.title": "Communication Designer",
-    "experience.item1.body": "Working with the brand's visual language: digital, merchandise and events, including major conferences and client events. Supporting and developing the visual system after the rebrand, collaborating with the team to implement solutions quickly",
+    "experience.item1.body": "Working with the brand’s visual language across digital, merchandise, and event communication, including large-scale conferences and client events. Supporting and evolving the visual system after rebranding while collaborating closely with teams to deliver fast and effective design solutions",
     "experience.item2.date": "September 2021 - Present",
-    "experience.item2.company": "Art direction (projects) / work across formats and environments",
+    "experience.item2.company": "Art direction / cross-media projects",
     "experience.item2.title": "Multidisciplinary Designer",
-    "experience.item2.body": "Working across different design directions, from small projects to major clients and the full visual cycle",
+    "experience.item2.body": "Working across different areas of design — from small independent projects to large clients and full-cycle visual systems",
     "experience.item3.date": "April 2024 - August 2025",
-    "experience.item3.company": "Pravoe Polusharie Introverta / online self-development platform",
+    "experience.item3.company": "Art for introvert / self-improvement platform",
     "experience.item3.title": "Graphic / Communication Designer",
-    "experience.item3.body": "Focused on external brand communication in digital environments and social media, developing visual content and campaigns. Creating merchandise and design materials for different audience touchpoints.",
-    "experience.cta": "View full experience in CV →",
+    "experience.item3.body": "Focused on external brand communication across digital platforms and social media. Developed visual content, campaigns, merchandise, and communication materials for different audience touchpoints",
+    "experience.cta": "View full experience in CV",
     "contact.title": "Let's work<br />together ;)",
     "contact.cta": "Contact me",
     "footer.projects": "Selected projects",
@@ -115,9 +115,9 @@
     "experience.item2.body": "Работа с разными направлениями дизайна — от небольших проектов до крупных клиентов и полного визуального цикла",
     "experience.item3.date": "апр. 2024 г. — авг. 2025 г.",
     "experience.item3.company": "Правое полушарие интроверта / онлайн-платформа для саморазвития",
-    "experience.item3.title": "Graphic / Communication Designer",
+    "experience.item3.title": "Графический / коммуникационный дизайнер",
     "experience.item3.body": "Фокус на внешней коммуникации бренда в digital-среде и социальных сетях, разработка визуального контента и кампаний. Создание мерча и дизайн-материалов для разных точек контакта с аудиторией",
-    "experience.cta": "Ознакомиться с опытом детальнее в CV →",
+    "experience.cta": "Ознакомиться с опытом детальнее в CV",
     "contact.title": "Давайте работать<br />вместе ;)",
     "contact.cta": "Связаться",
     "footer.projects": "Избранные проекты",
@@ -176,6 +176,8 @@ function applyLanguage(lang) {
   });
 
   normalizeDesktopProjectTitles(lang);
+  normalizeDesktopExperienceText(lang);
+  normalizeExperienceDurations(lang);
 }
 
 function normalizeDesktopProjectTitles(lang) {
@@ -212,6 +214,44 @@ function normalizeDesktopProjectTitles(lang) {
   });
 }
 
+function normalizeDesktopExperienceText(lang) {
+  const dictionary = translations[lang] || translations.en;
+  const isDesktop = window.matchMedia(`(min-width: ${BREAKPOINTS.desktopMin}px)`).matches;
+
+  document.querySelectorAll(".experience-copy h3[data-i18n], .experience-company[data-i18n]").forEach((node) => {
+    const key = node.dataset.i18n;
+    let value = dictionary[key] || "";
+
+    if (isDesktop && (key === "experience.item2.company" || key === "experience.item3.company")) {
+      value = value.replace(" / ", " /<br />");
+      node.innerHTML = value;
+      return;
+    }
+
+    node.textContent = value;
+  });
+}
+
+function normalizeExperienceDurations(lang) {
+  const compactDurations = {
+    en: {
+      "experience.item1.date": "2025 - pr.",
+      "experience.item2.date": "2021 - pr.",
+      "experience.item3.date": "2024 - 2025"
+    },
+    ru: {
+      "experience.item1.date": "2025 - н.вр",
+      "experience.item2.date": "2021 - н.вр",
+      "experience.item3.date": "2024 - 2025"
+    }
+  };
+
+  document.querySelectorAll(".experience-left time[data-i18n]").forEach((node) => {
+    const value = compactDurations[lang]?.[node.dataset.i18n];
+    if (value) node.dataset.short = value;
+  });
+}
+
 langToggle.addEventListener("click", () => {
   const nextLang = document.documentElement.lang === "ru" ? "en" : "ru";
   const helloStrip = document.querySelector(".hello-strip");
@@ -231,6 +271,7 @@ langToggle.addEventListener("click", () => {
 
 window.addEventListener("resize", () => {
   normalizeDesktopProjectTitles(document.documentElement.lang);
+  normalizeDesktopExperienceText(document.documentElement.lang);
 });
 
 menuButton.addEventListener("click", () => {
