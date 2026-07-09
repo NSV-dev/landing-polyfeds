@@ -1156,7 +1156,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     min-height: 31.4px;
     padding: 10px 15px;
     border-width: 2px;
-    border-radius: var(--button-radius);
+    border-radius: 11.1111px;
     font-size: 12px;
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 0 white;
@@ -1758,7 +1758,7 @@ html[lang="ru"] .coded-project--day h3 {
   grid-template-columns: 333fr 157fr;
 }
 
-.bcn-ellipses {
+icn-ellipses {
   position: absolute;
   z-index: 12;
   display: block;
