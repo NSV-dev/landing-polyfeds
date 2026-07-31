@@ -4878,7 +4878,7 @@ icn-ellipses {
 
   .nav {
     --menu-inset: 12px;
-    height: calc(100svh - (var(--menu-border-space) * 2));
+    height: calc(100dvh - (var(--menu-border-space) * 2));
     min-height: 0;
     border-radius: 8px;
   }
