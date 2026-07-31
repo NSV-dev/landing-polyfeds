@@ -4655,7 +4655,7 @@ icn-ellipses {
   display: grid;
   width: 100%;
   margin: 60px 0 0;
-  gap: 45px;
+  gap: 50px;
 }
 
 .timeline article,
@@ -4790,7 +4790,7 @@ icn-ellipses {
   .timeline {
     width: 100%;
     margin-top: 44px;
-    gap: 34px;
+    gap: 50px;
   }
 
   .timeline article,
@@ -5054,7 +5054,7 @@ html.js body {
   .timeline {
     width: 100%;
     margin-top: 34px;
-    gap: 40px;
+    gap: 50px;
   }
 
   .timeline article,
