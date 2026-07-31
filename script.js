@@ -447,12 +447,15 @@ function createCubeFrameAnimator() {
 
 function createAboutCarousel() {
   const initialIndex = 1;
+  const titleCenterOffset = 6;
   const carousel = document.querySelector("[data-about-carousel]");
   if (!carousel) return;
 
   const aboutSection = carousel.closest(".about");
   const slides = [...carousel.querySelectorAll("[data-about-slide]")];
   const dots = [...carousel.querySelectorAll(".about-dot")];
+  const dotsTrack = carousel.querySelector(".about-dots");
+  const dotIndicator = carousel.querySelector(".about-dot-indicator:not(.about-dot-indicator--before):not(.about-dot-indicator--after)");
   const copySlides = [...document.querySelectorAll("[data-about-copy]")];
   const titleStrip = carousel.querySelector("[data-about-title-strip]");
   const titleViewport = carousel.querySelector(".about-title-viewport");
@@ -463,7 +466,7 @@ function createAboutCarousel() {
   const shapePath = carousel.querySelector("[data-about-shape-path]");
   const clipPath = carousel.querySelector("[data-about-clip-path]");
   let activeIndex = initialIndex;
-  let titlePosition = initialIndex + 3;
+  let titlePosition = initialIndex + titleCenterOffset;
   let shapeAnimationFrame = 0;
   let swipeStartX = 0;
   let swipeStartY = 0;
@@ -582,8 +585,9 @@ function createAboutCarousel() {
 
     if (normalizedIndex === activeIndex) return;
 
-    prepareTitleWrap(previousIndex, normalizedIndex, direction);
+    prepareTitleWrap(previousIndex);
     carousel.style.setProperty("--about-active-index", normalizedIndex);
+    carousel.style.setProperty("--about-indicator-index", nextIndex);
     aboutSection.style.setProperty("--about-copy-enter-x", `${direction * -100}vw`);
     aboutSection.style.setProperty("--about-copy-exit-x", `${direction * 100}vw`);
     animateShape(previousIndex, normalizedIndex);
@@ -661,15 +665,24 @@ function createAboutCarousel() {
   shapeSvg.addEventListener("pointerup", endShapeSwipe);
   shapeSvg.addEventListener("pointercancel", endShapeSwipe);
 
+  dotIndicator.addEventListener("transitionend", (event) => {
+    if (event.propertyName !== "transform") return;
+
+    const indicatorIndex = Number(carousel.style.getPropertyValue("--about-indicator-index"));
+    if (indicatorIndex >= 0 && indicatorIndex < slides.length) return;
+
+    dotsTrack.classList.add("is-resetting");
+    carousel.style.setProperty("--about-indicator-index", String(activeIndex));
+    void dotsTrack.offsetWidth;
+    dotsTrack.classList.remove("is-resetting");
+  });
+
   carousel.style.setProperty("--about-active-index", String(initialIndex));
+  carousel.style.setProperty("--about-indicator-index", String(initialIndex));
   setShapePath(pointsToPath(shapeFrames[initialIndex]));
   setTitleClip(shapeFrames[initialIndex]);
   slides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== initialIndex)));
   copySlides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== initialIndex)));
-
-  function getCenteredTitlePosition() {
-    return activeIndex + 3;
-  }
 
   function getNextTitlePosition(index, direction) {
     const candidatePositions = getTitlePositions(index);
@@ -688,18 +701,14 @@ function createAboutCarousel() {
       .map(({ position }) => position);
   }
 
-  function prepareTitleWrap(previousIndex, nextIndex, direction) {
-    const candidatePositions = getTitlePositions(nextIndex);
-    const hasVisibleDestination =
-      direction > 0
-        ? candidatePositions.some((position) => position > titlePosition)
-        : candidatePositions.some((position) => position < titlePosition);
+  function prepareTitleWrap(previousIndex) {
+    const centeredPosition = previousIndex + titleCenterOffset;
+    if (titlePosition === centeredPosition) return;
 
-    if (hasVisibleDestination) return;
-
-    const previousPositions = getTitlePositions(previousIndex);
-    titlePosition = direction > 0 ? previousPositions[0] : previousPositions[previousPositions.length - 1];
+    titlePosition = centeredPosition;
     updateTitleStrip({ instant: true });
+    void titleStrip.offsetWidth;
+    titleStrip.style.transition = "";
   }
 
 
@@ -723,24 +732,8 @@ function createAboutCarousel() {
     const nextOffset = currentTransform.m41 + stageCenter - itemCenter;
     titleStrip.style.transform = `translate(${nextOffset}px, -50%)`;
 
-    if (instant) {
-      requestAnimationFrame(() => {
-        titleStrip.style.transition = "";
-      });
-    }
+    if (instant) requestAnimationFrame(() => (titleStrip.style.transition = ""));
   }
-
-  function normalizeTitlePosition() {
-    const centeredPosition = getCenteredTitlePosition();
-    if (titlePosition === centeredPosition) return;
-
-    titlePosition = centeredPosition;
-    updateTitleStrip({ instant: true });
-  }
-
-  titleStrip.addEventListener("transitionend", (event) => {
-    if (event.propertyName === "transform") normalizeTitlePosition();
-  });
 
   document.addEventListener("languagechange", () => {
     updateTitleStrip({ instant: true });
