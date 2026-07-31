@@ -2745,14 +2745,14 @@ icn-ellipses {
   .coded-project--fedosov {
     position: relative;
     display: block;
-    margin-bottom: 100px;
+    margin-bottom: 160px;
   }
 
   .coded-project:not(:last-of-type)::after {
     content: "";
     position: absolute;
     right: 5%;
-    bottom: -50px;
+    bottom: -80px;
     left: 5%;
     height: 0;
     border: 1px solid #000;
