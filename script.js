@@ -578,10 +578,10 @@ function createAboutCarousel() {
     shapeAnimationFrame = requestAnimationFrame(render);
   }
 
-  function setActiveSlide(nextIndex) {
+  function setActiveSlide(nextIndex, requestedDirection) {
     const previousIndex = activeIndex;
     const normalizedIndex = (nextIndex + slides.length) % slides.length;
-    const direction = nextIndex > previousIndex ? 1 : nextIndex < previousIndex ? -1 : normalizedIndex >= previousIndex ? 1 : -1;
+    const direction = requestedDirection ?? (nextIndex > previousIndex ? 1 : -1);
 
     if (normalizedIndex === activeIndex) return;
 
@@ -619,11 +619,17 @@ function createAboutCarousel() {
   }
 
   dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => setActiveSlide(index));
+    dot.addEventListener("click", () => {
+      const forwardDistance = (index - activeIndex + slides.length) % slides.length;
+      const backwardDistance = (activeIndex - index + slides.length) % slides.length;
+      const direction = forwardDistance <= backwardDistance ? 1 : -1;
+      const distance = direction > 0 ? forwardDistance : backwardDistance;
+      setActiveSlide(activeIndex + direction * distance, direction);
+    });
   });
 
-  prevButton.addEventListener("click", () => setActiveSlide(activeIndex - 1));
-  nextButton.addEventListener("click", () => setActiveSlide(activeIndex + 1));
+  prevButton.addEventListener("click", () => setActiveSlide(activeIndex - 1, -1));
+  nextButton.addEventListener("click", () => setActiveSlide(activeIndex + 1, 1));
 
   function startShapeSwipe(event) {
     if (event.pointerType === "mouse" && event.button !== 0) return;
@@ -649,7 +655,8 @@ function createAboutCarousel() {
     if (!isHorizontalSwipe && !isQuickSwipe) return;
 
     swipeHandled = true;
-    setActiveSlide(activeIndex + (deltaX < 0 ? 1 : -1));
+    const direction = deltaX < 0 ? 1 : -1;
+    setActiveSlide(activeIndex + direction, direction);
   }
 
   function endShapeSwipe(event) {
@@ -724,12 +731,9 @@ function createAboutCarousel() {
     const activeItem = titleItems[titlePosition];
     if (!activeItem) return;
 
-    const stageRect = titleStrip.parentElement.getBoundingClientRect();
-    const itemRect = activeItem.getBoundingClientRect();
-    const stageCenter = stageRect.left + stageRect.width / 2;
-    const itemCenter = itemRect.left + itemRect.width / 2;
-    const currentTransform = new DOMMatrixReadOnly(getComputedStyle(titleStrip).transform);
-    const nextOffset = currentTransform.m41 + stageCenter - itemCenter;
+    const stageCenter = titleStrip.parentElement.clientWidth / 2;
+    const itemCenter = activeItem.offsetLeft + activeItem.offsetWidth / 2;
+    const nextOffset = stageCenter - itemCenter;
     titleStrip.style.transform = `translate(${nextOffset}px, -50%)`;
 
     if (instant) requestAnimationFrame(() => (titleStrip.style.transition = ""));
