@@ -42,6 +42,7 @@
   --heading-size-section: 38px;
   --body-size: 16px;
   --body-line: 1.35;
+  --responsive-font-bump: 0px;
   --carousel-gap: 14px;
   --frame-width: 1200px;
   --page-pad: 80px;
@@ -58,6 +59,12 @@ html {
   background: var(--bg);
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --responsive-font-bump: 2px;
+  }
 }
 
 body {
@@ -135,7 +142,7 @@ main::before {
 .logo,
 .nav a,
 .lang-switch {
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0;
@@ -236,7 +243,7 @@ html[lang="en"] .nav {
 .hero-discipline {
   margin: 0;
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   font-weight: 400;
   font-style: normal;
   line-height: 1;
@@ -253,7 +260,7 @@ html[lang="en"] .nav {
   transform: translateX(-50%);
   color: white;
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-  font-size: 105.61px;
+  font-size: calc(105.61px + var(--responsive-font-bump));
   font-weight: 700;
   font-style: normal;
   line-height: 110.01px;
@@ -296,7 +303,7 @@ html[lang="en"] .nav {
   color: white;
   border-color: white;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 25px;
+  font-size: calc(25px + var(--responsive-font-bump));
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0;
@@ -339,7 +346,7 @@ html[lang="en"] .nav {
   background: var(--bg);
   color: var(--ink);
   font-weight: 700;
-  font-size: 14px;
+  font-size: calc(14px + var(--responsive-font-bump));
   box-shadow: var(--button-shadow);
 }
 
@@ -399,7 +406,7 @@ html[lang="en"] .nav {
   background: #f248ce;
   color: #ffffff;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px + var(--responsive-font-bump));
   font-weight: 500;
   font-style: normal;
   line-height: 1.1;
@@ -483,7 +490,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 .projects h2,
 .experience h2 {
   margin: 0 0 46px;
-  font-size: var(--heading-size-section);
+  font-size: calc(var(--heading-size-section) + var(--responsive-font-bump));
   font-weight: 400;
 }
 
@@ -499,7 +506,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   scroll-margin-top: calc(var(--header-height) + 10px);
   white-space: nowrap;
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-  font-size: 80.1048px;
+  font-size: calc(80.1048px + var(--responsive-font-bump));
   font-weight: 700;
   line-height: 83px;
   text-align: center;
@@ -551,7 +558,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   background: #FAFEF8;
   color: var(--ink);
   font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
@@ -672,7 +679,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .logo,
   .nav a,
   .lang-switch {
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
     line-height: 1.2;
   }
 
@@ -734,7 +741,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     position: static;
     padding: 0;
     color: white;
-    font-size: 36px;
+    font-size: calc(36px + var(--responsive-font-bump));
     font-weight: 500;
     line-height: 1.2;
   }
@@ -809,7 +816,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .nav-social a {
     position: static;
     left: auto;
-    font-size: 36px;
+    font-size: calc(36px + var(--responsive-font-bump));
     line-height: 1.2;
   }
 
@@ -830,14 +837,14 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
   .hero-title p,
   .hero-discipline {
-    font-size: 24px;
+    font-size: calc(24px + var(--responsive-font-bump));
     line-height: 1;
   }
 
   .hero-name {
     top: 56px;
     width: 432px;
-    font-size: 62px;
+    font-size: calc(62px + var(--responsive-font-bump));
     line-height: 64px;
   }
 
@@ -858,7 +865,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     padding: 11px 18px;
     border-width: 2px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
     box-shadow: 0 4px 0 white;
   }
 
@@ -956,7 +963,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .logo,
   .nav a,
   .lang-switch {
-    font-size: 10px;
+    font-size: calc(10px + var(--responsive-font-bump));
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0;
@@ -1028,7 +1035,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     position: static;
     padding: 0;
     color: white;
-    font-size: 36px;
+    font-size: calc(36px + var(--responsive-font-bump));
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0;
@@ -1104,7 +1111,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .nav-social a {
     position: static;
     left: auto;
-    font-size: 36px;
+    font-size: calc(36px + var(--responsive-font-bump));
     line-height: 1.2;
   }
 
@@ -1132,14 +1139,14 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
   .hero-title p,
   .hero-discipline {
-    font-size: 18px;
+    font-size: calc(18px + var(--responsive-font-bump));
     line-height: 1;
   }
 
   .hero-name {
     top: 74px;
     width: min(760px, calc(100vw - 48px));
-    font-size: 48px;
+    font-size: calc(48px + var(--responsive-font-bump));
     line-height: 1.04;
   }
 
@@ -1164,7 +1171,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     padding: 10px 15px;
     border-width: 2px;
     border-radius: 11.1111px;
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 0 white;
   }
@@ -1192,7 +1199,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .ticker-caption {
     display: none;
     padding: 18px 14px;
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
   }
 
   .ticker-item:hover .ticker-caption,
@@ -1252,7 +1259,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
   .projects h2 {
     margin-bottom: 28px;
-    font-size: 24px;
+    font-size: calc(24px + var(--responsive-font-bump));
   }
 
 
@@ -1260,7 +1267,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     width: 100vw;
     height: 76px;
     margin: 0 auto;
-    font-size: 38px;
+    font-size: calc(38px + var(--responsive-font-bump));
     line-height: 26px;
   }
 
@@ -1273,7 +1280,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     padding: 11px 16px;
     border-width: 2px;
     border-radius: 9px;
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
     box-shadow: 0 4px 0 var(--ink);
     transform: translateY(0);
   }
@@ -1331,7 +1338,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   width: auto;
   margin: 0 0 60px;
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0;
@@ -1369,7 +1376,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   width: auto;
   color: var(--ink);
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-  font-size: 58px;
+  font-size: calc(58px + var(--responsive-font-bump));
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: 0;
@@ -1391,7 +1398,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 .project-note p {
   max-width: 100%;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0;
@@ -1488,7 +1495,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   border-radius: 0;
   color: #878585;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: calc(14px + var(--responsive-font-bump));
   font-weight: 500;
   line-height: 1.2;
   text-decoration: none;
@@ -1655,7 +1662,7 @@ html[lang="ru"] .project-link > span[lang="ru"] {
 .coded-project--reg h3 {
   grid-column: 1 / 6;
   max-width: 411px;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   line-height: 1;
 }
 
@@ -1667,7 +1674,7 @@ html[lang="ru"] .project-link > span[lang="ru"] {
 }
 
 .coded-project--reg .project-note p {
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   line-height: 1.2;
 }
 
@@ -1705,12 +1712,12 @@ html[lang="ru"] .project-link > span[lang="ru"] {
 .coded-project--day h3 {
   grid-column: 7 / -1;
   grid-row: 1;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   line-height: 1.04;
 }
 
 html[lang="ru"] .coded-project--day h3 {
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
 }
 
 .coded-project--day .project-note--problem {
@@ -1971,7 +1978,7 @@ icn-ellipses {
 
   .projects-coded h2 {
     margin-bottom: 34px;
-    font-size: 26px;
+    font-size: calc(26px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -1984,7 +1991,7 @@ icn-ellipses {
     grid-column: 1 / -1;
     grid-row: auto;
     max-width: 640px;
-    font-size: 42px;
+    font-size: calc(42px + var(--responsive-font-bump));
   }
 
   .coded-project .project-note--problem {
@@ -2042,7 +2049,7 @@ icn-ellipses {
 
   .projects-coded h2 {
     margin-bottom: 34px;
-    font-size: 22px;
+    font-size: calc(22px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -2054,12 +2061,12 @@ icn-ellipses {
   .coded-project h3 {
     max-width: 100%;
     margin-bottom: 0;
-    font-size: clamp(30px, 8.4vw, 42px);
+    font-size: calc(clamp(30px, 8.4vw, 42px) + var(--responsive-font-bump));
     line-height: 1;
   }
 
   html[lang="ru"] .coded-project--day h3 {
-    font-size: 29px;
+    font-size: calc(29px + var(--responsive-font-bump));
   }
 
   .project-note {
@@ -2078,7 +2085,7 @@ icn-ellipses {
   }
 
   .project-note p {
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
     line-height: 1.25;
   }
 
@@ -2130,7 +2137,7 @@ icn-ellipses {
 
   .project-link {
     margin-top: -8px;
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
   }
 
   .project-float,
@@ -2166,7 +2173,7 @@ icn-ellipses {
 
   .projects-coded h2 {
     margin-bottom: 34px;
-    font-size: 26px;
+    font-size: calc(26px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -2199,7 +2206,7 @@ icn-ellipses {
     max-width: none;
     margin: 0;
     font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-    font-size: 26px;
+    font-size: calc(26px + var(--responsive-font-bump));
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -2215,7 +2222,7 @@ icn-ellipses {
   }
 
   html[lang="ru"] .coded-project--day h3 {
-    font-size: 26px;
+    font-size: calc(26px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -2258,7 +2265,7 @@ icn-ellipses {
   .project-body .project-note .label,
   .project-body .project-note p:not(.label) {
     margin: 0;
-    font-size: 13px;
+    font-size: calc(13px + var(--responsive-font-bump));
     font-weight: 500;
     line-height: 1.2;
   }
@@ -2338,7 +2345,7 @@ icn-ellipses {
     display: inline-flex;
     margin: 8px 0 0;
     color: rgba(5, 5, 5, 0.42);
-    font-size: 13px;
+    font-size: calc(13px + var(--responsive-font-bump));
   }
 
   .project-carousel-controls {
@@ -2495,7 +2502,7 @@ icn-ellipses {
     width: 100vw;
     height: 76px;
     margin: 0 auto;
-    font-size: 50px;
+    font-size: calc(50px + var(--responsive-font-bump));
     line-height: 26px;
   }
 
@@ -2508,7 +2515,7 @@ icn-ellipses {
     padding: 14px 20px;
     border-width: 2px;
     border-radius: 11px;
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
     box-shadow: 0 5px 0 var(--ink);
     transform: translateY(0);
   }
@@ -2569,7 +2576,7 @@ icn-ellipses {
   html[lang="ru"] .coded-project--day h3 {
     max-width: 334px;
     margin-bottom: 0;
-    font-size: 26px;
+    font-size: calc(26px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -2582,7 +2589,7 @@ icn-ellipses {
   .project-body .project-note .label,
   .project-body .project-note p:not(.label) {
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: calc(15px + var(--responsive-font-bump));
     line-height: 1.2;
   }
 
@@ -2734,7 +2741,7 @@ icn-ellipses {
 
   .projects-coded h2 {
     margin-bottom: 34px;
-    font-size: 22px;
+    font-size: calc(22px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -2767,13 +2774,13 @@ icn-ellipses {
     max-width: none;
     grid-column: auto;
     margin-bottom: 20px;
-    font-size: 22px;
+    font-size: calc(22px + var(--responsive-font-bump));
     line-height: 1;
     text-align: left;
   }
 
   html[lang="ru"] .coded-project--day h3 {
-    font-size: 22px;
+    font-size: calc(22px + var(--responsive-font-bump));
     text-align: left;
   }
 
@@ -2787,14 +2794,14 @@ icn-ellipses {
 
   .project-body,
   .project-body .project-note {
-    grid-template-columns: 64px minmax(0, 1fr);
+    grid-template-columns: 76px minmax(0, 1fr);
     column-gap: 8px;
   }
 
   .project-body .project-note .label,
   .project-body .project-note p:not(.label),
   .project-body .project-link {
-    font-size: 13px;
+    font-size: calc(13px + var(--responsive-font-bump));
     line-height: 1.2;
   }
 
@@ -2858,7 +2865,7 @@ icn-ellipses {
   .project-carousel-button {
     width: 38px;
     height: 54px;
-    font-size: 22px;
+    font-size: calc(22px + var(--responsive-font-bump));
   }
 
   .project-carousel-button--prev {
@@ -2941,7 +2948,7 @@ icn-ellipses {
 
 @media (min-width: 1200px) {
   .project-link {
-    font-size: 18px;
+    font-size: calc(18px + var(--responsive-font-bump));
   }
 
   .project-link-arrow {
@@ -2998,7 +3005,7 @@ icn-ellipses {
   }
 
   .coded-project--fedosov h3 {
-    font-size: var(--heading-size-section);
+    font-size: calc(var(--heading-size-section) + var(--responsive-font-bump));
     line-height: 0.9;
   }
 
@@ -3152,7 +3159,7 @@ icn-ellipses {
     width: 505px;
     margin: 0;
     font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-    font-size: 50px;
+    font-size: calc(50px + var(--responsive-font-bump));
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -3714,7 +3721,7 @@ icn-ellipses {
   align-items: baseline;
   gap: 16px;
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
-  font-size: 54px;
+  font-size: calc(54px + var(--responsive-font-bump));
   font-weight: 400;
   line-height: 1;
   white-space: nowrap;
@@ -3810,7 +3817,7 @@ icn-ellipses {
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   line-height: 100%;
 }
 
@@ -3819,7 +3826,7 @@ icn-ellipses {
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   line-height: 100%;
 }
 
@@ -3827,7 +3834,7 @@ icn-ellipses {
   max-width: 100%;
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 500;
   line-height: 120%;
 }
@@ -3838,7 +3845,7 @@ icn-ellipses {
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   line-height: 100%;
 }
 
@@ -3874,7 +3881,7 @@ icn-ellipses {
   width: 520px;
   height: 53px;
   margin: 0;
-  font-size: var(--heading-size-section);
+  font-size: calc(var(--heading-size-section) + var(--responsive-font-bump));
   line-height: 1.1;
 }
 
@@ -3908,7 +3915,7 @@ icn-ellipses {
 
 .timeline time {
   color: var(--ink);
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 700;
   line-height: 1.22;
 }
@@ -3918,7 +3925,7 @@ icn-ellipses {
   margin: 0;
   padding-left: 44px;
   color: var(--ink);
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 700;
   line-height: 1.22;
 }
@@ -3939,7 +3946,7 @@ icn-ellipses {
   grid-row: 1;
   margin: 0;
   color: var(--ink);
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 700;
   line-height: 1.22;
 }
@@ -3949,7 +3956,7 @@ icn-ellipses {
   grid-row: 2;
   max-width: 687px;
   margin: 0;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 700;
   line-height: 1.22;
 }
@@ -3959,7 +3966,7 @@ icn-ellipses {
   width: 435px;
   height: 62px;
   margin: 60px 0 0 605px;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
 }
 
 .contact {
@@ -3981,7 +3988,7 @@ icn-ellipses {
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 104px;
+  font-size: calc(104px + var(--responsive-font-bump));
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -4001,7 +4008,7 @@ icn-ellipses {
   border-width: 3.60317px;
   border-radius: 15.0132px;
   background: #fafef8;
-  font-size: 28px;
+  font-size: calc(28px + var(--responsive-font-bump));
   line-height: 1;
   box-shadow: 0 10.8086px 0 var(--ink);
   transition: border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
@@ -4039,7 +4046,7 @@ icn-ellipses {
   margin: 0 0 6px;
   color: #7f7f7f;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0;
@@ -4154,7 +4161,7 @@ icn-ellipses {
 
   .about-card-title-strip {
     gap: 8px;
-    font-size: 30px;
+    font-size: calc(30px + var(--responsive-font-bump));
   }
 
   .about-arrows {
@@ -4188,27 +4195,27 @@ icn-ellipses {
 
   .about-copy h2 {
     margin-bottom: 9px;
-    font-size: 24px;
+    font-size: calc(24px + var(--responsive-font-bump));
     line-height: 100%;
     white-space: nowrap;
   }
 
   .about-copy p {
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
     font-weight: 500;
     line-height: 120%;
   }
 
   .about-copy h3 {
     margin: 28px 0 8px;
-    font-size: 24px;
+    font-size: calc(24px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
   .about-copy .about-lead {
     max-width: 100%;
     padding-top: 0;
-    font-size: 24px;
+    font-size: calc(24px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
@@ -4221,7 +4228,7 @@ icn-ellipses {
   .experience h2 {
     width: 648px;
     height: 28px;
-    font-size: 28px;
+    font-size: calc(28px + var(--responsive-font-bump));
   }
 
   .timeline {
@@ -4249,7 +4256,7 @@ icn-ellipses {
   .timeline h3,
   .timeline .experience-body,
   .experience-company {
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
     line-height: 1.22;
   }
 
@@ -4267,7 +4274,7 @@ icn-ellipses {
     height: 40px;
     min-height: 0;
     margin: 44px 0 0 164px;
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
   }
 
   .contact {
@@ -4283,7 +4290,7 @@ icn-ellipses {
     font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 52.9661px;
+    font-size: calc(52.9661px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -4301,7 +4308,7 @@ icn-ellipses {
     font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: calc(20px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -4345,7 +4352,7 @@ icn-ellipses {
     font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
     line-height: 1.2;
   }
 }
@@ -4379,7 +4386,7 @@ icn-ellipses {
 
   .about-card-title-strip {
     gap: 8px;
-    font-size: 24px;
+    font-size: calc(24px + var(--responsive-font-bump));
   }
 
   .about-arrows {
@@ -4426,18 +4433,18 @@ icn-ellipses {
 
   .about-copy h2 {
     margin-bottom: 14px;
-    font-size: 20px;
+    font-size: calc(20px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
   .about-copy h3 {
     margin: 22px 0 8px;
-    font-size: 20px;
+    font-size: calc(20px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
   .about-copy p {
-    font-size: 13px;
+    font-size: calc(13px + var(--responsive-font-bump));
     font-weight: 500;
     line-height: 120%;
   }
@@ -4445,7 +4452,7 @@ icn-ellipses {
   .about-copy .about-lead {
     max-width: 100%;
     padding-top: 0;
-    font-size: 20px;
+    font-size: calc(20px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
@@ -4477,7 +4484,7 @@ icn-ellipses {
   .experience h2 {
     width: 327px;
     height: 29px;
-    font-size: 28px;
+    font-size: calc(28px + var(--responsive-font-bump));
   }
 
   .timeline {
@@ -4499,7 +4506,7 @@ icn-ellipses {
   .experience-company {
     grid-column: 1;
     grid-row: auto;
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
     line-height: 1.22;
   }
 
@@ -4521,7 +4528,7 @@ icn-ellipses {
     width: 327px;
     height: 44px;
     margin: 36px 0 0;
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
   }
 
   .contact {
@@ -4537,7 +4544,7 @@ icn-ellipses {
     font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 37.1672px;
+    font-size: calc(37.1672px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -4555,7 +4562,7 @@ icn-ellipses {
     font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 15.7407px;
+    font-size: calc(15.7407px + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -4600,7 +4607,7 @@ icn-ellipses {
     font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 10.4739px;
+    font-size: calc(10.4739px + var(--responsive-font-bump));
     line-height: 1.2;
   }
 
@@ -4628,7 +4635,7 @@ icn-ellipses {
   font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 50px;
+  font-size: calc(50px + var(--responsive-font-bump));
   line-height: 100%;
 }
 
@@ -4681,7 +4688,7 @@ icn-ellipses {
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   line-height: 120%;
 }
 
@@ -4692,7 +4699,7 @@ icn-ellipses {
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   line-height: 120%;
 }
 
@@ -4739,7 +4746,7 @@ icn-ellipses {
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: calc(18px + var(--responsive-font-bump));
   line-height: 120%;
   white-space: nowrap;
   transition: box-shadow 180ms ease, transform 180ms ease;
@@ -4764,7 +4771,7 @@ icn-ellipses {
   .experience h2 {
     width: auto;
     height: auto;
-    font-size: 24px;
+    font-size: calc(24px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
@@ -4803,7 +4810,7 @@ icn-ellipses {
   .experience-left time::before {
     content: attr(data-short);
     color: #868686;
-    font-size: 16px;
+    font-size: calc(16px + var(--responsive-font-bump));
     line-height: 120%;
   }
 
@@ -4822,7 +4829,7 @@ icn-ellipses {
   .experience-company,
   .timeline h3,
   .timeline .experience-body {
-    font-size: 16px;
+    font-size: calc(16px + var(--responsive-font-bump));
     line-height: 120%;
   }
 
@@ -4837,7 +4844,7 @@ icn-ellipses {
     border-width: 2px;
     border-radius: 7px;
     box-shadow: 0 7px 0 var(--ink);
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
   }
 
   .experience .experience-button:hover {
@@ -4858,7 +4865,7 @@ icn-ellipses {
     font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 26px;
+    font-size: calc(26px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
@@ -4870,7 +4877,7 @@ icn-ellipses {
     padding: 0;
     color: white;
     font-family: Inter, Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
@@ -5028,7 +5035,7 @@ html.js body {
   .experience h2 {
     width: auto;
     height: auto;
-    font-size: 22px;
+    font-size: calc(22px + var(--responsive-font-bump));
     line-height: 100%;
   }
 
@@ -5067,7 +5074,7 @@ html.js body {
   .experience-left time::before {
     content: attr(data-short);
     color: #868686;
-    font-size: 12px;
+    font-size: calc(12px + var(--responsive-font-bump));
     line-height: 120%;
   }
 
@@ -5088,12 +5095,12 @@ html.js body {
 
   .experience-company,
   .timeline h3 {
-    font-size: 16px;
+    font-size: calc(16px + var(--responsive-font-bump));
     line-height: 120%;
   }
 
   .timeline .experience-body {
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
     line-height: 120%;
   }
 
@@ -5107,7 +5114,7 @@ html.js body {
     border-width: 2px;
     border-radius: 7px;
     box-shadow: 0 7px 0 var(--ink);
-    font-size: 14px;
+    font-size: calc(14px + var(--responsive-font-bump));
   }
 
   .experience .experience-button:hover {

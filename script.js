@@ -1067,6 +1067,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
 
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
+  svg.setAttribute("preserveAspectRatio", "none");
   svg.style.position = "absolute";
   svg.style.inset = "0";
   svg.style.width = originalShadow ? `calc(100% + ${Math.abs(originalShadow.offsetXValue)}px)` : "100%";
@@ -1106,8 +1107,17 @@ function applySquircle(el, radius = 34, exponent = 4) {
   };
 
   const apply = () => {
-    const { width, height } = el.getBoundingClientRect();
     const styles = getComputedStyle(el);
+    const requiredWidth = Math.ceil(
+      content.scrollWidth +
+      parseFloat(styles.paddingLeft) +
+      parseFloat(styles.paddingRight) +
+      parseFloat(styles.borderLeftWidth) +
+      parseFloat(styles.borderRightWidth)
+    );
+    el.style.minWidth = `${requiredWidth}px`;
+
+    const { width, height } = el.getBoundingClientRect();
     const borderWidth = parseFloat(styles.borderTopWidth) || originalBorderWidth;
     const inset = borderWidth / 2;
     const { fill, stroke } = getVisualColors();
@@ -1151,6 +1161,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
   content.style.position = "relative";
   content.style.zIndex = "1";
   content.style.display = "inline-flex";
+  content.style.flex = "0 0 auto";
   content.style.alignItems = "center";
   content.style.justifyContent = "center";
   content.style.gap = "inherit";
@@ -1166,6 +1177,14 @@ function applySquircle(el, radius = 34, exponent = 4) {
     new ResizeObserver(apply).observe(el);
   } else {
     window.addEventListener("resize", apply);
+  }
+
+  if (window.MutationObserver) {
+    new MutationObserver(scheduleApply).observe(content, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
   }
 
   apply();
