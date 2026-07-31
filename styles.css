@@ -4375,7 +4375,7 @@ icn-ellipses {
     height: auto;
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 80px 24px 72px;
+    padding: 80px 24px 50px;
   }
 
   .about-carousel {
@@ -5041,7 +5041,7 @@ html.js body {
     height: auto;
     min-height: 600px;
     margin-bottom: 0;
-    padding-block: 50px;
+    padding-block: 0 50px;
   }
 
   .experience h2 {
