@@ -125,7 +125,7 @@ main {
   z-index: 0;
   background: var(--bg);
   padding-top: var(--header-height);
-  filter: blur(0);
+  filter: none;
   transition: filter 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -4014,7 +4014,7 @@ icn-ellipses {
   min-width: 0;
   min-height: 0;
   margin: 0;
-  margin-top: 38px;
+  margin-top: 15px;
   padding: 24px 36px;
   gap: 7.94px;
   border-width: 3.60317px;
@@ -4312,7 +4312,7 @@ icn-ellipses {
     height: auto;
     min-width: 0;
     min-height: 0;
-    margin-top: 24px;
+    margin-top: 15px;
     padding: 16px 24px;
     border-width: 3px;
     border-radius: 11.1111px;
@@ -4566,7 +4566,7 @@ icn-ellipses {
     height: auto;
     min-width: 0;
     min-height: 0;
-    margin-top: 39px;
+    margin-top: 15px;
     padding: 13px 19px;
     border-width: 2.38095px;
     border-radius: 11.1111px;
