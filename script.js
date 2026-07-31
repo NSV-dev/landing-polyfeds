@@ -135,8 +135,8 @@
   }
 };
 
-const langToggle = document.querySelector("[data-lang-toggle]");
-const currentLang = document.querySelector("[data-current-lang]");
+const langToggles = document.querySelectorAll("[data-lang-toggle]");
+const currentLangLabels = document.querySelectorAll("[data-current-lang]");
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
 const BREAKPOINTS = {
@@ -149,6 +149,7 @@ const BREAKPOINTS = {
 function setMenuOpen(isOpen) {
   nav.classList.toggle("is-open", isOpen);
   menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
   document.body.classList.toggle("menu-open", isOpen);
 }
 
@@ -165,7 +166,9 @@ function applyLanguage(lang) {
   const dictionary = translations[lang] || translations.en;
   document.documentElement.lang = lang;
   localStorage.setItem("language", lang);
-  currentLang.textContent = lang.toUpperCase();
+  currentLangLabels.forEach((label) => {
+    label.textContent = lang.toUpperCase();
+  });
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     node.textContent = dictionary[node.dataset.i18n] || "";
@@ -253,8 +256,17 @@ function normalizeExperienceDurations(lang) {
   });
 }
 
-langToggle.addEventListener("click", () => {
+langToggles.forEach((langToggle) => langToggle.addEventListener("click", () => {
   const nextLang = document.documentElement.lang === "ru" ? "en" : "ru";
+  if (langToggle.classList.contains("nav-lang-switch")) {
+    const scrollPosition = { left: window.scrollX, top: window.scrollY };
+    applyLanguage(nextLang);
+    requestAnimationFrame(() => {
+      window.scrollTo({ ...scrollPosition, behavior: "auto" });
+    });
+    return;
+  }
+
   const helloStrip = document.querySelector(".hello-strip");
   const stripTopBefore = helloStrip?.getBoundingClientRect().top;
   applyLanguage(nextLang);
@@ -268,7 +280,7 @@ langToggle.addEventListener("click", () => {
       });
     });
   }
-});
+}));
 
 window.addEventListener("resize", () => {
   normalizeDesktopProjectTitles(document.documentElement.lang);
@@ -279,7 +291,8 @@ menuButton.addEventListener("click", () => {
   setMenuOpen(!nav.classList.contains("is-open"));
 });
 
-nav.addEventListener("click", () => {
+nav.addEventListener("click", (event) => {
+  if (event.target.closest("[data-lang-toggle]")) return;
   setMenuOpen(false);
 });
 
@@ -992,7 +1005,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
   const bg = rootStyles.getPropertyValue("--bg").trim() || "#fafef8";
   const initialStyles = getComputedStyle(el);
   const isTransparent = (color) => color === "transparent" || color === "rgba(0, 0, 0, 0)";
-  const fallbackBackground = el.matches(".hero .primary-button") ? ink : bg;
+  const fallbackBackground = el.matches(".hero .primary-button, .menu-button") ? ink : bg;
   const fallbackBorderColor = el.matches(".hero .primary-button") ? "#ffffff" : ink;
   const originalBackground = isTransparent(initialStyles.backgroundColor)
     ? fallbackBackground
@@ -1002,6 +1015,8 @@ function applySquircle(el, radius = 34, exponent = 4) {
     : initialStyles.borderTopColor;
   const originalBorderWidth = parseFloat(initialStyles.borderTopWidth) || 0;
   const getFallbackShadow = () => {
+    if (el.matches(".menu-button")) return "none";
+
     if (el.matches(".hero .primary-button")) {
       return window.matchMedia("(min-width: 1200px)").matches ? "0px 7px 0px #ffffff" : "0px 4px 0px #ffffff";
     }
@@ -1166,6 +1181,8 @@ function applyButtonSquircles() {
       ".primary-button, .outline-button, .hello-strip__button, .experience .experience-button, .hero .primary-button, .contact .big"
     )
     .forEach((el) => applySquircle(el, 34, 4));
+
+  document.querySelectorAll(".menu-button").forEach((el) => applySquircle(el, 15, 4));
 }
 
 applyLanguage(detectInitialLanguage());
