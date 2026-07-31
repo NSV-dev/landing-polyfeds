@@ -171,7 +171,8 @@ function applyLanguage(lang) {
   });
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
-    node.textContent = dictionary[node.dataset.i18n] || "";
+    const squircleContent = node.querySelector(":scope > [data-squircle-content]");
+    (squircleContent || node).textContent = dictionary[node.dataset.i18n] || "";
   });
 
   document.querySelectorAll("[data-i18n-html]").forEach((node) => {
@@ -1146,6 +1147,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
   el.style.borderColor = "transparent";
   el.style.boxShadow = "none";
   const content = document.createElement("span");
+  content.dataset.squircleContent = "";
   content.style.position = "relative";
   content.style.zIndex = "1";
   content.style.display = "inline-flex";
