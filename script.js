@@ -446,6 +446,7 @@ function createCubeFrameAnimator() {
 }
 
 function createAboutCarousel() {
+  const initialIndex = 1;
   const carousel = document.querySelector("[data-about-carousel]");
   if (!carousel) return;
 
@@ -461,8 +462,8 @@ function createAboutCarousel() {
   const shapeSvg = carousel.querySelector(".about-shape-svg");
   const shapePath = carousel.querySelector("[data-about-shape-path]");
   const clipPath = carousel.querySelector("[data-about-clip-path]");
-  let activeIndex = 0;
-  let titlePosition = 3;
+  let activeIndex = initialIndex;
+  let titlePosition = initialIndex + 3;
   let shapeAnimationFrame = 0;
   let swipeStartX = 0;
   let swipeStartY = 0;
@@ -660,11 +661,11 @@ function createAboutCarousel() {
   shapeSvg.addEventListener("pointerup", endShapeSwipe);
   shapeSvg.addEventListener("pointercancel", endShapeSwipe);
 
-  carousel.style.setProperty("--about-active-index", "0");
-  setShapePath(pointsToPath(shapeFrames[0]));
-  setTitleClip(shapeFrames[0]);
-  slides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== 0)));
-  copySlides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== 0)));
+  carousel.style.setProperty("--about-active-index", String(initialIndex));
+  setShapePath(pointsToPath(shapeFrames[initialIndex]));
+  setTitleClip(shapeFrames[initialIndex]);
+  slides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== initialIndex)));
+  copySlides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== initialIndex)));
 
   function getCenteredTitlePosition() {
     return activeIndex + 3;
