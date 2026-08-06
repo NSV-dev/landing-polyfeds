@@ -616,7 +616,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 }
 
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   :root {
     --frame-width: 1600px;
     --page-pad: 120px;
@@ -1870,7 +1870,7 @@ icn-ellipses {
   border-radius: 999px;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   .projects.projects-coded {
     padding-inline: 120px;
     scroll-margin-top: calc(var(--header-height) + 10px);
@@ -3061,7 +3061,7 @@ icn-ellipses {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   .coded-project--fedosov {
     width: calc(100% + 112px);
     margin-left: -56px;
@@ -3112,7 +3112,7 @@ icn-ellipses {
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1439px) {
+@media (min-width: 1200px) and (max-width: 1599px) {
   .coded-project--fedosov {
     width: calc(100% + 66px);
     margin-left: -33px;
@@ -3356,7 +3356,7 @@ icn-ellipses {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   .coded-project--barcelona {
     min-height: 837px;
   }
@@ -4104,7 +4104,7 @@ icn-ellipses {
   width: 298px;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   .contact {
     height: 509px;
   }
@@ -4138,7 +4138,7 @@ icn-ellipses {
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1439px) {
+@media (min-width: 1200px) and (max-width: 1599px) {
   .about {
     height: 850px;
     padding-top: 40px;
