@@ -4022,6 +4022,8 @@ html[lang="ru"] .coded-project--day h3 {
 
 .contact .big {
   position: static;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
   align-items: flex-end;
   width: fit-content;
   height: auto;
