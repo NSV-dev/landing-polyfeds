@@ -1597,16 +1597,20 @@ html[lang="ru"] .project-link > span[lang="ru"] {
   aspect-ratio: 512 / 250;
 }
 
-.card-day-mobile-static {
+.card-day-video > .card-day-mobile-static {
   display: none;
 }
 
+.card-day-video > .card-day-desktop-animated {
+  display: block;
+}
+
 @media (max-width: 760px) {
-  .card-day-video video {
+  .card-day-video > .card-day-desktop-animated {
     display: none;
   }
 
-  .card-day-video .card-day-mobile-static {
+  .card-day-video > .card-day-mobile-static {
     display: block;
   }
 }
