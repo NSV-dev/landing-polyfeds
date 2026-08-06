@@ -3018,8 +3018,8 @@ html[lang="ru"] .coded-project--day h3 {
   }
 
   .coded-project--fedosov h3 {
-    font-size: calc(var(--heading-size-section) + var(--responsive-font-bump));
-    line-height: 0.9;
+    font-size: calc(50px + var(--responsive-font-bump));
+    line-height: 1;
   }
 
   .coded-project--fedosov .project-note--problem {
