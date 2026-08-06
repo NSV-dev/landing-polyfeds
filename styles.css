@@ -2916,15 +2916,15 @@ html[lang="ru"] .coded-project--day h3 {
 
   .project-body .project-media-grid--fedosov {
     align-items: center;
-    height: 327px;
+    height: auto;
   }
 
   .project-body .project-media-grid--fedosov .project-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 327px;
-    aspect-ratio: auto;
+    height: auto;
+    aspect-ratio: 1 / 1;
     overflow: visible;
     background: transparent;
   }
