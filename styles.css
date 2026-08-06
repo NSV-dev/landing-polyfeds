@@ -1597,6 +1597,20 @@ html[lang="ru"] .project-link > span[lang="ru"] {
   aspect-ratio: 512 / 250;
 }
 
+.card-day-mobile-static {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .card-day-video video {
+    display: none;
+  }
+
+  .card-day-video .card-day-mobile-static {
+    display: block;
+  }
+}
+
 .card-day-phone {
   aspect-ratio: 335 / 393;
 }
@@ -4031,6 +4045,15 @@ html[lang="ru"] .coded-project--day h3 {
   color: var(--pink);
   box-shadow: none;
   transform: translateY(10.8086px);
+}
+
+.contact .big:focus {
+  outline: none;
+}
+
+.contact .big:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
 }
 
 .footer {
