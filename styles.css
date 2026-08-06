@@ -1772,7 +1772,7 @@ html[lang="ru"] .coded-project--day h3 {
   grid-template-columns: 333fr 157fr;
 }
 
-icn-ellipses {
+.bcn-ellipses {
   position: absolute;
   z-index: 12;
   display: block;
