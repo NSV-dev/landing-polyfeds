@@ -4801,6 +4801,7 @@ html[lang="ru"] .coded-project--day h3 {
 @media (min-width: 761px) and (max-width: 1199px) {
   .experience {
     height: 780px;
+    margin-bottom: 100px;
     padding-block: 50px 0;
   }
 
@@ -5064,7 +5065,7 @@ html.js body {
   .experience {
     height: auto;
     min-height: 600px;
-    margin-bottom: 0;
+    margin-bottom: 75px;
     padding-block: 0 50px;
   }
 
