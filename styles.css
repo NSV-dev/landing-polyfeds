@@ -2931,7 +2931,7 @@ html[lang="ru"] .coded-project--day h3 {
 
   .project-body .project-media-grid--fedosov .project-card picture,
   .project-body .project-media-grid--fedosov .project-card img {
-    width: min(100%, 327px);
+    width: 100%;
     height: auto;
     border-radius: 10px;
   }
