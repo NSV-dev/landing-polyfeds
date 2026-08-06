@@ -851,7 +851,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .hero-mark {
     top: 11px;
     width: 352px;
-    height: 263px;
+    height: 275px;
     aspect-ratio: auto;
   }
 
@@ -860,7 +860,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   }
 
   .hero .primary-button {
-    top: 209px;
+    top: 215px;
     min-height: 36.5px;
     padding: 11px 18px;
     border-width: 2px;
@@ -1153,7 +1153,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   .hero-mark {
     top: 24.675px;
     width: 280.833px;
-    height: 227.247px;
+    height: 245px;
     aspect-ratio: auto;
     margin: 0;
   }
@@ -1164,7 +1164,7 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
 
   .hero .primary-button {
     left: 50%;
-    top: 198.265px;
+    top: 205px;
     width: auto;
     height: auto;
     min-height: 31.4px;
