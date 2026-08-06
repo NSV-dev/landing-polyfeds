@@ -1092,12 +1092,12 @@ function applySquircle(el, radius = 34, exponent = 4) {
     let fill = isTransparent(styles.backgroundColor) ? originalBackground : styles.backgroundColor;
     let stroke = isTransparent(styles.borderTopColor) ? originalBorderColor : styles.borderTopColor;
 
-    if (el.matches(".hero .primary-button:hover")) {
+    if (el.matches(".hero .primary-button:active")) {
       fill = getComputedStyle(document.documentElement).getPropertyValue("--pink").trim() || "#ef38cf";
       stroke = "#ffffff";
     }
 
-    if (el.matches(".contact .big:hover")) {
+    if (el.matches(".contact .big:active")) {
       stroke = getComputedStyle(document.documentElement).getPropertyValue("--pink").trim() || "#ef38cf";
     }
 
@@ -1119,7 +1119,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
     const borderWidth = parseFloat(styles.borderTopWidth) || originalBorderWidth;
     const inset = borderWidth / 2;
     const { fill, stroke } = getVisualColors();
-    const shadowTransform = el.matches(":hover, :focus-visible")
+    const shadowTransform = el.matches(":active, :focus-visible")
       ? "translate(0, 0)"
       : originalShadow
         ? `translate(${originalShadow.offsetX}, ${originalShadow.offsetY})`
@@ -1188,6 +1188,9 @@ function applySquircle(el, radius = 34, exponent = 4) {
   apply();
   el.addEventListener("mouseenter", scheduleApply);
   el.addEventListener("mouseleave", scheduleApply);
+  el.addEventListener("pointerdown", scheduleApply);
+  el.addEventListener("pointerup", scheduleApply);
+  el.addEventListener("pointercancel", scheduleApply);
   el.addEventListener("focus", scheduleApply);
   el.addEventListener("blur", scheduleApply);
   el.addEventListener("transitionrun", scheduleApply);
