@@ -1,4 +1,4 @@
-﻿const translations = {
+const translations = {
   en: {
     "nav.projects": "Projects",
     "nav.about": "About",
@@ -78,7 +78,7 @@
     "projects.title": "Избранные проекты",
     "projects.problem": "/Задача",
     "projects.solution": "/Решение",
-    "projects.reg.title": "Рег.ру: новая айдентика —<br />развитие системы",
+    "projects.reg.title": "Рег.ру: новая айдентика — развитие системы",
     "projects.reg.problem": "Подключиться к ребрендингу Рег.ру на раннем этапе и развить визуальную коммуникацию бренда, включая сайт и другие носители",
     "projects.reg.solution": "Активно дорабатывала визуальную систему бренда и участвовала в полном ребрендинге сайта. Мы с командой задали и усилили новый визуальный язык в графике и ключевых коммуникационных элементах, сформировав цельное цифровое присутствие бренда",
     "projects.day.title": "День предпринимателя:<br />спецпроект для Рег.решений",
@@ -200,8 +200,8 @@ function normalizeDesktopProjectTitles(lang) {
       "projects.fedosov.title": "FEDOSOV: Branding<br />& Visual System"
     },
     ru: {
-      "projects.reg.title": "Рег.ру: новая<br />айдентика —<br />развитие системы",
-      "projects.day.title": isTablet
+      "projects.reg.title": "Рег.ру: новая айдентика —<br />развитие системы",
+      "projects.day.title": isMobile || isTablet
         ? "\u0414\u0435\u043d\u044c \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044f:<br />\u0441\u043f\u0435\u0446\u043f\u0440\u043e\u0435\u043a\u0442 \u0434\u043b\u044f\u00a0\u0420\u0435\u0433.\u0440\u0435\u0448\u0435\u043d\u0438\u0439"
         : isWideDesktop
         ? "\u0414\u0435\u043d\u044c \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044f:<br />\u0441\u043f\u0435\u0446\u043f\u0440\u043e\u0435\u043a\u0442 \u0434\u043b\u044f\u00a0\u0420\u0435\u0433.\u0440\u0435\u0448\u0435\u043d\u0438\u0439"
