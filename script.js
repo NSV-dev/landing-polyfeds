@@ -997,6 +997,12 @@ function squirclePath(width, height, radius, exponent = 4, offset = 0) {
   } ${topLeft} Z`;
 }
 
+const pointerHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+document.documentElement.classList.toggle("has-pointer-hover", pointerHoverQuery.matches);
+pointerHoverQuery.addEventListener?.("change", (event) => {
+  document.documentElement.classList.toggle("has-pointer-hover", event.matches);
+});
+
 function applySquircle(el, radius = 34, exponent = 4) {
   const namespace = "http://www.w3.org/2000/svg";
   const rootStyles = getComputedStyle(document.documentElement);
@@ -1092,12 +1098,12 @@ function applySquircle(el, radius = 34, exponent = 4) {
     let fill = isTransparent(styles.backgroundColor) ? originalBackground : styles.backgroundColor;
     let stroke = isTransparent(styles.borderTopColor) ? originalBorderColor : styles.borderTopColor;
 
-    if (el.matches(".hero .primary-button:active")) {
+    if ((pointerHoverQuery.matches && el.matches(".hero .primary-button:hover")) || el.matches(".hero .primary-button:active")) {
       fill = getComputedStyle(document.documentElement).getPropertyValue("--pink").trim() || "#ef38cf";
       stroke = "#ffffff";
     }
 
-    if (el.matches(".contact .big:active")) {
+    if ((pointerHoverQuery.matches && el.matches(".contact .big:hover")) || el.matches(".contact .big:active")) {
       stroke = getComputedStyle(document.documentElement).getPropertyValue("--pink").trim() || "#ef38cf";
     }
 
@@ -1119,7 +1125,7 @@ function applySquircle(el, radius = 34, exponent = 4) {
     const borderWidth = parseFloat(styles.borderTopWidth) || originalBorderWidth;
     const inset = borderWidth / 2;
     const { fill, stroke } = getVisualColors();
-    const shadowTransform = el.matches(":active, :focus-visible")
+    const shadowTransform = ((pointerHoverQuery.matches && el.matches(":hover")) || el.matches(":active, :focus-visible"))
       ? "translate(0, 0)"
       : originalShadow
         ? `translate(${originalShadow.offsetX}, ${originalShadow.offsetY})`

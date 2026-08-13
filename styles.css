@@ -313,6 +313,7 @@ html[lang="en"] .nav {
   transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
+html.has-pointer-hover .hero .primary-button:hover,
 .hero .primary-button:active {
   background: var(--pink);
   color: white;
@@ -584,17 +585,20 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
   transform: translateY(0);
 }
 
+html.has-pointer-hover .hello-strip__button:hover,
 .hello-strip__button:active,
 .hello-strip__button:focus-visible {
   box-shadow: 0 0 0 var(--ink);
   transform: translateY(7px);
 }
 
+html.has-pointer-hover .hello-strip__button--linkedin:hover,
 .hello-strip__button--linkedin:active,
 .hello-strip__button--linkedin:focus-visible {
   transform: translateY(7px);
 }
 
+html.has-pointer-hover .hello-strip__button--telegram:hover,
 .hello-strip__button--telegram:active,
 .hello-strip__button--telegram:focus-visible {
   transform: translateY(7px);
@@ -1303,16 +1307,19 @@ html[lang="ru"] .ticker-caption span[lang="ru"] {
     transform: translateY(0);
   }
 
+  html.has-pointer-hover .hello-strip__button:hover,
   .hello-strip__button:active,
   .hello-strip__button:focus-visible {
     transform: translateY(4px);
   }
 
+  html.has-pointer-hover .hello-strip__button--linkedin:hover,
   .hello-strip__button--linkedin:active,
   .hello-strip__button--linkedin:focus-visible {
     transform: translateY(4px);
   }
 
+  html.has-pointer-hover .hello-strip__button--telegram:hover,
   .hello-strip__button--telegram:active,
   .hello-strip__button--telegram:focus-visible {
     transform: translateY(4px);
@@ -2556,16 +2563,19 @@ html[lang="ru"] .coded-project--day h3 {
     transform: translateY(0);
   }
 
+  html.has-pointer-hover .hello-strip__button:hover,
   .hello-strip__button:active,
   .hello-strip__button:focus-visible {
     transform: translateY(5px);
   }
 
+  html.has-pointer-hover .hello-strip__button--linkedin:hover,
   .hello-strip__button--linkedin:active,
   .hello-strip__button--linkedin:focus-visible {
     transform: translateY(5px);
   }
 
+  html.has-pointer-hover .hello-strip__button--telegram:hover,
   .hello-strip__button--telegram:active,
   .hello-strip__button--telegram:focus-visible {
     transform: translateY(5px);
@@ -4045,6 +4055,7 @@ html[lang="ru"] .coded-project--day h3 {
   transition: border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
+html.has-pointer-hover .contact .big:hover,
 .contact .big:active {
   border-color: var(--pink);
   color: var(--pink);
@@ -4352,6 +4363,7 @@ html[lang="ru"] .coded-project--day h3 {
     line-height: 1;
   }
 
+  html.has-pointer-hover .contact .big:hover,
   .contact .big:active {
     transform: translateY(7px);
   }
@@ -4606,6 +4618,7 @@ html[lang="ru"] .coded-project--day h3 {
     line-height: 1;
   }
 
+  html.has-pointer-hover .contact .big:hover,
   .contact .big:active {
     transform: translateY(5px);
   }
@@ -4797,6 +4810,7 @@ html[lang="ru"] .coded-project--day h3 {
   transition: transform 180ms ease;
 }
 
+html.has-pointer-hover .experience .experience-button:hover,
 .experience .experience-button:active {
   box-shadow: 0 0 0 var(--ink);
   transform: translateY(5px);
@@ -4888,6 +4902,7 @@ html[lang="ru"] .coded-project--day h3 {
     font-size: calc(14px + var(--responsive-font-bump));
   }
 
+  html.has-pointer-hover .experience .experience-button:hover,
   .experience .experience-button:active {
     box-shadow: 0 0 0 var(--ink);
     transform: translateY(4px);
@@ -5158,6 +5173,7 @@ html.js body {
     font-size: calc(14px + var(--responsive-font-bump));
   }
 
+  html.has-pointer-hover .experience .experience-button:hover,
   .experience .experience-button:active {
     box-shadow: 0 0 0 var(--ink);
     transform: translateY(4px);
