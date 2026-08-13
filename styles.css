@@ -1911,12 +1911,14 @@ html[lang="ru"] .coded-project--day h3 {
 
   .card-reg-logo {
     width: 440px;
-    height: 180px;
+    height: auto;
+    aspect-ratio: 333 / 152;
   }
 
   .card-reg-man {
     width: 440px;
     height: 272px;
+    aspect-ratio: auto;
   }
 
   .card-reg-sign {
