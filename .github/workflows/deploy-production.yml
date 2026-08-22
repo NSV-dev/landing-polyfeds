@@ -86,13 +86,25 @@ jobs:
         run: |
           RELEASE="$(git rev-parse HEAD)"
           REMOTE="$PRODUCTION_USER@$PRODUCTION_HOST"
-          ssh "$REMOTE" "mkdir -p '$PRODUCTION_PATH/releases/$RELEASE'"
-          rsync -az --delete \
+          RELEASE_PATH="$PRODUCTION_PATH/releases/$RELEASE"
+          ACTIVE_RELEASE="$(ssh "$REMOTE" "readlink -f '$PRODUCTION_WEBROOT' 2>/dev/null || true")"
+          LINK_DEST=()
+
+          if [[ "$ACTIVE_RELEASE" == "$PRODUCTION_PATH"/releases/* ]]; then
+            LINK_DEST=(--link-dest="$ACTIVE_RELEASE")
+            echo "Reusing unchanged files from $ACTIVE_RELEASE"
+          else
+            echo "No eligible active release found; performing a full upload."
+          fi
+
+          ssh "$REMOTE" "mkdir -p '$RELEASE_PATH'"
+          rsync -rlc --delete --stats \
+            "${LINK_DEST[@]}" \
             --exclude '.git/' \
             --exclude '.github/' \
             --exclude 'README.md' \
-            ./ "$REMOTE:$PRODUCTION_PATH/releases/$RELEASE/"
-          ssh "$REMOTE" "set -eu; test -s '$PRODUCTION_PATH/releases/$RELEASE/index.html'; ln -sfn '$PRODUCTION_PATH/releases/$RELEASE' '$PRODUCTION_WEBROOT.next'; mv -Tf '$PRODUCTION_WEBROOT.next' '$PRODUCTION_WEBROOT'"
+            ./ "$REMOTE:$RELEASE_PATH/"
+          ssh "$REMOTE" "set -eu; test -s '$RELEASE_PATH/index.html'; ln -sfn '$RELEASE_PATH' '$PRODUCTION_WEBROOT.next'; mv -Tf '$PRODUCTION_WEBROOT.next' '$PRODUCTION_WEBROOT'"
 
       - name: Verify production
         run: curl --fail --silent --show-error --location --retry 4 --retry-delay 3 "$PRODUCTION_URL"
