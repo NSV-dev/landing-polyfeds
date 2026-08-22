@@ -76,6 +76,14 @@ jobs:
             echo "PRODUCTION_PATH and PRODUCTION_WEBROOT must be different." >&2
             exit 1
           }
+          [[ "$PRODUCTION_PATH" != "/" ]] || {
+            echo "PRODUCTION_PATH must not be the filesystem root." >&2
+            exit 1
+          }
+          [[ "$PRODUCTION_PATH" != *[[:space:]]* && "$PRODUCTION_WEBROOT" != *[[:space:]]* ]] || {
+            echo "Production paths must not contain whitespace." >&2
+            exit 1
+          }
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
@@ -108,6 +116,47 @@ jobs:
 
       - name: Verify production
         run: curl --fail --silent --show-error --location --retry 4 --retry-delay 3 "$PRODUCTION_URL"
+
+      - name: Keep active release and five rollback releases
+        run: |
+          REMOTE="$PRODUCTION_USER@$PRODUCTION_HOST"
+          ssh "$REMOTE" bash -s -- "$PRODUCTION_PATH" "$PRODUCTION_WEBROOT" <<'REMOTE_SCRIPT'
+          set -euo pipefail
+
+          production_path="$1"
+          production_webroot="$2"
+          releases_dir="$(readlink -f -- "$production_path/releases")"
+          active_release="$(readlink -f -- "$production_webroot")"
+
+          [[ -n "$releases_dir" && "$releases_dir" != "/" && -d "$releases_dir" ]]
+          [[ "$active_release" == "$releases_dir/"* && -s "$active_release/index.html" ]]
+
+          mapfile -t inactive_releases < <(
+            find "$releases_dir" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' |
+              sort -rn |
+              cut -d ' ' -f2- |
+              while IFS= read -r release_dir; do
+                resolved_release="$(readlink -f -- "$release_dir")"
+                if [[ "$resolved_release" != "$active_release" ]]; then
+                  printf '%s\n' "$resolved_release"
+                fi
+              done
+          )
+
+          pruned=0
+          for ((index = 5; index < ${#inactive_releases[@]}; index++)); do
+            release_to_delete="${inactive_releases[$index]}"
+            [[ "$release_to_delete" == "$releases_dir/"* ]]
+            [[ "$release_to_delete" != "$active_release" ]]
+            [[ "$(dirname -- "$release_to_delete")" == "$releases_dir" ]]
+            rm -rf -- "$release_to_delete"
+            printf 'Pruned old release: %s\n' "$(basename -- "$release_to_delete")"
+            ((pruned += 1))
+          done
+
+          printf 'Retention complete: active release plus %d rollback release(s); %d pruned.\n' \
+            "$((${#inactive_releases[@]} < 5 ? ${#inactive_releases[@]} : 5))" "$pruned"
+          REMOTE_SCRIPT
 
       - name: Publish deployment summary
         run: |
