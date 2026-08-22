@@ -23,6 +23,7 @@ jobs:
       PRODUCTION_HOST: ${{ secrets.PRODUCTION_HOST }}
       PRODUCTION_USER: ${{ secrets.PRODUCTION_USER }}
       PRODUCTION_PATH: ${{ secrets.PRODUCTION_PATH }}
+      PRODUCTION_WEBROOT: ${{ secrets.PRODUCTION_WEBROOT }}
       PRODUCTION_URL: ${{ secrets.PRODUCTION_URL }}
       RELEASE: ${{ inputs.release }}
     steps:
@@ -33,6 +34,8 @@ jobs:
             exit 1
           fi
           [[ "$PRODUCTION_PATH" == /* ]] || exit 1
+          [[ "$PRODUCTION_WEBROOT" == /* ]] || exit 1
+          [[ "$PRODUCTION_PATH" != "$PRODUCTION_WEBROOT" ]] || exit 1
 
       - name: Configure SSH
         env:
@@ -42,6 +45,7 @@ jobs:
           test -n "$PRODUCTION_HOST"
           test -n "$PRODUCTION_USER"
           test -n "$PRODUCTION_PATH"
+          test -n "$PRODUCTION_WEBROOT"
           test -n "$PRODUCTION_URL"
           test -n "$SSH_PRIVATE_KEY"
           test -n "$SSH_KNOWN_HOSTS"
@@ -51,10 +55,10 @@ jobs:
           printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
-      - name: Switch to existing release
+      - name: Switch public root to existing release
         run: |
           REMOTE="$PRODUCTION_USER@$PRODUCTION_HOST"
-          ssh "$REMOTE" "set -eu; cd '$PRODUCTION_PATH'; test -d 'releases/$RELEASE'; ln -sfn 'releases/$RELEASE' current.next; mv -Tf current.next current"
+          ssh "$REMOTE" "set -eu; test -s '$PRODUCTION_PATH/releases/$RELEASE/index.html'; ln -sfn '$PRODUCTION_PATH/releases/$RELEASE' '$PRODUCTION_WEBROOT.next'; mv -Tf '$PRODUCTION_WEBROOT.next' '$PRODUCTION_WEBROOT'"
 
       - name: Verify production
         run: curl --fail --silent --show-error --location --retry 4 --retry-delay 3 "$PRODUCTION_URL"
