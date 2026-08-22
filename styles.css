@@ -664,8 +664,13 @@ html.has-pointer-hover .hello-strip__button--telegram:hover,
     --frame-width: 768px;
     --page-pad: 60px;
     --header-height: 66px;
-    --hero-height: 298px;
-    --gallery-height: 128px;
+    --hero-height: 38.8021vw;
+    --gallery-height: 16.6667vw;
+  }
+
+  .hero {
+    width: 100vw;
+    max-width: none;
   }
 
   .site-header,
@@ -836,26 +841,27 @@ html.has-pointer-hover .hello-strip__button--telegram:hover,
   }
 
   .hero-title {
-    top: 11px;
+    top: 1.4323vw;
+    left: 7.8125vw;
   }
 
   .hero-title p,
   .hero-discipline {
-    font-size: calc(24px + var(--responsive-font-bump));
+    font-size: calc(3.125vw + var(--responsive-font-bump));
     line-height: 1;
   }
 
   .hero-name {
-    top: 56px;
-    width: 432px;
-    font-size: calc(62px + var(--responsive-font-bump));
-    line-height: 64px;
+    top: 7.2917vw;
+    width: 56.25vw;
+    font-size: calc(8.0729vw + var(--responsive-font-bump));
+    line-height: 8.3333vw;
   }
 
   .hero-mark {
-    top: 11px;
-    width: 352px;
-    height: 275px;
+    top: 1.4323vw;
+    width: 45.8333vw;
+    height: 35.8073vw;
     aspect-ratio: auto;
   }
 
@@ -864,29 +870,30 @@ html.has-pointer-hover .hello-strip__button--telegram:hover,
   }
 
   .hero .primary-button {
-    top: 215px;
-    min-height: 36.5px;
-    padding: 11px 18px;
-    border-width: 2px;
-    border-radius: 8px;
-    font-size: calc(14px + var(--responsive-font-bump));
-    box-shadow: 0 4px 0 white;
+    top: 27.9948vw;
+    min-height: 4.7526vw;
+    padding: 1.4323vw 2.3438vw;
+    border-width: 0.2604vw;
+    border-radius: 1.0417vw;
+    font-size: calc(1.8229vw + var(--responsive-font-bump));
+    box-shadow: 0 0.5208vw 0 white;
   }
 
   .hero-discipline {
-    right: var(--page-pad);
-    bottom: 24px;
+    right: 7.8125vw;
+    bottom: 3.125vw;
   }
 
   .ticker {
-    --ticker-distance: 684px;
+    --ticker-distance: 89.0625vw;
     --ticker-y: 0px;
-    margin-bottom: 45px;
+    width: 100vw;
+    margin-bottom: 5.8594vw;
   }
 
   .ticker-track {
-    gap: 8px;
-    padding-top: 1px;
+    gap: 1.0417vw;
+    padding-top: 0.1302vw;
     animation-duration: 20s;
   }
 
@@ -905,40 +912,40 @@ html.has-pointer-hover .hello-strip__button--telegram:hover,
   }
 
   .ticker-item:nth-child(7n + 1) {
-    margin-top: 16px;
-    width: 132px;
-    height: 96px;
+    margin-top: 2.0833vw;
+    width: 17.1875vw;
+    height: 12.5vw;
   }
 
   .ticker-item:nth-child(7n + 2),
   .ticker-item:nth-child(7n + 5) {
-    margin-top: 28px;
-    width: 91px;
-    height: 70px;
+    margin-top: 3.6458vw;
+    width: 11.849vw;
+    height: 9.1146vw;
   }
 
   .ticker-item:nth-child(7n + 3) {
-    margin-top: 27px;
-    width: 49px;
-    height: 70px;
+    margin-top: 3.5156vw;
+    width: 6.3802vw;
+    height: 9.1146vw;
   }
 
   .ticker-item:nth-child(7n + 4) {
-    margin-top: 39px;
-    width: 89px;
-    height: 71px;
+    margin-top: 5.0781vw;
+    width: 11.5885vw;
+    height: 9.2448vw;
   }
 
   .ticker-item:nth-child(7n + 6) {
-    margin-top: 40px;
-    width: 49px;
-    height: 70px;
+    margin-top: 5.2083vw;
+    width: 6.3802vw;
+    height: 9.1146vw;
   }
 
   .ticker-item:nth-child(7n) {
-    margin-top: 13px;
-    width: 127px;
-    height: 92px;
+    margin-top: 1.6927vw;
+    width: 16.5365vw;
+    height: 11.9792vw;
   }
 
 }
@@ -2759,6 +2766,58 @@ html[lang="ru"] .coded-project--day h3 {
     margin-left: 4px;
     vertical-align: -2px;
   }
+
+  /*
+   * Tablet carousel artwork is authored on a shared 648 x 264 canvas.
+   * Scale that canvas to the available width so the widest card fills the
+   * carousel and every narrower card keeps the same proportional scale.
+   */
+  .project-body .project-media-grid,
+  .project-body .project-media-grid--reg,
+  .project-body .project-media-grid--day,
+  .project-body .project-media-grid--barcelona,
+  .project-body .project-media-grid--fedosov {
+    align-items: center;
+    height: auto;
+    aspect-ratio: 648 / 264;
+  }
+
+  .project-body .project-media-grid .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .project-body .project-media-grid .project-card picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .project-body .project-media-grid .project-card img,
+  .project-body .project-media-grid .project-card video {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .project-body .project-media-grid--day .card-day-video > .card-day-mobile-static {
+    display: flex;
+  }
+
+  .project-body .project-media-grid--day .card-day-video > .card-day-desktop-animated {
+    display: none;
+  }
 }
 
 @media (max-width: 760px) {
@@ -3609,6 +3668,20 @@ html[lang="ru"] .coded-project--day h3 {
   }
 }
 
+@media (min-width: 761px) and (max-width: 1199px) {
+  /* Keep every Day card on the same scale as its full-width 648px card. */
+  .project-body .project-media-grid--day .project-card:not(.card-day-video) img {
+    height: 100%;
+    max-height: none;
+  }
+
+  /* These two cards belong only to the desktop Barcelona composition. */
+  .project-body .project-media-grid--barcelona [data-carousel-exclude="true"] {
+    display: none;
+  }
+
+}
+
 /* Figma-matched lower sections */
 .about,
 .experience,
@@ -4372,14 +4445,14 @@ html.has-pointer-hover .contact .big:hover,
 
   .footer {
     display: grid;
-    grid-template-columns: 149px 172px 203px;
+    grid-template-columns: 19.401vw 22.3958vw 26.4323vw;
     justify-content: start;
     width: 100vw;
     min-height: 0;
-    height: 305px;
+    height: 39.7135vw;
     margin-top: -274px;
-    column-gap: 62px;
-    padding: 0 60px 34px;
+    column-gap: 8.0729vw;
+    padding: 0 7.8125vw 4.4271vw;
     align-items: end;
   }
 
@@ -4389,15 +4462,15 @@ html.has-pointer-hover .contact .big:hover,
   }
 
   .footer > div:nth-child(1) {
-    width: 149px;
+    width: 19.401vw;
   }
 
   .footer > div:nth-child(2) {
-    width: 172px;
+    width: 22.3958vw;
   }
 
   .footer > div:nth-child(3) {
-    width: 203px;
+    width: 26.4323vw;
   }
 
   .footer p,
@@ -4406,7 +4479,8 @@ html.has-pointer-hover .contact .big:hover,
     font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: calc(14px + var(--responsive-font-bump));
+    margin-bottom: 0.7813vw;
+    font-size: calc(1.8229vw + var(--responsive-font-bump));
     line-height: 1.2;
   }
 }
