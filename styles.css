@@ -2085,7 +2085,7 @@ html[lang="ru"] .coded-project--day h3 {
 
   .projects-coded h2 {
     margin-bottom: 34px;
-    font-size: calc(22px + var(--responsive-font-bump));
+    font-size: calc(min(5.8667vw, 25.23px) + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -2832,7 +2832,7 @@ html[lang="ru"] .coded-project--day h3 {
 
   .projects-coded h2 {
     margin-bottom: 34px;
-    font-size: calc(22px + var(--responsive-font-bump));
+    font-size: calc(min(5.8667vw, 25.23px) + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -2865,13 +2865,13 @@ html[lang="ru"] .coded-project--day h3 {
     max-width: none;
     grid-column: auto;
     margin-bottom: 20px;
-    font-size: calc(22px + var(--responsive-font-bump));
+    font-size: calc(min(5.8667vw, 25.23px) + var(--responsive-font-bump));
     line-height: 1;
     text-align: left;
   }
 
   html[lang="ru"] .coded-project--day h3 {
-    font-size: calc(22px + var(--responsive-font-bump));
+    font-size: calc(min(5.8667vw, 25.23px) + var(--responsive-font-bump));
     text-align: left;
   }
 
@@ -2892,7 +2892,7 @@ html[lang="ru"] .coded-project--day h3 {
   .project-body .project-note .label,
   .project-body .project-note p:not(.label),
   .project-body .project-link {
-    font-size: calc(13px + var(--responsive-font-bump));
+    font-size: calc(min(3.4667vw, 14.91px) + var(--responsive-font-bump));
     line-height: 1.2;
   }
 
@@ -4664,18 +4664,18 @@ html.has-pointer-hover .contact .big:hover,
 
   .contact {
     width: 100vw;
-    height: 253px;
-    margin-bottom: 40px;
-    padding-top: 33px;
+    height: min(67.4667vw, 290.13px);
+    margin-bottom: min(10.6667vw, 45.87px);
+    padding-top: min(8.8vw, 37.84px);
   }
 
   .contact h2 {
-    width: 327px;
+    width: min(87.2vw, 374.96px);
     height: auto;
     font-family: "Miedinger*", Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: calc(37.1672px + var(--responsive-font-bump));
+    font-size: calc(min(9.9113vw, 42.62px) + var(--responsive-font-bump));
     line-height: 1;
   }
 
@@ -4685,21 +4685,21 @@ html.has-pointer-hover .contact .big:hover,
     height: auto;
     min-width: 0;
     min-height: 0;
-    margin-top: 15px;
-    padding: 13px 19px;
-    border-width: 2.38095px;
-    border-radius: 11.1111px;
-    box-shadow: 0 5px 0 var(--ink);
+    margin-top: min(4vw, 17.2px);
+    padding: min(3.4667vw, 14.91px) min(5.0667vw, 21.79px);
+    border-width: min(0.6349vw, 2.73px);
+    border-radius: min(2.963vw, 12.74px);
+    box-shadow: 0 min(1.3333vw, 5.73px) 0 var(--ink);
     font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: calc(15.7407px + var(--responsive-font-bump));
+    font-size: calc(min(4.1975vw, 18.05px) + var(--responsive-font-bump));
     line-height: 1;
   }
 
   html.has-pointer-hover .contact .big:hover,
   .contact .big:active {
-    transform: translateY(5px);
+    transform: translateY(min(1.3333vw, 5.73px));
   }
 
   .footer {
