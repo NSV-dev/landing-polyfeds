@@ -4261,24 +4261,25 @@ html.has-pointer-hover .contact .big:hover,
 
 @media (min-width: 761px) and (max-width: 1199px) {
   .about {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-    gap: 40.6px;
+    grid-template-columns: 35.8073vw minmax(0, 1fr);
+    gap: 5.2865vw;
     width: 100vw;
-    height: 569px;
-    padding: 100px 60px 0;
+    height: 74.0885vw;
+    padding: 13.0208vw 7.8125vw 0;
   }
 
   .about-carousel {
-    --about-shape-max-height: 445px;
+    --about-shape-max-height: 57.9427vw;
+    --about-shape-width: 68.25%;
     width: 100%;
-    height: 370px;
-    border-radius: 15px;
+    height: 48.1771vw;
+    border-radius: 1.9531vw;
   }
 
   .about-dots {
-    top: 24px;
+    top: 3.125vw;
     width: 50%;
-    height: 6px;
+    height: 0.7813vw;
   }
 
   .about-shape-svg {
@@ -4286,13 +4287,13 @@ html.has-pointer-hover .contact .big:hover,
   }
 
   .about-card-title-strip {
-    gap: 8px;
-    font-size: calc(30px + var(--responsive-font-bump));
+    gap: 1.0417vw;
+    font-size: calc(3.9063vw + var(--responsive-font-bump));
   }
 
   .about-arrows {
-    bottom: 25px;
-    gap: 30px;
+    bottom: 3.2552vw;
+    gap: 3.9063vw;
   }
 
   .about-arrow {
@@ -4303,8 +4304,8 @@ html.has-pointer-hover .contact .big:hover,
   .about-copy {
     position: relative;
     width: 100%;
-    height: 368px;
-    min-height: 370px;
+    height: 47.9167vw;
+    min-height: 48.1771vw;
     padding: 0;
   }
 
@@ -4320,28 +4321,28 @@ html.has-pointer-hover .contact .big:hover,
   }
 
   .about-copy h2 {
-    margin-bottom: 9px;
-    font-size: calc(24px + var(--responsive-font-bump));
+    margin-bottom: 1.1719vw;
+    font-size: calc(3.125vw + var(--responsive-font-bump));
     line-height: 100%;
     white-space: nowrap;
   }
 
   .about-copy p {
-    font-size: calc(14px + var(--responsive-font-bump));
+    font-size: calc(1.8229vw + var(--responsive-font-bump));
     font-weight: 500;
     line-height: 120%;
   }
 
   .about-copy h3 {
-    margin: 28px 0 8px;
-    font-size: calc(24px + var(--responsive-font-bump));
+    margin: 3.6458vw 0 1.0417vw;
+    font-size: calc(3.125vw + var(--responsive-font-bump));
     line-height: 100%;
   }
 
   .about-copy .about-lead {
     max-width: 100%;
     padding-top: 0;
-    font-size: calc(24px + var(--responsive-font-bump));
+    font-size: calc(3.125vw + var(--responsive-font-bump));
     line-height: 100%;
   }
 
