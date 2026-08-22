@@ -137,6 +137,11 @@ const translations = {
 
 const langToggles = document.querySelectorAll("[data-lang-toggle]");
 const currentLangLabels = document.querySelectorAll("[data-current-lang]");
+const cvLinks = document.querySelectorAll("[data-cv-link]");
+const CV_LINKS = {
+  en: "https://docs.google.com/document/d/1legp32CrrFHgKPyWne9XsSTLc0JRUXZ2G9ysd2aLUSk/edit?usp=sharing",
+  ru: "https://docs.google.com/document/d/15hEb4gUPMNJ2OQVhWZ7H4zgMglYyQCbLOpoZlKyKlco/edit?usp=sharing"
+};
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
 const BREAKPOINTS = {
@@ -166,6 +171,9 @@ function applyLanguage(lang) {
   const dictionary = translations[lang] || translations.en;
   document.documentElement.lang = lang;
   localStorage.setItem("language", lang);
+  cvLinks.forEach((link) => {
+    link.href = CV_LINKS[lang] || CV_LINKS.en;
+  });
   currentLangLabels.forEach((label) => {
     label.textContent = lang.toUpperCase();
   });
