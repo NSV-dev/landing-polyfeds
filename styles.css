@@ -1423,6 +1423,7 @@ html.has-pointer-hover .hello-strip__button--telegram:hover,
 .project-note .label {
   color: var(--ink);
   font-style: normal;
+  white-space: nowrap;
 }
 
 .project-media-grid {
